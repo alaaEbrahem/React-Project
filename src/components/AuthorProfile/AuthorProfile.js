@@ -5,7 +5,7 @@ import AuthorInfo from './AuthorInfo/AuthorInfo';
 
 import AuthorBookList from './AuthorBooks/AuthorBookList'
 import { Col, Container } from 'react-bootstrap';
-import './AuthorProfile.scss';;
+import './AuthorProfile.scss';
 
 class AuthorProfile extends Component {
 
@@ -19,30 +19,23 @@ class AuthorProfile extends Component {
                 genre: 'Young Adult, Science Fiction',
             }],
     }
-
     render() {
         return (
-          
             <Container>
-
-               <AuthorInfo authorImg={authorImg} 
-               name={this.state.data[0].name} 
-               born={this.state.data[0].born}
-               website={this.state.data[0].website}
-               genre={this.state.data[0].genre}
-               >
-               </AuthorInfo>
-
+                <AuthorInfo authorImg={authorImg}
+                    name={this.state.data[0].name}
+                    born={this.state.data[0].born}
+                    website={this.state.data[0].website}
+                    genre={this.state.data[0].genre}
+                >
+                </AuthorInfo>
                 <Col md="11" className="m-auto">
                     <fieldset>
                         <legend>{this.state.data[0].name}’S BOOKS:</legend>
                         <AuthorBookList></AuthorBookList>
                     </fieldset>
-
                 </Col>
-
             </Container>
-
         )
     }
 }
