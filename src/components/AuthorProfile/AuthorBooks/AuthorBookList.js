@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import AuthorBook from './AuthorBook/AuthorBook';
-import  book1  from '../../../assets/images/book1.jpg';
-import  book2  from '../../../assets/images/book2.jpg';
-import  book3  from '../../../assets/images/book3.jpg';
+import book1 from '../../../assets/images/book1.jpg';
+import book2 from '../../../assets/images/book2.jpg';
+import book3 from '../../../assets/images/book3.jpg';
 
 
 class AuthorBookList extends Component {
@@ -13,20 +13,20 @@ class AuthorBookList extends Component {
                 id: 1,
                 title: "Divergent (Divergent, #1)",
                 authorName: "by Veronica Roth",
-                bookImg:book1,
+                bookImg: book1,
                 ratingdesc: "4.21 avg rating — 2,562,026 ratings—published 2011"
             },
             {
                 id: 2,
                 title: "Insurgent (Divergent, #2)",
                 authorName: "by Veronica Roth",
-                bookImg:book2,
+                bookImg: book2,
                 ratingdesc: "4.05 avg rating — 1,035,194 ratings — published 2012 — 186"
             },
             {
                 id: 3, title: "Allegiant (Divergent, #3)",
                 authorName: "by Veronica Roth",
-                bookImg:book3,
+                bookImg: book3,
                 ratingdesc: "3.63 avg rating — 734,581 ratings — published 2013 — 175 editions"
             },
         ],
@@ -35,9 +35,11 @@ class AuthorBookList extends Component {
     render() {
         return (
             this.state.data.map(B => (<AuthorBook key={B.id} title={B.title}
-                authorName={B.authorName} id={B.id} ratingdesc={B.ratingdesc} 
+                authorName={B.authorName} id={B.id} ratingdesc={B.ratingdesc}
                 bookImg={B.bookImg}
-                />))
+            />
+            )
+            )
         )
     }
 }

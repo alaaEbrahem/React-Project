@@ -8,12 +8,12 @@ import './AuthorBook.scss'
 const AuthorBook = (props) => (
     <>
         <Row>
-            <Col sm="1">
-            <img src= {props.bookImg} alt="book1" />
+            <Col md="1" className="pr-0">
+            <img src= {props.bookImg} alt="bookname" className="img-fluid pr-0"/>
             </Col>
-            <Col sm="7">
+            <Col md="7">
                 <p>{props.title}</p>
-                <p>{props.authorName}<span className="greyText">(Goodreads Author)</span></p>
+                <p>{props.authorName} <span className="greyText">(Goodreads Author)</span></p>
                 <span className="stars" data-stars="4">
                 <svg height="10" width="10" className="star" data-rating="1">
                     <polygon points="4.994,0.249 6.538,3.376 9.99,3.878 7.492,6.313 8.082,9.751 4.994,8.129 1.907,9.751 
@@ -39,7 +39,7 @@ const AuthorBook = (props) => (
             </span>
                 <span className="greyText">{props.ratingdesc}</span>
             </Col>
-            <Col sm="4" className="text-center">
+            <Col md="4" className="text-center">
                 <Dropdown>
                     <Dropdown.Toggle variant="success" id="dropdown-basic">
                         Want to read
