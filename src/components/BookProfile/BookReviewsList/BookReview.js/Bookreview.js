@@ -1,9 +1,6 @@
 import React from 'react';
 import '../../../../App.scss';
-import { Col, Container, Row } from 'react-bootstrap';
-// import './stars.scss'
-
-
+import { Col, Row } from 'react-bootstrap';
 
 const Bookreview = (props) => (
     <>

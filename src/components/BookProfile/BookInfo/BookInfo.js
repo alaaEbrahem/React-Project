@@ -1,12 +1,19 @@
-import React from 'react'
+import React from 'react';
+import './BookInfo.scss';
 import { Col, Row, Dropdown,Button,ButtonGroup } from 'react-bootstrap';
 const BookInfo = (props) => (
     <Col md="11" className="m-auto py-4">
         <Row>
-            <Col md="2" sm="12" className="text-center"> 
-            <img src={props.bookImg} alt="authorimg"
-                className="img-fluid text-center m-auto img-thumbnail"/>
-            <br></br>
+            <Col md="3" sm="12" className="text-center m-auto "> 
+                <div className="fliptextcard m-auto">
+                    <div className="fliptextcard__images m-auto">
+                        <div className="fliptextcard__frontimg1" style={{ backgroundImage: `url(${props.bookImg})` }}>
+                        </div>
+                        <div className="fliptextcard__backface" style={{ backgroundImage: `url(${props.bookbackImg})` }}>
+                        </div>
+                    </div>
+                </div>
+                <br></br>
                 <Dropdown className="m-auto text-center" as={ButtonGroup}>
                     <Button variant="success">Want to read</Button>
                     <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
@@ -40,7 +47,7 @@ const BookInfo = (props) => (
            
             </span>
             </Col>
-            <Col md="10">
+            <Col md="9">
                 <h4>{props.bookName}</h4>
                 <p className="my-1">by: {props.authorName}</p>
                 <span className="stars" data-stars="4">

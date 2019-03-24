@@ -13,14 +13,14 @@ import BookProfile from './components/BookProfile/BookProfile'
 const App = (props) => (
 
   <Router><>
-      <Switch>
-          <Route exact path="/author" component={AuthorProfile} />
+    <Switch>
+      <Route exact path="/author" component={AuthorProfile} />
 
-          <Route exact path="/login" component={Login} />
+      <Route exact path="/login" component={Login} />
 
-          <Route exact path="/book" component={BookProfile} />
+      <Route exact path="/book" component={BookProfile} />
 
-      </Switch></>
+    </Switch></>
   </Router>
 
 );

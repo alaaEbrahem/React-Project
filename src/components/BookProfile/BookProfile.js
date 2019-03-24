@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import bookImg from '../../assets/images/d.jpg'
+import bookImg from '../../assets/images/d.jpg';
+import bookbackImg from '../../assets/images/db.jpg'
 import BookInfo from './BookInfo/BookInfo';
 import BookReview from './BookReviewsList/BookReviewList'
 import { Container, Col } from 'react-bootstrap';
@@ -12,6 +13,7 @@ class BookProfile extends Component {
         data: [
             {
                 bookImg: bookImg,
+                bookbackImg: bookbackImg,
                 bookName: 'Divergent',
                 authorName: 'VERONICA ROTH',
                 description: 'In Beatrice Priors dystopian Chicago world, society is divided into five factions, each dedicated to the cultivation of particular virtue—Candor (the honest), Abnegation (the selfless), Dauntless (the brave), Amity (the peaceful), and Erudite (the intelligent). ',
@@ -23,6 +25,7 @@ class BookProfile extends Component {
         return (
             <Container>
                 <BookInfo bookImg={bookImg}
+                    bookbackImg={bookbackImg}
                     bookName={this.state.data[0].bookName}
                     authorName={this.state.data[0].authorName}
                     description={this.state.data[0].description}
@@ -35,7 +38,7 @@ class BookProfile extends Component {
                         <BookReview></BookReview>
                     </fieldset>
                 </Col>
-             
+
             </Container>
         )
     }
