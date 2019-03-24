@@ -7,11 +7,12 @@ import './AuthorBook.scss'
 
 const AuthorBook = (props) => (
     <>
+     <Col md="12 m-auto">
         <Row>
-            <Col md="1" className="pr-0">
+            <Col md="1" sm="12" className="pr-0 text-center">
             <img src= {props.bookImg} alt="bookname" className="img-fluid pr-0"/>
             </Col>
-            <Col md="7">
+            <Col md="9" sm="12">
                 <p>{props.title}</p>
                 <p>{props.authorName} <span className="greyText">(Goodreads Author)</span></p>
                 <span className="stars" data-stars="4">
@@ -39,7 +40,9 @@ const AuthorBook = (props) => (
             </span>
                 <span className="greyText">{props.ratingdesc}</span>
             </Col>
-            <Col md="4" className="text-center">
+         
+            <Col md="2" className="m-auto">
+            <div className="text-center">
                 <Dropdown>
                     <Dropdown.Toggle variant="success" id="dropdown-basic">
                         Want to read
@@ -74,9 +77,12 @@ const AuthorBook = (props) => (
                 </svg>
            
             </span>              
+            </div>
             </Col>
+           
         </Row>
         <hr/>
+        </Col>
     </>
 )
 export default AuthorBook;

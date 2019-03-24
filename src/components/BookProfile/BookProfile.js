@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import bookImg from '../../assets/images/d.jpg'
 import BookInfo from './BookInfo/BookInfo';
-
-import { Container } from 'react-bootstrap';
+import BookReview from './BookReviewsList/BookReviewList'
+import { Container, Col } from 'react-bootstrap';
 
 
 class BookProfile extends Component {
@@ -14,7 +14,7 @@ class BookProfile extends Component {
                 bookImg: bookImg,
                 bookName: 'Divergent',
                 authorName: 'VERONICA ROTH',
-                description: 'In Beatrice Priors dystopian Chicago world, society is divided into five factions, each dedicated to the cultivation of a particular virtue—Candor (the honest), Abnegation (the selfless), Dauntless (the brave), Amity (the peaceful), and Erudite (the intelligent). ',
+                description: 'In Beatrice Priors dystopian Chicago world, society is divided into five factions, each dedicated to the cultivation of particular virtue—Candor (the honest), Abnegation (the selfless), Dauntless (the brave), Amity (the peaceful), and Erudite (the intelligent). ',
                 ratingdesc: "4.21 avg rating — 2,562,026 ratings—published 2011"
             }],
     }
@@ -29,6 +29,13 @@ class BookProfile extends Component {
                     ratingdesc={this.state.data[0].ratingdesc}
                 >
                 </BookInfo>
+                <Col md="11" className="m-auto">
+                    <fieldset>
+                        <legend>COMMUNITY REVIEW</legend>
+                        <BookReview></BookReview>
+                    </fieldset>
+                </Col>
+             
             </Container>
         )
     }
