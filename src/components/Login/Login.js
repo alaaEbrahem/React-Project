@@ -6,67 +6,53 @@ import '../../App.scss'
 class Login extends React.Component {
     render() {
         return (
-            <div class="login_page ">
-            <div class="login_page__container-login">
-                <div class="login_page__wrap-login container no-gutters">
-                <div className="row">
-                
-                <div className="col-sm-12">
-                <div className="row no-gutters">
-                
-                <div class="col-12 login_page__login-form-title" >
-                        <span class="login_page__login-form-title__title-1">
-                            Sign In
-                        </span>
-                    </div>
-    
-                </div>
-                  <div className="row">
-                  <div></div>
-                    <form class="offset-2 col-8 login-form">
-                        <div class="login-form__wrap-input login-form__validate-input login-form__m-b-26" data-validate="Username is required">
-                            {/* <span class="label-input">Username</span> */}
-                            <input class="input" type="text" name="username" placeholder="Enter username"/>
-                            <span class="focus-input"></span>
-                        </div>
-    
-                        <div class="login-form__wrap-input login-form__validate-input login-form__m-b-18" data-validate = "Password is required">
-                            {/* <span class="label-input">Password</span> */}
-                            <input class="input" type="password" name="pass" placeholder="Enter password"/>
-                            <span class="focus-input"></span>
-                        </div>
-    
-                        <div class="login-form__remember">
-                            <div class="contact-form-checkbox">
-                                <input class="input-checkbox" id="ckb1" type="checkbox" name="remember-me"/>
-                                <label class="label-checkbox" for="ckb1">
-                                    Remember me
-                                </label>
-                            </div>
-    
-                            <div>
-                                <a href="#" class="txt1">
-                                    Forgot Password?
-                                </a>
-                            </div>
-                        </div>
-    
-                        <div class="login-form__btn">
-                            <button class="login-form__btn__green">
-                                Login
-                            </button>
-                        </div>
-                    </form>
-                    </div>
-              
-                </div>
+<div className="container mt-5">
+<div className="row">
+<div className="col-sm-5 col-10 offset-1 col-lg-9 offset-sm-2 login-form">
+<div className="row">
+<div className="col-12 login-form__banner">
+<div className="col-auto">
+<p className="login-form__banner__form-Title">sign in</p>
+</div>
 
-                </div>
-             
-                </div>
-            </div>
-        </div>
-     );
+</div>
+</div>
+<div className="row">
+<div className="col-12">
+<div className="row pt-5 input-field">
+<div className="offset-lg-2 pl-4 pl-lg-0 pb-3 col-sm-3 col-lg-2 pt-lg-5 input-field__input-label">username</div>
+<div className="pl-1 pl-lg-4  col-lg-8 pt-lg-5">
+<input className="col-12 col-lg-10  input-field__input" type="text" name="username" placeholder="Enter username"/>
+</div>
+</div>
+<div className="row pt-5 pb-5 input-field">
+<div className="offset-lg-2 pl-4 pl-lg-0 pb-3 col-sm-3 col-lg-2 pt-lg-5 input-field__input-label">password</div>
+<div className="pl-1 pl-lg-4  col-lg-8 pt-lg-5">
+<input className="col-12 col-lg-10  input-field__input" type="text" name="password" placeholder="Enter password"/>
+</div>
+</div>
+
+<div className="row"></div>
+<div className="row"></div>
+</div>
+
+</div>
+<div className=" offset-2 row">
+<div className="col-5">
+<input class="input-checkbox" id="ckb1" type="checkbox" name="remember-me"/>
+<label class="label-checkbox" for="ckb1">Remember me</label>                            
+</div>
+<div className="col-4">
+<a href="#" class="txt1"> Forgot Password?</a>
+</div>
+</div>
+<div className="row"></div>
+</div>
+</div>
+
+</div>
+
+            );
+        }
     }
-}
-export default Login;
+    export default Login;
