@@ -6,9 +6,9 @@ import '../../App.scss'
 class Login extends React.Component {
     render() {
         return (
-<div className="container mt-5">
+<div className="container mt-5 mt-md-4">
 <div className="row">
-<div className="col-sm-5 col-10 offset-1 col-md-10 offset-sm-1 login-form">
+<div className="col-sm-5 offset-1  col-10 offset-md-2 col-md-8 login-form">
 <div className="row">
 <div className="col-12 login-form__banner">
 <div className="col-auto">
@@ -19,13 +19,13 @@ class Login extends React.Component {
 </div>
 <div className="row">
 <div className="col-12">
-<div className="row pt-5 input-field">
+<div className="row pt-3 input-field">
 <div className="offset-lg-2 pl-4 pl-lg-0 pb-3 col-sm-3 col-lg-2 pt-lg-5 input-field__input-label">username</div>
 <div className="pl-1 pl-lg-4  col-lg-8 pt-lg-5">
 <input className="col-12 col-lg-10  input-field__input" type="text" name="username" placeholder="Enter username"/>
 </div>
 </div>
-<div className="row pt-5 pb-5 input-field">
+<div className="row pt-3 pb-5 input-field">
 <div className="offset-lg-2 pl-4 pl-lg-0 pb-3 col-sm-3 col-lg-2 pt-lg-5 input-field__input-label">password</div>
 <div className="pl-1 pl-lg-4  col-lg-8 pt-lg-5">
 <input className="col-12 col-lg-10  input-field__input" type="text" name="password" placeholder="Enter password"/>
@@ -46,7 +46,7 @@ class Login extends React.Component {
 </div>
 </div>
 <div className="row">
-<div className="col-5 offset-md-3 mt-5 mb-5">
+<div className="col-5 offset-md-3 mt-4 mb-5">
 <button className="button pb-2">Login</button>
 </div>
 </div>

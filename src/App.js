@@ -6,8 +6,10 @@ import { Switch } from 'react-router';
 import AuthorProfile from './components/AuthorProfile/AuthorProfile';
 
 import Login from './components/Login/Login';
+///////////import admin pages/////////////////////
+import Home from './components/Admin/Home/Home.js';
 
-
+///////////////////////////////////////////////////
 import BookProfile from './components/BookProfile/BookProfile'
 
 const App = (props) => (
@@ -19,6 +21,9 @@ const App = (props) => (
       <Route exact path="/login" component={Login} />
 
       <Route exact path="/book" component={BookProfile} />
+      ///////////////////////Admin routes//////////////////////
+      <Route exact path="/admin" component={Home} />
+      /////////////////////////////////////////////////////////
 
     </Switch></>
   </Router>
