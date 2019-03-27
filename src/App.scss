@@ -18,36 +18,17 @@
   line-height: 18px;
   font-size: 1.3rem;
 }
-.edit{
-  width: 20px;
-  height: 20px;
-}
-.edit:hover{
-  cursor: pointer;
-}
-.del{
-  width: 20px;
-  height: 20px; 
-}
-.del:hover{
-  cursor: pointer;
-}
-.add{
-  width: 20px;
-  height: 20px; 
-  margin-left: 80rem;
-}
-.add:hover{
-  cursor: pointer;
-}
-.book{
-  width: 80px;
-  height: 100px; 
-}
+
 html{
   font-size: 55.5%;
 }
 .no-gutters{
   padding-left: 0 !important;
   padding-right: 0 !important;
+}
+.table{
+  background-color: white;
+}
+.tab-pane{
+  background-color: white !important;
 }
