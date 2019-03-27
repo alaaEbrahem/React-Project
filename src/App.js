@@ -10,6 +10,9 @@ import Login from './components/Login/Login';
 ///////////import admin pages/////////////////////
 import Home from './components/Admin/Home/Home.js';
 
+///////////////////User Home page imports///////////////////////////////
+import HomePage from './components/Home/Home.js';
+
 ///////////////////////////////////////////////////
 import BookProfile from './components/BookProfile/BookProfile'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -19,6 +22,8 @@ const App = (props) => (
   
   <Router><>
     <Switch>
+    
+      <Route exact path="/" component={HomePage}/>
     
       <Route exact path="/author" component={AuthorProfile} />
 
