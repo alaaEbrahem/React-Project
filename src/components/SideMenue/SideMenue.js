@@ -8,8 +8,7 @@ class SideMenue extends React.Component {
     render() {
         return (
           
-<div className="container no-gutters">
-<div className="col-md-3 col-4">
+
 <header className="header" role="banner">
 <div className="row">
   <h1 className="logo pt-4 col-12">
@@ -40,8 +39,7 @@ class SideMenue extends React.Component {
     </ul>
   </div>
 </header>
-</div>
-</div>
+
         );
     }
    }

@@ -9,9 +9,12 @@
 .symbol{
     text-align: center;
     border-radius: 50%;
-    background-color: #71766f;
+    background-color: #babeb8;
      height: 12rem;
      box-shadow: 0 0.3rem 0.3rem #57b846;
+     &:hover{
+        background-color: #57b846;   
+     }
 }
 .x{
     display: inline-block;
