@@ -5,6 +5,8 @@ import { Switch } from 'react-router';
 
 
 import AuthorProfile from './components/AuthorProfile/AuthorProfile';
+import Books from '../src/components/Books/Books';
+
 
 import Login from './components/Login/Login';
 ///////////import admin pages/////////////////////
@@ -32,9 +34,11 @@ const App = (props) => (
       <Route exact path="/book" component={BookProfile} />
       ///////////////////////Admin routes//////////////////////
       <Route exact path="/admin" component={Home} />
+      <Route exact path="/books" component={Books} />
       /////////////////////////////////////////////////////////
 
     </Switch></>
+
   </Router>
 
 );
