@@ -3,6 +3,7 @@ import './App.scss';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Switch } from 'react-router';
 
+
 import AuthorProfile from './components/AuthorProfile/AuthorProfile';
 
 import Login from './components/Login/Login';
@@ -11,11 +12,14 @@ import Home from './components/Admin/Home/Home.js';
 
 ///////////////////////////////////////////////////
 import BookProfile from './components/BookProfile/BookProfile'
-
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faHome } from '@fortawesome/free-solid-svg-icons'
+library.add(faHome);
 const App = (props) => (
-
+  
   <Router><>
     <Switch>
+    
       <Route exact path="/author" component={AuthorProfile} />
 
       <Route exact path="/login" component={Login} />

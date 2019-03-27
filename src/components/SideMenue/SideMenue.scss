@@ -143,3 +143,13 @@ $white-off: #DFDBD9;
     }
   }
 }
+.icon{
+    color: $green;
+}
+@media only screen and (max-width: 600px) {
+  .icon{
+   display: none;}
+   .li{
+   margin-left: 1rem;
+}
+}
