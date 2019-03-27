@@ -14,21 +14,21 @@ class Home extends React.Component {
       <>
         <Navbar />
 
-        <div className="container no-gutters">
+        <div className="container-fluid no-gutters">
           <div className="row">
-            <div className="col-lg-3 col-4">
+            <div className="col-lg-2  col-md-3 col-4 no-gutters">
               <SideMenue />
             </div>
-            <div className="col-lg-8 col-6">
-            <div className="container no-gutters">
+            <div className="col-lg-9 no-gutters col-6">
+            <div className="container">
             <div className="row">
-            <div className="ml-5 col-lg-5 pt-4 col-7">
+            <div className="ml-5 col-lg-4 pt-4 col-7">
            <Card/>
          </div>
-         <div className="ml-5 col-lg-5 pt-4  offset-sm-1 col-7">
+         <div className="ml-5 col-lg-4 pt-4 col-7">
            <Card/>
          </div>
-     
+        
             </div>
             
             </div>

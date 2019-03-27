@@ -1,7 +1,7 @@
 .body{
   height: 100%;
   font-family: Poppins-Regular, sans-serif;
-  font-size: 1.5rem !important;
+ 
 }
 * {
   margin: 0px;
@@ -43,6 +43,12 @@
 .book{
   width: 80px;
   height: 100px; 
+}
+.table{
+  background-color: white;
+}
+.tab-pane{
+  background-color: white !important;
 }
 html{
   font-size: 55.5%;

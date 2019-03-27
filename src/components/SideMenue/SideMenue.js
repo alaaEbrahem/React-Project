@@ -23,7 +23,7 @@ class SideMenue extends React.Component {
       <ul className="unstyled list-hover-slide">
    
         <li className="li">
-            <a href="#"><FontAwesomeIcon icon={faHome} className="ml-md-5 ml-sm-1 mr-5 icon" />  Dashboard</a>
+            <a href="#"><FontAwesomeIcon icon={faHome} className="ml-5 mr-5 icon" />  Dashboard</a>
             </li>
         <li className="li"><a href="#"><FontAwesomeIcon icon={faUsers} className="ml-5 mr-5 icon" /> Users</a></li>
         <li className="li"><a href="#"><FontAwesomeIcon icon={faBook} className="ml-5 mr-5 icon" />  Books</a></li>

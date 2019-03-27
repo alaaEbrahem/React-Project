@@ -73,7 +73,7 @@ $white-off: #DFDBD9;
   a{
     padding: 1.1em 0;
     color: $white-off;
-    font: 400 1.125em $sans;
+    font: 400 1.5rem $sans;
     text{
      
       transform: lowercase;
@@ -100,7 +100,7 @@ $white-off: #DFDBD9;
     height: 5.5em;
     text-align: center;
     color: $gray-shine;
-    font: 0.75em/5.5em $sans;
+    font: 1em/5.5em $sans;
     &:hover{
       color: $white-off;
     }
@@ -150,6 +150,9 @@ $white-off: #DFDBD9;
   .icon{
    display: none;}
    .li{
+     a{
+       padding-left: 2rem;
+     }
    margin-left: 1rem;
 }
 }
