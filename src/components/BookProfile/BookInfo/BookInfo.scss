@@ -1,0 +1,36 @@
+/**/
+.fliptextcard {
+    position: relative; 
+    height:22rem;    
+    width: 15rem;
+}
+.fliptextcard__images {
+    position: absolute;
+    transition: 1s;
+    transform-style: preserve-3d;
+    height:22rem;
+    width: 15rem;
+}
+.fliptextcard__frontimg1 {
+    position: absolute;
+    text-align: center;
+    backface-visibility: hidden;
+    height:22rem;
+    width: 15rem;
+    background-position: center;
+    background-size: contain;
+}
+.fliptextcard__backface {
+    position: absolute;
+    text-align: center;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    height:22rem;
+    width: 15rem;
+    background-position: center;
+    background-size: contain;
+}
+.fliptextcard__images:hover {
+    transform: rotateY(180deg);
+}
+

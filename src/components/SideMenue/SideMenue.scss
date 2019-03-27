@@ -1,0 +1,155 @@
+
+$sans: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+
+$green: #57b846;
+$gray: #222;
+$gray-shine: rgb(41, 40, 40);
+$white-off: #DFDBD9;
+
+
+.unstyled{ list-style: none; padding: 0; margin: 0;
+  a{ text-decoration: none; }
+}
+.list-inline{ overflow: hidden;
+  li{ float: left; }
+}
+
+.header{
+  
+  left: 0; top: 0; bottom: 0;
+  height: 90vh;
+  background: $gray;
+}
+
+.logo{
+  text-transform: lowercase;
+  font: 300 2em $sans;
+  text-align: center;
+  padding: 0; margin: 0;
+  img{
+    width:  73px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 0.6rem solid  $green;
+    box-shadow: 0 0 0 0.6rem rgba(255, 255, 255, 0.2);
+  }
+  h2{
+    color: $green !important;
+    text-transform: initial;
+    padding-top: 1rem;
+    padding-bottom: 1rem
+  }
+  a{
+    display: block;
+    padding: 1em 0;
+    color: $white-off;
+    text-decoration: none;
+    transition: .15s linear color;
+    
+    &:hover{
+      color: #fff;
+      text-decoration: none;
+      span{ color: $green; }
+    }
+  }
+  
+  span{
+    font-weight: 700;
+    transition: .15s linear color;
+  }
+}
+
+// MAIN NAV
+.main-nav{
+  
+  ul{
+    border-top: solid 1px $gray-shine;
+  }
+  
+  li{
+    border-bottom: solid 1px $gray-shine;
+  }
+  
+  a{
+    padding: 1.1em 0;
+    color: $white-off;
+    font: 400 1.125em $sans;
+    text{
+     
+      transform: lowercase;
+    }
+    
+    &:hover{
+      color: #fff;
+    }
+  }
+}
+
+// SOCIAL LINKS
+.social-links{
+  border-bottom: solid 1px $gray-shine;
+  
+  li{
+    width: 25%;
+    border-left: solid 1px $gray-shine;
+    &:first-child{ border: none; }
+  }
+  
+  a{
+    display: block;
+    height: 5.5em;
+    text-align: center;
+    color: $gray-shine;
+    font: 0.75em/5.5em $sans;
+    &:hover{
+      color: $white-off;
+    }
+  }
+}
+
+// HOVER SLIDE EFFECT
+.list-hover-slide{
+  
+  li{
+    position: relative;
+    overflow: hidden;
+  }
+  
+  a{
+    display: block;
+    position: relative;
+    z-index: 1;
+    transition: .35s ease color;
+    
+    &:before{
+      content: '';
+      display: block;
+      z-index: -1;
+      position: absolute;
+      left: -100%; top: 0;
+      width: 100%; height: 100%;
+      border-right: solid 5px $green;
+      background: $gray-shine;
+      transition: .35s ease left;
+    }
+    
+    &.is-current,
+    &:hover{
+        text-decoration: none;
+      
+      &:before{
+        left: 0;
+      }
+    }
+  }
+}
+.icon{
+    color: $green;
+}
+@media only screen and (max-width: 600px) {
+  .icon{
+   display: none;}
+   .li{
+   margin-left: 1rem;
+}
+}

@@ -1,11 +1,22 @@
+.body{
+  height: 100%;
+  font-family: Poppins-Regular, sans-serif;
+  font-size: 1.5rem !important;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
 }
 
 .greyText{
-  color:#999999;
-  font-size: 12px;
+  color:#7c7c7c;
   line-height: 18px;
+  font-size: 1.3rem;
 }
 .edit{
   width: 20px;
@@ -32,4 +43,11 @@
 .book{
   width: 80px;
   height: 100px; 
+}
+html{
+  font-size: 55.5%;
+}
+.no-gutters{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }

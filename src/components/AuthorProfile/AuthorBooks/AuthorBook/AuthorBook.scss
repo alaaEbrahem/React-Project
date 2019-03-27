@@ -1,5 +1,22 @@
-
 p {
     margin: 0 !important;
     padding: 0 !important;
+}
+
+@media only screen and (max-width: 800px) {
+    p {
+        text-align: center;
+    }
+    span {
+        text-align: center !important;
+    }
+    h1,h2,h3,h4,h5,h6{
+        text-align: center !important;
+    }
+    body {
+        font-size: 1.4rem !important;
+    }
+    legend{
+        font-size: 1.4rem !important;
+    }
 }
