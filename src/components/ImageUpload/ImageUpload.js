@@ -29,22 +29,20 @@ class ImageUpload extends Component {
   
     render() {
       let {imagePreviewUrl} = this.state;
-      let $imagePreview = null;
+      let imagePreview = null;
       if (imagePreviewUrl) {
-        $imagePreview = (<img src={imagePreviewUrl} />);
+        imagePreview = (<img src={imagePreviewUrl} />);
       } else {
-        $imagePreview = (<div className="previewText">Preview</div>);
+        imagePreview = (<div className="previewText">Preview</div>);
       }
   
       return (
         <div className="row no-gutters previewComponent">
           <div className=" col-md-2 imgPreview px-0">
-            {$imagePreview}
+            {imagePreview}
           </div>
           <form onSubmit={(e)=>this._handleSubmit(e)} className="col-sm-10">
-            <input className="col-9" 
-              type="file" 
-              onChange={(e)=>this._handleImageChange(e)} />
+            <input className="col-9" type="file" onChange={(e)=>this._handleImageChange(e)} />
             <button className="col-3 btn btn-primary" 
               type="submit" 
               onClick={(e)=>this._handleSubmit(e)}>Upload</button>
