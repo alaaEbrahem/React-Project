@@ -1,0 +1,17 @@
+.nav-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.user-nav{
+    margin: 0;
+}
+.fontIcon{
+    font-size: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & span{
+        font-size: 2rem;
+    }
+}
