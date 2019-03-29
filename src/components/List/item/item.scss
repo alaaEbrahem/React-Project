@@ -1,0 +1,26 @@
+.cardUp {
+    transition: 0.5s;
+    cursor: pointer;
+
+    &:hover {
+        transform: translateY(-10px);
+    }
+
+    &:hover .item__layout{
+       opacity: 1;
+    }    
+}
+
+.item__img{
+    position: relative;
+}
+.item__layout {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top:0;
+    z-index: 2;
+    width: 17.8rem;
+    height: 27rem;
+    opacity: 0;
+}
+
