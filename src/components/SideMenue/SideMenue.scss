@@ -20,10 +20,14 @@ $white-off: #DFDBD9;
 }
 
 .logo{
-  text-transform: lowercase;
-  font: 300 2em $sans;
-  text-align: center;
-  padding: 0; margin: 0;
+  text-transform: uppercase;
+  font: 200 1.7em $sans;
+ text-align: center;
+  
+    &:hover{
+      color:$green;
+    }
+  
   img{
     width:  73px;
     border-radius: 50%;
@@ -57,7 +61,6 @@ $white-off: #DFDBD9;
   }
 }
 
-// MAIN NAV
 .main-nav{
   
   ul{
@@ -83,7 +86,6 @@ $white-off: #DFDBD9;
   }
 }
 
-// SOCIAL LINKS
 .social-links{
   border-bottom: solid 1px $gray-shine;
   

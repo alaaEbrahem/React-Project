@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.scss';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Switch } from 'react-router';
@@ -13,10 +13,13 @@ import category from './components/category/category';
 import Login from './components/Login/Login';
 ///////////import admin pages/////////////////////
 import Home from './components/Admin/Home/Home.js';
-
+import Book from './components/Admin/Books/Books';
+import Author from './components/Admin/Authors/Author';
+import Users from './components/Admin/Users/Users';
+import Categories from './components/Admin/Categories/Categories';
 import HomePage from './components/Home/Home.js';
 
-///////////////////////////////////////////////////
+////////////////////////End Admin pages///////////////////////////
 import BookProfile from './components/BookProfile/BookProfile'
 
 import UserNavbar from './components/Navbar/UserNavbar/UserNavbar';
@@ -25,41 +28,113 @@ import UserNavbar from './components/Navbar/UserNavbar/UserNavbar';
 // -----------------------Font Awesome Import-------------------------
 import { library } from '@fortawesome/fontawesome-svg-core'
 
-import { faSearch, faUserCircle, faSignOutAlt} from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faUserCircle, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faSearch,faUserCircle,faSignOutAlt)
+library.add(faSearch, faUserCircle, faSignOutAlt)
 library.add(faHome);
 //--------------------------------------------------------------------
 
+export const MyContext = React.createContext({
+  users: [{ name: 'alaa Ebrahem', userGroup: 1, deleted: false, id: 1 }
+    , { name: 'aya Ebrahem', userGroup: 1, deleted: false, id: 2 },
+  { name: 'sara Ebrahem', userGroup: 2, deleted: false, id: 3 }],
+  authors: [{ name: 'alaa Ebrahem', userGroup: 3, deleted: false, id: 1 }
+    , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 },
+  { name: 'sara Ebrahem', userGroup: 3, deleted: false, id: 3 }],
 
-const App = (props) => (
-  
-  <Router><>
-    <Switch>
-   
-      <Route exact path="/" component={HomePage}/>
+});
+class App extends Component {
+  state = {
+    users:
+     [{ name: 'alaa', userGroup: 1, deleted: false, id: 1 }
+      , { name: 'aya', userGroup: 1, deleted: false, id: 2 },
+    { name: 'sara', userGroup: 2, deleted: false, id: 3 }],
+    authors:
+     [{ name: 'alaa Ebrahem', userGroup: 3, deleted: false, id: 1 }
+      , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 }
+   ],
+    books:
+     [{ name: 'alaa Ebrahem', userGroup: 3, deleted: false, id: 1 }
+      , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 },
+    { name: 'sara Ebrahem', userGroup: 3, deleted: false, id: 3 }],
+    categories:
+     [{ name: 'alaa Ebrahem', userGroup: 3, deleted: false, id: 1 }
+      , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 },
+    { name: 'sara Ebrahem', userGroup: 3, deleted: false, id: 3 }],
+  };
+  search = (name) => {
+    const { users } = this.state;
+    for (var i = 0; i < users.length; i++) {
 
-      {/* Just a Temporary route for testing */}
-      <Route exact path="/userpage" component={UserNavbar}/>
+      if (users[i].name === name) {
 
-      <Route exact path="/author" component={AuthorProfile} />
+        return users[i];
+      }
 
-      <Route exact path="/login" component={Login} />
 
-      <Route exact path="/book" component={BookProfile} />
+    }
+    return name;
 
-      <Route exact path="/category" component={category}/>
-      ///////////////////////Admin routes//////////////////////
-      <Route exact path="/admin" component={Home} />
-      <Route exact path="/books" component={Books} />
-      
-      /////////////////////////////////////////////////////////
+  }
+  deleteToDo = (id) => {
+    const index = id;
+    const newArray = this.state.data.map((item) => (
+      item.id == index ? { ...item, deleted: !item.deleted } : item
+    ))
+    this.setState({ data: newArray });
 
-    </Switch></>
+  }
+  doneToDo = (id) => {
+    const index = id;
 
-  </Router>
+    const newArray = this.state.data.map((item) => (
+      item.id == index ? { ...item, completed: !item.completed } : item
+    ))
+    this.setState({ data: newArray });
+  }
+  render() {
+    const value = {
+      state: this.state,
+      search: this.search,
+      deleteToDo: this.deleteToDo,
+      doneToDo: this.doneToDo,
+     
 
-);
+    }
+    return (
+      <MyContext.Provider value={value}>
+        <Router><>
+          <Switch>
+            {/* <Login/> */}
+            <Route exact path="/user" component={HomePage} />
+
+            {/* Just a Temporary route for testing */}
+            <Route exact path="/userpage" component={UserNavbar} />
+
+            <Route exact path="/author" component={AuthorProfile} />
+
+            <Route exact path="/" component={Login} />
+
+            <Route exact path="/book" component={BookProfile} />
+
+            <Route exact path="/category" component={category} />
+            ///////////////////////Admin routes//////////////////////
+            <Route exact path="/admin" component={Home} />
+            <Route exact path="/books" component={Books} />
+            <Route exact path="/admin/books" component={Book} />
+            <Route exact path="/admin/authors" component={Author} />
+            <Route exact path="/admin/authors" component={Author} />
+            <Route exact path="/admin/categories" component={Categories} />
+            <Route exact path="/admin/users" component={Users} />
+          /////////////////////////////////////////////////////////
+
+          </Switch></>
+
+        </Router>
+      </MyContext.Provider>
+    );
+  }
+}
 
 export default App;

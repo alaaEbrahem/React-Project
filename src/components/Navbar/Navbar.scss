@@ -27,9 +27,20 @@ h2 {
   padding: 0;
 }
 
-.menu > li {
-    padding :2rem 3rem;
-    cursor: pointer;
+// .menu > li {
+//     padding :2rem 3rem;
+//     cursor: pointer;
+// }
+.menu > li > a {
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  display: block;
+  padding: 1.2rem 3rem;
+}
+
+.menu > li > a.active {
+ background-color: #40443f
 }
 
 .menu-button-container {
@@ -107,7 +118,6 @@ h2 {
   #menu-toggle:checked ~ .menu li {
     border: 1px solid #333;
     height: 3em;
-    padding: 0.6em;
     color: #FFF;
     transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
    

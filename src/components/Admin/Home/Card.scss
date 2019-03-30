@@ -1,21 +1,21 @@
 .panel{
     margin-bottom: 20px;
-    background-color: #fff;
+    background-color: #f5f1f1;
     border: 1rem solid transparent;
     border-radius: 2rem ;
    
-    box-shadow: 0 0.7rem 0.7rem #57b846;
+    box-shadow: 0 0.5rem 0.5rem #57b846;
 }
 .symbol{
     text-align: center;
     border-radius: 50%;
-    background-color: #babeb8;
+    background-color:#40443f ;
     margin: auto;
     height: 9rem;
     width: 9rem;
      box-shadow: 0 0.3rem 0.3rem #57b846;
      &:hover{
-        background-color: #57b846;   
+        background-color: #babeb8;   
      }
 }
 .x{
