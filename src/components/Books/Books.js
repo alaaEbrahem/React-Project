@@ -2,6 +2,7 @@ import React from 'react';
 import { Tabs, Tab , Modal,Button} from 'react-bootstrap';
 import BookList from './BookList';
 import add from '../../assets/images/add.png';
+import './Books.scss';
 
 export default class Books extends React.Component {
     state = {

@@ -9,11 +9,14 @@ class Card extends React.Component {
   render() {
     return (
         <>
-          <din className="row">
-                <section className="panel col-12">
+          <div className="row no-gutters">
+          <div className="col-12">
+                <section className="panel">
                   <div className="row">
-                    <div className=" offset-3 col-6 mt-2 symbol terques">
+                  <div className="col-5 symbole-container">
+                    <div className=" symbol terques">
                       <FontAwesomeIcon icon={faUsers} className="x mt-5" />
+                    </div>
                     </div>
                   </div>
                   <div className="row mb-3">
@@ -23,7 +26,8 @@ class Card extends React.Component {
                     </div>
                   </div>
                 </section>
-              </din>
+              </div>
+              </div>
            
         </>
         );

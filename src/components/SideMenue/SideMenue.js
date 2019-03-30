@@ -21,10 +21,7 @@ class SideMenue extends React.Component {
   <div className="nav-wrap">
     <nav className="main-nav" role="navigation">
       <ul className="unstyled list-hover-slide">
-   
-        <li className="li">
-            <a href="#"><FontAwesomeIcon icon={faHome} className="ml-5 mr-5 icon" />  Dashboard</a>
-            </li>
+        <li className="li"><a href="#"><FontAwesomeIcon icon={faHome} className="ml-5 mr-5 icon" />  Dashboard</a> </li>
         <li className="li"><a href="#"><FontAwesomeIcon icon={faUsers} className="ml-5 mr-5 icon" /> Users</a></li>
         <li className="li"><a href="#"><FontAwesomeIcon icon={faBook} className="ml-5 mr-5 icon" />  Books</a></li>
         <li className="li"><a href="#"><FontAwesomeIcon icon={faAddressCard} className="ml-5 mr-5 icon" />Authors</a></li>

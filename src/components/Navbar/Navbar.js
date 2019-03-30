@@ -1,6 +1,7 @@
 import React from 'react';
-import './Navbar.scss'
 import '../../App.scss'
+import './Navbar.scss'
+
 
 
 class Navbar extends React.Component {

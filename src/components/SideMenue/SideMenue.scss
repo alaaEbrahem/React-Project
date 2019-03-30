@@ -15,9 +15,7 @@ $white-off: #DFDBD9;
 }
 
 .header{
-  
-  left: 0; top: 0; bottom: 0;
-  height: 90vh;
+  height:88.25vh;
   background: $gray;
 }
 
@@ -106,8 +104,6 @@ $white-off: #DFDBD9;
     }
   }
 }
-
-// HOVER SLIDE EFFECT
 .list-hover-slide{
   
   li{
@@ -154,5 +150,9 @@ $white-off: #DFDBD9;
        padding-left: 2rem;
      }
    margin-left: 1rem;
+}
+.header{
+  height:89.25vh;
+ 
 }
 }
