@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './App.scss';
+
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Switch } from 'react-router';
 
 
 import AuthorProfile from './components/AuthorProfile/AuthorProfile';
 import Books from '../src/components/Books/Books';
+import UserNavbar from './components/Navbar/UserNavbar/UserNavbar'
 
 import category from './components/category/category';
 
@@ -18,13 +20,10 @@ import Author from './components/Admin/Authors/Author';
 import Users from './components/Admin/Users/Users';
 import Categories from './components/Admin/Categories/Categories';
 import HomePage from './components/Home/Home.js';
+import UserProfile from './components/UserProfile/UserProfile';
 
-////////////////////////End Admin pages///////////////////////////
 import BookProfile from './components/BookProfile/BookProfile'
 
-import UserNavbar from './components/Navbar/UserNavbar/UserNavbar';
-
-// import { library } from '@fortawesome/fontawesome-svg-core'
 // -----------------------Font Awesome Import-------------------------
 import { library } from '@fortawesome/fontawesome-svg-core'
 
@@ -42,6 +41,15 @@ export const MyContext = React.createContext({
   authors: [{ name: 'alaa Ebrahem', userGroup: 3, deleted: false, id: 1 }
     , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 },
   { name: 'sara Ebrahem', userGroup: 3, deleted: false, id: 3 }],
+  books:
+  [{ name: 'alaa Ebrahem', userGroup: 3, deleted: false, id: 1 }
+   , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 },
+ { name: 'sara Ebrahem', userGroup: 3, deleted: false, id: 3 }],
+ categories:
+  [{ name: 'alaa Ebrahem', userGroup: 3, deleted: false, id: 1 }
+   , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 },
+ { name: 'sara Ebrahem', userGroup: 3, deleted: false, id: 3 }],
+ login:''
 
 });
 class App extends Component {
@@ -62,8 +70,8 @@ class App extends Component {
      [{ name: 'alaa Ebrahem', userGroup: 3, deleted: false, id: 1 }
       , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 },
     { name: 'sara Ebrahem', userGroup: 3, deleted: false, id: 3 }],
-    login:{}
-  };
+    login:false
+  }
   search = (name,password) => {
     const { users } = this.state;
     for (var i = 0; i < users.length; i++) {
@@ -73,7 +81,7 @@ class App extends Component {
     }
     return name;
   }
- 
+
   deleteToDo = (id) => {
     const index = id;
     const newArray = this.state.data.map((item) => (
@@ -81,6 +89,11 @@ class App extends Component {
     ))
     this.setState({ data: newArray });
 
+  }
+  addLogin = (user)=>{
+    const u=user;
+  
+   this.state.login=u;
   }
   doneToDo = (id) => {
     const index = id;
@@ -95,8 +108,8 @@ class App extends Component {
       state: this.state,
       search: this.search,
       deleteToDo: this.deleteToDo,
+      addLogin:this.addLogin,
       doneToDo: this.doneToDo,
-    
     }
     return (
       <MyContext.Provider value={value}>
@@ -105,8 +118,13 @@ class App extends Component {
             {/* <Login/> */}
             <Route exact path="/user/:id" component={HomePage} />
 
+
+    
+      <Route exact path="/profile" component={UserProfile}/>
+
             {/* Just a Temporary route for testing */}
             <Route exact path="/userpage" component={UserNavbar} />
+
 
             <Route exact path="/author" component={AuthorProfile} />
 
@@ -116,13 +134,13 @@ class App extends Component {
 
             <Route exact path="/category" component={category} />
             ///////////////////////Admin routes//////////////////////
-            <Route exact path="/admin/:id/:name/:image" component={Home} />
+            <Route exact path="/admin" component={Home} />
             <Route exact path="/books" component={Books} />
-            <Route exact path="/admin/books/:id/:name/:image" component={Book} />
-            <Route exact path="/admin/authors/:id/:name/:image" component={Author} />
+            <Route exact path="/admin/books" component={Book} />
+            <Route exact path="/admin/authors" component={Author} />
     
-            <Route exact path="/admin/categories/:id/:name/:image" component={Categories} />
-            <Route exact path="/admin/users/:id/:name/:image" component={Users} />
+            <Route exact path="/admin/categories" component={Categories} />
+            <Route exact path="/admin/users" component={Users} />
           /////////////////////////////////////////////////////////
 
           </Switch></>

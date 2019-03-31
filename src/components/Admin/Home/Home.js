@@ -12,19 +12,20 @@ import { MyContext } from '../../../App'
 class Home extends React.Component {
   state={user:this.props.location.state?this.props.location.state.user:this.props.user}
   render() {
-    const {id,name,image}=this.props.match.params;
+    //const {id,name,image}=this.props.match.params;
     
  
     return (
       <MyContext.Consumer>
-         {value => (   
+         {value => ( 
+           value.state.login?  
       <React.Fragment>
-        <Navbar id={id} name={name} image={image}/>
+        <Navbar/>
         <div className="container-fluid no-gutters">
           <div className="row no-gutters">
             <div className="col-12 y">
               <div className="col-lg-2  col-md-3 col-4 no-gutters">
-                <SideMenue id={id} name={name} image={image} />
+                <SideMenue />
               </div>
               <div className="col-10">
                 <div className="row ml-4">
@@ -47,7 +48,7 @@ class Home extends React.Component {
           </div>
         </div>
 
-      </React.Fragment>
+      </React.Fragment>:""
 
 )}
 </MyContext.Consumer>

@@ -1,6 +1,10 @@
 import React from 'react';
 import { Container, Modal, Button, Form } from 'react-bootstrap';
 
+import { faHome, faUsers, faBook, faAddressCard, faAlignJustify } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import '../../../App.scss';
+import { MyContext } from '../../../App'
 
 import '../../../App.scss';
 
@@ -72,7 +76,7 @@ class Categories extends React.Component {
           </div>
         </div>
       </>
-    );
+    )
   }
 }
 export default Categories;
