@@ -1,10 +1,7 @@
 import React from 'react';
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Container, Modal, Button, Form } from 'react-bootstrap';
-
-
-
+import { Modal, Button, Form } from 'react-bootstrap';
 
 class ListingRow extends React.Component {
     constructor(props) {
