@@ -8,6 +8,7 @@ class ErrorPage extends React.Component {
 
     render() {
         return (
+            
             <>
        <div class="stage">
   <div class="layer"></div>

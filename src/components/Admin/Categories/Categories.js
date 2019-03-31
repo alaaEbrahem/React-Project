@@ -3,7 +3,6 @@ import { Container, Modal, Button, Form } from 'react-bootstrap';
 import '../../../App.scss';
 import { MyContext } from '../../../App'
 import '../../../App.scss';
-import ErrorPage from '../../ErrorPage/ErrorPage';
 import Navbar from '../../Navbar/Navbar';
 import SideMenue from '../../SideMenue/SideMenue';
 import Listing from './Listing/Listing';
@@ -74,7 +73,7 @@ class Categories extends React.Component {
             </div>
           </div>
         </div>
-        </React.Fragment>:<ErrorPage/>
+        </React.Fragment>:this.props.history.push(`/`)
 
        
 )}
