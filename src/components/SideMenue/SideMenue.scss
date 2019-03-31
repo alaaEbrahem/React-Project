@@ -15,17 +15,19 @@ $white-off: #DFDBD9;
 }
 
 .header{
-  
-  left: 0; top: 0; bottom: 0;
-  height: 90vh;
+  height:88.25vh;
   background: $gray;
 }
 
 .logo{
-  text-transform: lowercase;
-  font: 300 2em $sans;
-  text-align: center;
-  padding: 0; margin: 0;
+  text-transform: uppercase;
+  font: 200 1.7em $sans;
+ text-align: center;
+  
+    &:hover{
+      color:$green;
+    }
+  
   img{
     width:  73px;
     border-radius: 50%;
@@ -33,10 +35,10 @@ $white-off: #DFDBD9;
     border: 0.6rem solid  $green;
     box-shadow: 0 0 0 0.6rem rgba(255, 255, 255, 0.2);
   }
-  h2{
+  p{
     color: $green !important;
-    text-transform: initial;
-    padding-top: 1rem;
+    text-transform: uppercase;
+    padding-top: 1.5rem !important;
     padding-bottom: 1rem
   }
   a{
@@ -59,7 +61,6 @@ $white-off: #DFDBD9;
   }
 }
 
-// MAIN NAV
 .main-nav{
   
   ul{
@@ -73,7 +74,7 @@ $white-off: #DFDBD9;
   a{
     padding: 1.1em 0;
     color: $white-off;
-    font: 400 1.125em $sans;
+    font: 400 1.5rem $sans;
     text{
      
       transform: lowercase;
@@ -85,7 +86,6 @@ $white-off: #DFDBD9;
   }
 }
 
-// SOCIAL LINKS
 .social-links{
   border-bottom: solid 1px $gray-shine;
   
@@ -100,14 +100,12 @@ $white-off: #DFDBD9;
     height: 5.5em;
     text-align: center;
     color: $gray-shine;
-    font: 0.75em/5.5em $sans;
+    font: 1em/5.5em $sans;
     &:hover{
       color: $white-off;
     }
   }
 }
-
-// HOVER SLIDE EFFECT
 .list-hover-slide{
   
   li{
@@ -150,6 +148,13 @@ $white-off: #DFDBD9;
   .icon{
    display: none;}
    .li{
+     a{
+       padding-left: 2rem;
+     }
    margin-left: 1rem;
+}
+.header{
+  height:89.25vh;
+ 
 }
 }

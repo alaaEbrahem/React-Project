@@ -7,39 +7,52 @@ import '../../Navbar/Navbar';
 import Navbar from '../../Navbar/Navbar';
 import SideMenue from '../../SideMenue/SideMenue';
 import Card from './Card';
+import { MyContext } from '../../../App'
 
 class Home extends React.Component {
+  state={user:this.props.location.state?this.props.location.state.user:this.props.user}
   render() {
+    const {id,name,image}=this.props.match.params;
+    
+ 
     return (
-      <>
-        <Navbar />
+      <MyContext.Consumer>
+         {value => (   
+      <React.Fragment>
+        <Navbar id={id} name={name} image={image}/>
+        <div className="container-fluid no-gutters">
+          <div className="row no-gutters">
+            <div className="col-12 y">
+              <div className="col-lg-2  col-md-3 col-4 no-gutters">
+                <SideMenue id={id} name={name} image={image} />
+              </div>
+              <div className="col-10">
+                <div className="row ml-4">
+                  <div className="usesr ml-md-5 ml-sm-2 mt-5 col-lg-4 col-sm-7 col-md-4 no-gutters ">
+                    <Card card="users" value={value.state.users.length} />
+                  </div>
+                  <div className="categories ml-md-5 ml-sm-2 mt-5 col-lg-4 col-sm-7 col-md-4 no-gutters ">
+                    <Card card="categories" value={value.state.categories.length}/>
+                  </div>
+                  <div className="books ml-md-5 ml-sm-2 mt-5 col-lg-4 col-sm-7 col-md-4 no-gutters ">
+                    <Card card="books" value={value.state.books.length} />
+                  </div>
+                  <div className="authors ml-md-5 ml-sm-2 mt-5 col-lg-4 col-sm-7 col-md-4 no-gutters ">
+                    <Card card="authors" value={value.state.authors.length} />
+                  </div>
 
-        <div className="container no-gutters">
-          <div className="row">
-            <div className="col-lg-3 col-4">
-              <SideMenue />
+                </div>
+              </div>
             </div>
-            <div className="col-lg-8 col-6">
-            <div className="container no-gutters">
-            <div className="row">
-            <div className="ml-5 col-lg-5 pt-4 col-7">
-           <Card/>
-         </div>
-         <div className="ml-5 col-lg-5 pt-4  offset-sm-1 col-7">
-           <Card/>
-         </div>
-     
-            </div>
-            
-            </div>
-            
-            </div>
-        
           </div>
         </div>
 
-      </>
-    );
-  }
+      </React.Fragment>
+
+)}
+</MyContext.Consumer>
+);
 }
+}
+
 export default Home;
