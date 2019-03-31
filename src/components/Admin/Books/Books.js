@@ -9,27 +9,27 @@ import SideMenue from '../../SideMenue/SideMenue';
 
 class Book extends React.Component {
   render() {
-    const {id,name,image}=this.props.match.params
+    
     return (
       <MyContext.Consumer>
       {value => (
-      
+     value.state.login? 
    <React.Fragment>
      
-        <Navbar id={id} name={name} image={image}  />
+        <Navbar />
 
         <div className="container-fluid no-gutters">
         <div className="row no-gutters">
       <div className="col-12 y">
             <div className="col-lg-2  col-md-3 col-4 no-gutters">
-              <SideMenue id={id} name={name} image={image}  />
+              <SideMenue/>
             </div>
           
             </div>
         </div>
         </div>
       
-        </React.Fragment>
+        </React.Fragment>:""
 
 )}
 </MyContext.Consumer>
