@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.scss';
+
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Switch } from 'react-router';
 
@@ -12,13 +13,10 @@ import Login from './components/Login/Login';
 import Home from './components/Admin/Home/Home.js';
 
 import HomePage from './components/Home/Home.js';
+import UserProfile from './components/UserProfile/UserProfile';
 
-///////////////////////////////////////////////////
 import BookProfile from './components/BookProfile/BookProfile'
 
-import UserNavbar from './components/Navbar/UserNavbar/UserNavbar';
-
-// import { library } from '@fortawesome/fontawesome-svg-core'
 // -----------------------Font Awesome Import-------------------------
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -38,7 +36,7 @@ const App = (props) => (
       <Route exact path="/" component={HomePage}/>
 
       {/* Just a Temporary route for testing */}
-      <Route exact path="/userpage" component={UserNavbar}/>
+      <Route exact path="/profile" component={UserProfile}/>
 
       <Route exact path="/author" component={AuthorProfile} />
 
