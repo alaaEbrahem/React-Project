@@ -31,7 +31,10 @@ class Categories extends React.Component {
   render() {
     const { id, name, image } = this.props.match.params
     return (
-      <>
+      <MyContext.Consumer>
+      {value => (
+     value.state.login? 
+   <React.Fragment>
         <Navbar id={id} name={name} image={image} />
         <div className="container-fluid no-gutters">
           <div className="row no-gutters">
@@ -75,8 +78,12 @@ class Categories extends React.Component {
             </div>
           </div>
         </div>
-      </>
-    )
-  }
+        </React.Fragment>:""
+
+       
+)}
+</MyContext.Consumer>
+);
+}
 }
 export default Categories;
