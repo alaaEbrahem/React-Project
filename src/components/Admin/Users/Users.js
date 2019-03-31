@@ -1,9 +1,6 @@
 import React from 'react';
-import ErrorPage from '../../ErrorPage/ErrorPage';
 import '../../../App.scss';
 import { MyContext } from '../../../App'
-
-
 import Navbar from '../../Navbar/Navbar';
 import SideMenue from '../../SideMenue/SideMenue';
 
@@ -30,7 +27,7 @@ class Users extends React.Component {
         </div>
         </div>
       
-        </React.Fragment>:""
+        </React.Fragment>:this.props.history.push(`/`)
 
 )}
 </MyContext.Consumer>

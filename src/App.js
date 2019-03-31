@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
-
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Switch } from 'react-router';
-
-
 import AuthorProfile from './components/AuthorProfile/AuthorProfile';
 import Books from '../src/components/Books/Books';
 import UserNavbar from './components/Navbar/UserNavbar/UserNavbar'

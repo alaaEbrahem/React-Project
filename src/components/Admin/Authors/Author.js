@@ -29,7 +29,7 @@ class Autor extends React.Component {
         </div>
         </div>
       
-        </React.Fragment>:<ErrorPage/>
+        </React.Fragment>:this.props.history.push(`/`)
 
 )}
 </MyContext.Consumer>

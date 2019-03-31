@@ -1,5 +1,4 @@
 import React from 'react';
-import ErrorPage from '../../ErrorPage/ErrorPage';
 import '../../../App.scss'
 import './Home.scss'
 import '../../Navbar/Navbar';
@@ -11,9 +10,6 @@ import { MyContext } from '../../../App'
 class Home extends React.Component {
   state={user:this.props.location.state?this.props.location.state.user:this.props.user}
   render() {
-    //const {id,name,image}=this.props.match.params;
-    
- 
     return (
       <MyContext.Consumer>
          {value => ( 
@@ -47,7 +43,7 @@ class Home extends React.Component {
           </div>
         </div>
 
-      </React.Fragment>:<ErrorPage/>
+      </React.Fragment>:this.props.history.push(`/`)
 
 )}
 </MyContext.Consumer>
