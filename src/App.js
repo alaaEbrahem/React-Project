@@ -64,9 +64,11 @@ class App extends Component {
       , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 },
     { name: 'sara Ebrahem', userGroup: 3, deleted: false, id: 3 }],
     categories:
-     [{ name: 'alaa Ebrahem', userGroup: 3, deleted: false, id: 1 }
-      , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 },
-    { name: 'sara Ebrahem', userGroup: 3, deleted: false, id: 3 }],
+     [{   id: 1, name: "Fantasy", deleted: false}
+      , {   id: 2, name: "Science Fiction", deleted: false},
+      {   id: 3, name: "Romance", deleted: false},
+      {   id: 4, name: "Dystopia", deleted: false}
+    ],
     login:false
   }
   search = (name,password) => {
@@ -92,6 +94,19 @@ class App extends Component {
   
    this.state.login=u;
   }
+  addCategory = (category) => {
+    const { categories } = this.state;
+    this.setState({ categories: categories.concat(category) })
+  }
+  searchCategory=(name)=>{
+    const { categories } = this.state;
+    for (var i = 0; i < categories.length; i++) {
+      if (categories[i].name.toLowerCase() === name.toLowerCase()) {
+        return false;
+      }
+    }
+    return true;
+  }
   doneToDo = (id) => {
     const index = id;
 
@@ -107,6 +122,8 @@ class App extends Component {
       deleteToDo: this.deleteToDo,
       addLogin:this.addLogin,
       doneToDo: this.doneToDo,
+      addCategory:this.addCategory,
+      searchCategory:this.searchCategory
     }
     return (
       <MyContext.Provider value={value}>

@@ -1,9 +1,11 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import ListingRow from './ListingRow/ListingRow'
+import { MyContext } from '../../../../App'
 
 const Listing = (props) => (
-
+  <MyContext.Consumer>
+  {value => (
     <Table striped bordered hover className="text-center mt-4">
     <thead>
       <tr>
@@ -14,10 +16,14 @@ const Listing = (props) => (
     </thead>
     <tbody>
     
-      <ListingRow></ListingRow>
+      <ListingRow value={value}></ListingRow>
     
     </tbody>
   </Table>
 
-)
+)}
+</MyContext.Consumer>
+);
+
+
 export default Listing;

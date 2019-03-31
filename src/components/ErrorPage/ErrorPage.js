@@ -10,27 +10,27 @@ class ErrorPage extends React.Component {
         return (
             
             <>
-       <div class="stage">
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
+       <div className="stage">
+  <div className="layer"></div>
+  <div className="layer"></div>
+  <div className="layer"></div>
+  <div className="layer"></div>
+  <div className="layer"></div>
+  <div className="layer"></div>
+  <div className="layer"></div>
+  <div className="layer"></div>
+  <div className="layer"></div>
+  <div className="layer"></div>
+  <div className="layer"></div>
+  <div className="layer"></div>
+  <div className="layer"></div>
+  <div className="layer"></div>
+  <div className="layer"></div>
+  <div className="layer"></div>
+  <div className="layer"></div>
+  <div className="layer"></div>
+  <div className="layer"></div>
+  <div className="layer"></div>
 </div>
         </>
        );

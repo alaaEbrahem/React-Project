@@ -13,28 +13,7 @@ class ListingRow extends React.Component {
         this.handleClose = this.handleClose.bind(this);
         this.state = {
             show: false,
-            data: [
-                {
-                    id: 1,
-                    name: "Fantasy",
-                    deleted: false
-                },
-                {
-                    id: 2,
-                    name: "Science Fiction",
-                    deleted: false
-                },
-                {
-                    id: 3,
-                    name: "Romance",
-                    deleted: false
-                },
-                {
-                    id: 4,
-                    name: "Dystopia",
-                    deleted: false
-                },
-            ],
+        
         };
     }
     handleClose() {
@@ -45,8 +24,10 @@ class ListingRow extends React.Component {
     }
 
     render() {
+        const{categories}=this.props.value.state;
         return (
-            this.state.data.map(R => (<tr>
+            
+            categories.map(R => (<tr>
                 <td>{R.id}</td>
                 <td>{R.name}</td>
                 <td>
