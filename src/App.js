@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.scss';
+
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Switch } from 'react-router';
 
@@ -18,13 +19,14 @@ import Author from './components/Admin/Authors/Author';
 import Users from './components/Admin/Users/Users';
 import Categories from './components/Admin/Categories/Categories';
 import HomePage from './components/Home/Home.js';
+import UserProfile from './components/UserProfile/UserProfile';
 
+<<<<<<< HEAD
+=======
 ////////////////////////End Admin pages///////////////////////////
+>>>>>>> 33b8e542d0c6402483bb6eb14588a2dc176e7d66
 import BookProfile from './components/BookProfile/BookProfile'
 
-import UserNavbar from './components/Navbar/UserNavbar/UserNavbar';
-
-// import { library } from '@fortawesome/fontawesome-svg-core'
 // -----------------------Font Awesome Import-------------------------
 import { library } from '@fortawesome/fontawesome-svg-core'
 
@@ -119,8 +121,13 @@ class App extends Component {
             {/* <Login/> */}
             <Route exact path="/user/:id" component={HomePage} />
 
+<<<<<<< HEAD
+      {/* Just a Temporary route for testing */}
+      <Route exact path="/profile" component={UserProfile}/>
+=======
             {/* Just a Temporary route for testing */}
             <Route exact path="/userpage" component={UserNavbar} />
+>>>>>>> 33b8e542d0c6402483bb6eb14588a2dc176e7d66
 
             <Route exact path="/author" component={AuthorProfile} />
 
