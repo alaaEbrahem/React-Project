@@ -47,9 +47,9 @@ export const MyContext = React.createContext({
 class App extends Component {
   state = {
     users:
-     [{ name: 'alaa', userGroup: 1, deleted: false, id: 1 }
-      , { name: 'aya', userGroup: 1, deleted: false, id: 2 },
-    { name: 'sara', userGroup: 2, deleted: false, id: 3 }],
+     [{ name: 'alaa',password:'123456',image:"pexels-photo-614810.jpeg", userGroup: 1, deleted: false, id: 1 }
+      , { name: 'aya',password:'123456', userGroup: 1,image:"pexels-photo-736716.jpeg", deleted: false, id: 2 },
+    { name: 'sara',password:'123456', userGroup: 2,image:"pexels-photo-614810.jpeg", deleted: false, id: 3 }],
     authors:
      [{ name: 'alaa Ebrahem', userGroup: 3, deleted: false, id: 1 }
       , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 }
@@ -62,21 +62,18 @@ class App extends Component {
      [{ name: 'alaa Ebrahem', userGroup: 3, deleted: false, id: 1 }
       , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 },
     { name: 'sara Ebrahem', userGroup: 3, deleted: false, id: 3 }],
+    login:{}
   };
-  search = (name) => {
+  search = (name,password) => {
     const { users } = this.state;
     for (var i = 0; i < users.length; i++) {
-
-      if (users[i].name === name) {
-
+      if (users[i].name === name && users[i].password === password ) {
         return users[i];
       }
-
-
     }
     return name;
-
   }
+ 
   deleteToDo = (id) => {
     const index = id;
     const newArray = this.state.data.map((item) => (
@@ -99,15 +96,14 @@ class App extends Component {
       search: this.search,
       deleteToDo: this.deleteToDo,
       doneToDo: this.doneToDo,
-     
-
+    
     }
     return (
       <MyContext.Provider value={value}>
         <Router><>
           <Switch>
             {/* <Login/> */}
-            <Route exact path="/user" component={HomePage} />
+            <Route exact path="/user/:id" component={HomePage} />
 
             {/* Just a Temporary route for testing */}
             <Route exact path="/userpage" component={UserNavbar} />
@@ -120,13 +116,13 @@ class App extends Component {
 
             <Route exact path="/category" component={category} />
             ///////////////////////Admin routes//////////////////////
-            <Route exact path="/admin" component={Home} />
+            <Route exact path="/admin/:id/:name/:image" component={Home} />
             <Route exact path="/books" component={Books} />
-            <Route exact path="/admin/books" component={Book} />
-            <Route exact path="/admin/authors" component={Author} />
-            <Route exact path="/admin/authors" component={Author} />
-            <Route exact path="/admin/categories" component={Categories} />
-            <Route exact path="/admin/users" component={Users} />
+            <Route exact path="/admin/books/:id/:name/:image" component={Book} />
+            <Route exact path="/admin/authors/:id/:name/:image" component={Author} />
+    
+            <Route exact path="/admin/categories/:id/:name/:image" component={Categories} />
+            <Route exact path="/admin/users/:id/:name/:image" component={Users} />
           /////////////////////////////////////////////////////////
 
           </Switch></>

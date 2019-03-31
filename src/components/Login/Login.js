@@ -3,6 +3,7 @@ import './Login.scss'
 import '../../App.scss';
 import { MyContext } from '../../App'
 import { Redirect } from 'react-router'
+import { withRouter } from "react-router";
 
 
 class Login extends React.Component {
@@ -24,35 +25,21 @@ class Login extends React.Component {
         this.setState({ password: value });
     }
 
-    handleSubmit = (search) => (e) => {
+    handleSubmit = (value) => (e) => {
         e.preventDefault();
-        const user = search(this.state.username);
-        this.setState({user:user});
+        const user = value.search(this.state.username,this.state.password); 
         if (user.userGroup === 1) {
-            this.setState({ redirect: true, userGroup: 1 });
+            this.props.history.push(`/admin/${user.id}/${user.name}/${user.image}`);
+         
         }
         else if (user.userGroup === 2) {
-            this.setState({ redirect: true, userGroup: 2 });
+            this.props.history.push(`/user/${user.id}`);
         }
         else {
-            this.setState({ redirect: false, username: '', password: '' });
+            this.props.history.push(`/`);
         }
     }
     render() {
-        const { redirect } = this.state;
-
-        if (redirect && this.state.userGroup == 1) {
-            return (
-               
-            <Redirect to={{
-                pathname: '/admin',
-                state: { user: this.state.user }
-            }}/>);
-        }
-        else if (redirect && this.state.userGroup == 2) {
-            return <Redirect to="/user" />;
-        }
-        else {
             return (
 
                 <MyContext.Consumer>
@@ -68,7 +55,7 @@ class Login extends React.Component {
 
                                         </div>
                                     </div>
-                                    <form onSubmit={this.handleSubmit(value.search)}>
+                                    <form onSubmit={this.handleSubmit(value)}>
                                         <div className="row">
 
                                             <div className="col-12">
@@ -81,7 +68,7 @@ class Login extends React.Component {
                                                 <div className="row pt-3 pb-5 input-field">
                                                     <div className="offset-lg-2 pl-4 pl-lg-0 pb-3 col-sm-3 col-lg-2 pt-lg-5 input-field__input-label">password</div>
                                                     <div className="pl-1 pl-lg-4  col-lg-8 pt-lg-5">
-                                                        <input onChange={this.handleChangepassword} value={this.state.password} className="col-12 col-lg-10  input-field__input" type="text" name="password" placeholder="Enter password" />
+                                                        <input onChange={this.handleChangepassword} value={this.state.password} className="col-12 col-lg-10  input-field__input" type="password" name="password" placeholder="Enter password" />
                                                     </div>
                                                 </div>
 
@@ -115,6 +102,6 @@ class Login extends React.Component {
                 </MyContext.Consumer>
             );
         }
-    }
+  
 };
-export default Login;
+export default withRouter( Login);
