@@ -10,7 +10,7 @@ import Books from '../src/components/Books/Books';
 import UserNavbar from './components/Navbar/UserNavbar/UserNavbar'
 
 import category from './components/category/category';
-
+import Error from './components/ErrorPage/ErrorPage';
 
 import Login from './components/Login/Login';
 ///////////import admin pages/////////////////////
@@ -141,6 +141,7 @@ class App extends Component {
     
             <Route exact path="/admin/categories" component={Categories} />
             <Route exact path="/admin/users" component={Users} />
+            <Route exact path="/error" component={Error} />
           /////////////////////////////////////////////////////////
 
           </Switch></>
