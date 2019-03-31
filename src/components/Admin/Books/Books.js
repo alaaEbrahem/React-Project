@@ -31,9 +31,10 @@ class Book extends React.Component {
       
         </React.Fragment>:""
 
-)}
-</MyContext.Consumer>
-);
-}
+       
+        )}
+      </MyContext.Consumer>
+    );
+  }
 }
 export default Book;
