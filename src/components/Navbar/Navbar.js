@@ -9,7 +9,7 @@ class Navbar extends React.Component {
       <div className="container-fluid no-gutters">
         <section className="top-nav">
           <div className="ml-5  logo">
-            GooD Reades
+            GooD Reads
     </div>
           <input id="menu-toggle" type="checkbox" />
           <label className='menu-button-container' >
