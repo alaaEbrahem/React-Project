@@ -9,9 +9,9 @@ const Listing = (props) => (
       <tr>
         <th>ID</th>
         <th>photo</th>
-        <th>Name</th>
-        <th>CategoryId</th>
-        <th>AuthorId</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>DateOfBirth</th>
         <th>Actions</th>
       </tr>
     </thead>
