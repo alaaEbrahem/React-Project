@@ -1,6 +1,5 @@
 import React from 'react';
-import { faHome, faUsers, faBook, faAddressCard, faAlignJustify } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ErrorPage from '../../ErrorPage/ErrorPage';
 import '../../../App.scss';
 import { MyContext } from '../../../App'
 
