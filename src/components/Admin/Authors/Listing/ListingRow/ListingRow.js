@@ -2,9 +2,9 @@ import React from 'react';
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Modal, Button, Form, Col } from 'react-bootstrap';
-import book1 from '../../../../../assets/images/book1.jpg'
-import book2 from '../../../../../assets/images/book2.jpg'
-import book3 from '../../../../../assets/images/book3.jpg'
+import author from '../../../../../assets/images/author.jpg'
+import author2 from '../../../../../assets/images/author2.jpg'
+
 
 
 class ListingRow extends React.Component {
@@ -17,28 +17,21 @@ class ListingRow extends React.Component {
             data: [
                 {
                     id: 1,
-                    photo: book1,
-                    name: "Divergent",
-                    categoryId: 1,
-                    authorId: 1,
+                    photo: author,
+                    firstName: "Veronica",
+                    lastName: "Roth",
+                    DateOfBirth: 'August 19, 1988',
                     deleted: false
                 },
                 {
                     id: 2,
-                    photo: book2,
-                    name: "Insergent",
-                    categoryId: 1,
-                    authorId: 1,
+                    photo: author2,
+                    firstName: "Ahmed",
+                    lastName: "Khairy El-omary",
+                    DateOfBirth: 'January 01, 1970',
                     deleted: false
                 },
-                {
-                    id: 3,
-                    photo: book3,
-                    name: "Allegiant",
-                    categoryId: 1,
-                    authorId: 1,
-                    deleted: false
-                },
+               
                 
             ],
         };
@@ -54,35 +47,28 @@ class ListingRow extends React.Component {
         return (
             this.state.data.map(R => (<tr>
                 <td>{R.id}</td>
-                <td><img src={R.photo} alt="bookimg" /></td>
+                <td><img src={R.photo} alt="bookimg" width="70px"/></td>
 
-                <td>{R.name}</td>
-                <td>{R.categoryId}</td>
-                <td>{R.authorId}</td>
+                <td>{R.firstName}</td>
+                <td>{R.lastName}</td>
+                <td>{R.DateOfBirth}</td>
                 <td>
                     <FontAwesomeIcon icon={faEdit} onClick={this.handleShow} className="icon mr-3" />
                     <FontAwesomeIcon icon={faTrash} className="icon" />
                     <Modal show={this.state.show} onHide={this.handleClose}>
                         <Modal.Header closeButton>
-                            <Modal.Title>Edit Book</Modal.Title>
+                            <Modal.Title>Edit Author Info</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             <Form>
                                 <Form.Group as={Col} controlId="formBasicbook">
-                                    <Form.Control type="text" placeholder="Edit book Name" />
+                                    <Form.Control type="text" placeholder="Edit Author FirstName" />
                                 </Form.Group>
-
-                                <Form.Group as={Col} controlId="formGridState">
-                                    <Form.Control as="select">
-                                        <option>Category</option>
-                                        <option>...</option>
-                                    </Form.Control>
+                                <Form.Group as={Col} controlId="formBasicbook">
+                                    <Form.Control type="text" placeholder="Edit Author LastName" />
                                 </Form.Group>
-                                <Form.Group as={Col} controlId="formGridState">
-                                    <Form.Control as="select">
-                                        <option>Author</option>
-                                        <option>...</option>
-                                    </Form.Control>
+                                <Form.Group as={Col} controlId="formBasicbook">
+                                    <Form.Control type="date"/>
                                 </Form.Group>
                                 <Form.Group as={Col} >
                                     <Form.Control type="file" />
