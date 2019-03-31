@@ -9,7 +9,7 @@ class Navbar extends React.Component {
       <div className="container-fluid no-gutters">
         <section className="top-nav">
           <div className="ml-5  logo">
-            GooD Reades
+            GooD Reads
     </div>
           <input id="menu-toggle" type="checkbox" />
           <label className='menu-button-container' >
@@ -17,23 +17,23 @@ class Navbar extends React.Component {
           </label>
           <ul className="menu">
             <li><NavLink exact to={{
-                pathname: `/admin/${this.props.id}/${this.props.name}/${this.props.image}`,
-              user: this.props.user 
+                pathname: `/admin`,
+             
             }}>Home</NavLink></li>
             <li ><NavLink to={{
-                 pathname: `/admin/books/${this.props.id}/${this.props.name}/${this.props.image}`,
+                 pathname: `/admin/books`,
               user: this.props.user 
             }}>Books</NavLink></li>
             <li ><NavLink to={{
-                pathname: `/admin/authors/${this.props.id}/${this.props.name}/${this.props.image}`,
+                pathname: `/admin/authors`,
               user: this.props.user 
             }}>Authors</NavLink></li>
             <li ><NavLink to={{
-                pathname: `/admin/categories/${this.props.id}/${this.props.name}/${this.props.image}`,
+                pathname: `/admin/categories`,
               user: this.props.user 
             }}>Categories</NavLink></li>
             <li ><NavLink to={{
-                pathname: `/admin/users/${this.props.id}/${this.props.name}/${this.props.image}`,
+                pathname: `/admin/users`,
               user: this.props.user 
             }}>Users</NavLink></li>
           </ul>

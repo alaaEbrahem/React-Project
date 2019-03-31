@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import './App.scss';
-
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Switch } from 'react-router';
-
-
 import AuthorProfile from './components/AuthorProfile/AuthorProfile';
 import Books from '../src/components/Books/Books';
+import UserNavbar from './components/Navbar/UserNavbar/UserNavbar'
 
 import category from './components/category/category';
-
-
+import Error from './components/ErrorPage/ErrorPage';
+import ErrorPage from './components/ErrorPage/ErrorPage';
 import Login from './components/Login/Login';
 ///////////import admin pages/////////////////////
 import Home from './components/Admin/Home/Home.js';
@@ -21,8 +19,11 @@ import Categories from './components/Admin/Categories/Categories';
 import HomePage from './components/Home/Home.js';
 import UserProfile from './components/UserProfile/UserProfile';
 
+<<<<<<< HEAD
 ////////////////////////End Admin pages///////////////////////////
 
+=======
+>>>>>>> b3c06a80790755e0b9caf4ed9aaef38925619ff2
 import BookProfile from './components/BookProfile/BookProfile'
 
 // -----------------------Font Awesome Import-------------------------
@@ -42,6 +43,15 @@ export const MyContext = React.createContext({
   authors: [{ name: 'alaa Ebrahem', userGroup: 3, deleted: false, id: 1 }
     , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 },
   { name: 'sara Ebrahem', userGroup: 3, deleted: false, id: 3 }],
+  books:
+  [{ name: 'alaa Ebrahem', userGroup: 3, deleted: false, id: 1 }
+   , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 },
+ { name: 'sara Ebrahem', userGroup: 3, deleted: false, id: 3 }],
+ categories:
+  [{ name: 'alaa Ebrahem', userGroup: 3, deleted: false, id: 1 }
+   , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 },
+ { name: 'sara Ebrahem', userGroup: 3, deleted: false, id: 3 }],
+ login:''
 
 });
 class App extends Component {
@@ -59,11 +69,13 @@ class App extends Component {
       , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 },
     { name: 'sara Ebrahem', userGroup: 3, deleted: false, id: 3 }],
     categories:
-     [{ name: 'alaa Ebrahem', userGroup: 3, deleted: false, id: 1 }
-      , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 },
-    { name: 'sara Ebrahem', userGroup: 3, deleted: false, id: 3 }],
-    login:{}
-  };
+     [{   id: 1, name: "Fantasy", deleted: false}
+      , {   id: 2, name: "Science Fiction", deleted: false},
+      {   id: 3, name: "Romance", deleted: false},
+      {   id: 4, name: "Dystopia", deleted: false}
+    ],
+    login:false
+  }
   search = (name,password) => {
     const { users } = this.state;
     for (var i = 0; i < users.length; i++) {
@@ -73,7 +85,7 @@ class App extends Component {
     }
     return name;
   }
- 
+
   deleteToDo = (id) => {
     const index = id;
     const newArray = this.state.data.map((item) => (
@@ -81,6 +93,24 @@ class App extends Component {
     ))
     this.setState({ data: newArray });
 
+  }
+  addLogin = (user)=>{
+    const u=user;
+  
+   this.state.login=u;
+  }
+  addCategory = (category) => {
+    const { categories } = this.state;
+    this.setState({ categories: categories.concat(category) })
+  }
+  searchCategory=(name)=>{
+    const { categories } = this.state;
+    for (var i = 0; i < categories.length; i++) {
+      if (categories[i].name.toLowerCase() === name.toLowerCase()) {
+        return false;
+      }
+    }
+    return true;
   }
   doneToDo = (id) => {
     const index = id;
@@ -95,8 +125,10 @@ class App extends Component {
       state: this.state,
       search: this.search,
       deleteToDo: this.deleteToDo,
+      addLogin:this.addLogin,
       doneToDo: this.doneToDo,
-    
+      addCategory:this.addCategory,
+      searchCategory:this.searchCategory
     }
     return (
       <MyContext.Provider value={value}>
@@ -105,7 +137,17 @@ class App extends Component {
             {/* <Login/> */}
             <Route exact path="/user/:id" component={HomePage} />
 
+<<<<<<< HEAD
             <Route exact path="/profile" component={UserProfile}/>
+=======
+
+    
+      <Route exact path="/profile" component={UserProfile}/>
+
+            {/* Just a Temporary route for testing */}
+            <Route exact path="/userpage" component={UserNavbar} />
+
+>>>>>>> b3c06a80790755e0b9caf4ed9aaef38925619ff2
 
             <Route exact path="/author" component={AuthorProfile} />
 
@@ -115,15 +157,16 @@ class App extends Component {
 
             <Route exact path="/category" component={category} />
             ///////////////////////Admin routes//////////////////////
-            <Route exact path="/admin/:id/:name/:image" component={Home} />
+            <Route exact path="/admin" component={Home} />
             <Route exact path="/books" component={Books} />
-            <Route exact path="/admin/books/:id/:name/:image" component={Book} />
-            <Route exact path="/admin/authors/:id/:name/:image" component={Author} />
+            <Route exact path="/admin/books" component={Book} />
+            <Route exact path="/admin/authors" component={Author} />
     
-            <Route exact path="/admin/categories/:id/:name/:image" component={Categories} />
-            <Route exact path="/admin/users/:id/:name/:image" component={Users} />
+            <Route exact path="/admin/categories" component={Categories} />
+            <Route exact path="/admin/users" component={Users} />
+            <Route exact path="/error" component={Error} />
           /////////////////////////////////////////////////////////
-
+          <Route path='*' exact={true} component={ErrorPage} />
           </Switch></>
 
         </Router>
