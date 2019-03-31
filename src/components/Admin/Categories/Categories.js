@@ -1,13 +1,9 @@
 import React from 'react';
 import { Container, Modal, Button, Form } from 'react-bootstrap';
-
-import { faHome, faUsers, faBook, faAddressCard, faAlignJustify } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../../../App.scss';
 import { MyContext } from '../../../App'
-
 import '../../../App.scss';
-
+import ErrorPage from '../../ErrorPage/ErrorPage';
 import Navbar from '../../Navbar/Navbar';
 import SideMenue from '../../SideMenue/SideMenue';
 import Listing from './Listing/Listing';
@@ -78,7 +74,7 @@ class Categories extends React.Component {
             </div>
           </div>
         </div>
-        </React.Fragment>:""
+        </React.Fragment>:<ErrorPage/>
 
        
 )}

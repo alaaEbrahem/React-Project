@@ -11,7 +11,7 @@ import UserNavbar from './components/Navbar/UserNavbar/UserNavbar'
 
 import category from './components/category/category';
 import Error from './components/ErrorPage/ErrorPage';
-
+import ErrorPage from './components/ErrorPage/ErrorPage';
 import Login from './components/Login/Login';
 ///////////import admin pages/////////////////////
 import Home from './components/Admin/Home/Home.js';
@@ -143,7 +143,7 @@ class App extends Component {
             <Route exact path="/admin/users" component={Users} />
             <Route exact path="/error" component={Error} />
           /////////////////////////////////////////////////////////
-
+          <Route path='*' exact={true} component={ErrorPage} />
           </Switch></>
 
         </Router>
