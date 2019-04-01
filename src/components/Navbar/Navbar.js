@@ -32,10 +32,7 @@ class Navbar extends React.Component {
                 pathname: `/admin/categories`,
               user: this.props.user 
             }}>Categories</NavLink></li>
-            <li ><NavLink to={{
-                pathname: `/admin/users`,
-              user: this.props.user 
-            }}>Users</NavLink></li>
+          
           </ul>
         </section>
       </div>
