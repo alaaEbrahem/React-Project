@@ -10,6 +10,8 @@ import category from './components/category/category';
 import Error from './components/ErrorPage/ErrorPage';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import Login from './components/Login/Login';
+import BookPage from './components/BookProfile/ListPage';
+import authorsPage from './components/AuthorProfile/ListPage';
 ///////////import admin pages/////////////////////
 import Home from './components/Admin/Home/Home.js';
 import Book from './components/Admin/Books/Books';
@@ -250,6 +252,9 @@ class App extends Component {
             <Route exact path="/book" component={BookProfile} />
 
             <Route exact path="/category" component={category} />
+            <Route exact path="/BookPage" component={BookPage} />
+            <Route exact path="/authorsPage" component={authorsPage} />
+            
             ///////////////////////Admin routes//////////////////////
             <Route exact path="/admin" component={Home} />
             {/* <Route exact path="/books" component={Books} /> */}

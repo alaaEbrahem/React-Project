@@ -1,0 +1,11 @@
+.page-link{
+
+    color: #32ad3c !important;
+    font-size: 1.8rem;
+}
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff !important;
+    background-color: #32ad3c !important;
+    border-color: #32ad3c !important;
+}
