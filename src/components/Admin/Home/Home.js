@@ -10,6 +10,8 @@ import { MyContext } from '../../../App'
 class Home extends React.Component {
   state={user:this.props.location.state?this.props.location.state.user:this.props.user}
   render() {
+
+
     return (
       <MyContext.Consumer>
          {value => ( 
@@ -28,7 +30,7 @@ class Home extends React.Component {
                     <Card card="users" value={value.state.users.length} />
                   </div>
                   <div className="categories ml-md-5 ml-sm-2 mt-5 col-lg-4 col-sm-7 col-md-4 no-gutters ">
-                    <Card card="categories" value={value.state.categories.length}/>
+                    <Card card="categories" value={value.state.categories.filter(R => !(R.deleted)).length}/>
                   </div>
                   <div className="books ml-md-5 ml-sm-2 mt-5 col-lg-4 col-sm-7 col-md-4 no-gutters ">
                     <Card card="books" value={value.state.books.length} />

@@ -16,47 +16,49 @@ class Categories extends React.Component {
     this.handleClose = this.handleClose.bind(this);
     this.state = {
       show: false,
-      category:'',
-      error:''
+      category: '',
+      error: ''
     };
   }
   handleChange = (e) => {
     const value = e.target.value;
-    
-    this.setState({ category: value,error:'' });
-   
+    this.setState({ category: value, error: '' });
   }
   handleClose = (value) => (e) => {
     e.preventDefault();
-    if(!this.state.category){
-      this.setState({ category: '',show: false }); 
+    if (!this.state.category) {
+      this.setState({ category: '', show: false });
     }
-    else if (!value.searchCategory(this.state.category)){ 
-    this.setState({ error: 'category already exsist'})
-    return;}
-    else if(!isNaN(this.state.category)){
+    else if (!value.searchCategory(this.state.category)) {
+      this.setState({ error: 'category already exsist' })
+      return;
+    }
+    else if (!isNaN(this.state.category)) {
       this.setState({ error: 'category can not be number' })
       return;
     }
-    else{
-    const category = {
-      name: this.state.category, deleted: false, id: uuidv4(),
-    };
-    value.addCategory(category);
-    this.setState({ category: '',show: false });
+    else {
+      const category = {
+        name: this.state.category, deleted: false, id: uuidv4(),
+      };
+      value.addCategory(category);
+      this.setState({ category: '', show: false });
+    }
   }
+  handleHide=()=>{
+    this.setState({ show: false });
   }
   handleShow() {
     this.setState({ show: true });
   }
   render() {
-   
+
     return (
       <MyContext.Consumer>
         {value => (
           value.state.login ?
             <React.Fragment>
-              <Navbar  />
+              <Navbar />
               <div className="container-fluid no-gutters">
                 <div className="row no-gutters">
                   <div className="col-12 y">
@@ -65,19 +67,19 @@ class Categories extends React.Component {
                     </div>
                     <div>
 
-                      <Modal show={this.state.show} onHide={this.handleClose}>
+                      <Modal show={this.state.show} onHide={this.handleHide}>
                         <Modal.Header closeButton>
                           <Modal.Title>Add Category</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                           <Form>
                             <Form.Group controlId="formBasicEmail">
-                            <h3>{this.state.error}</h3>
+                              <h3>{this.state.error}</h3>
                               <Form.Control onChange={this.handleChange} type="text" placeholder="Enter category Name" />
                             </Form.Group>
                             <Modal.Footer>
-                             
-                              <Button variant="secondary" onClick={this.handleClose(value)}>
+
+                              <Button variant="secondary" onClick={this.handleHide}>
                                 Cancel
                               </Button>
                               <Button variant="success" onClick={this.handleClose(value)}>
@@ -97,11 +99,11 @@ class Categories extends React.Component {
                       <Listing ></Listing>
 
                     </Container>
- 
-            </div>
-          </div>
-        </div>
-        </React.Fragment>:this.props.history.push(`/`)
+
+                  </div>
+                </div>
+              </div>
+            </React.Fragment> : this.props.history.push(`/`)
 
 
         )}
