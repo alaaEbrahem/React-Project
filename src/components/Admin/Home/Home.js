@@ -33,10 +33,10 @@ class Home extends React.Component {
                     <Card card="categories" value={value.state.categories.filter(R => !(R.deleted)).length}/>
                   </div>
                   <div className="books ml-md-5 ml-sm-2 mt-5 col-lg-4 col-sm-7 col-md-4 no-gutters ">
-                    <Card card="books" value={value.state.books.length} />
+                    <Card card="books" value={value.state.Book.filter(B => !(B.deleted)).length}/>
                   </div>
                   <div className="authors ml-md-5 ml-sm-2 mt-5 col-lg-4 col-sm-7 col-md-4 no-gutters ">
-                    <Card card="authors" value={value.state.authors.length} />
+                    <Card card="authors" value={value.state.authors.filter(B => !(B.deleted)).length} />
                   </div>
 
                 </div>

@@ -2,59 +2,86 @@ import React from 'react';
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Modal, Button, Form, Col } from 'react-bootstrap';
-import author from '../../../../../assets/images/author.jpg'
-import author2 from '../../../../../assets/images/author2.jpg'
+
+import { MyContext } from '../../../../../App';
 
 
 
 class ListingRow extends React.Component {
+   
     constructor(props) {
         super(props);
         this.handleShow = this.handleShow.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.state = {
             show: false,
-            data: [
-                {
-                    id: 1,
-                    photo: author,
-                    firstName: "Veronica",
-                    lastName: "Roth",
-                    DateOfBirth: 'August 19, 1988',
-                    deleted: false
-                },
-                {
-                    id: 2,
-                    photo: author2,
-                    firstName: "Ahmed",
-                    lastName: "Khairy El-omary",
-                    DateOfBirth: 'January 01, 1970',
-                    deleted: false
-                },
-               
-                
-            ],
+            newFN:this.props.R.FN,
+            newLN:this.props.R.LN,
+           
+         
         };
     }
+    handleChange = (e) => {
+        const value = e.target.value;
+   if(e.target.dataset.id=='FN'){
+       
+     
+        this.setState({ newFN: value, error: '' });
+        console.log(this.state.newFN);}
+        else{
+            this.setState({ newLN: value, error: '' });   
+            console.log(this.state.newLN);
+        }
+      }
+      handleChangeLN = (e) => {
+   
+        const value = e.target.value;
+        this.setState({ newLN: value, error: '' });
+      }
     handleClose() {
         this.setState({ show: false });
     }
     handleShow() {
         this.setState({ show: true });
     }
+    handleDelete = (value) => (e) => {
+    
+        value.deleteAuthor(this.props.R.id); 
+       }
+      handleEdit = (value) => (e) => {
+        e.preventDefault();
+    
+        const editAuthor = {
+        
+            image:this.image.value ,
+            FN: this.state.newFN,
+            LN: this.state.newLN,
+            DOB: this.DOB.value,
+            deleted: false,
+          }
+      
+        value.editAuthor(this.props.R.id, editAuthor);
+        this.setState({ show: false });
+    }
+
 
     render() {
+        
         return (
-            this.state.data.map(R => (<tr>
-                <td>{R.id}</td>
-                <td><img src={R.photo} alt="bookimg" width="70px"/></td>
+            <MyContext.Consumer>
+            {
 
-                <td>{R.firstName}</td>
-                <td>{R.lastName}</td>
-                <td>{R.DateOfBirth}</td>
+                value => (
+                  <tr>
+                <td>{this.props.R.id}</td>
+                <td><img src={this.props.R.image} alt="Author" width="70px"/></td>
+
+                <td>{this.props.R.FN}</td>
+                <td>{this.props.R.LN}</td>
+                <td>{this.props.R.DOB}</td>
                 <td>
                     <FontAwesomeIcon icon={faEdit} onClick={this.handleShow} className="icon mr-3" />
-                    <FontAwesomeIcon icon={faTrash} className="icon" />
+                    <FontAwesomeIcon onClick={this.handleDelete(value)} icon={faTrash} className="icon" />
                     <Modal show={this.state.show} onHide={this.handleClose}>
                         <Modal.Header closeButton>
                             <Modal.Title>Edit Author Info</Modal.Title>
@@ -62,23 +89,24 @@ class ListingRow extends React.Component {
                         <Modal.Body>
                             <Form>
                                 <Form.Group as={Col} controlId="formBasicbook">
-                                    <Form.Control type="text" placeholder="Edit Author FirstName" />
+                                    <Form.Control onChange={this.handleChange} value={this.state.newFN} type="text" data-id="FN" placeholder="Edit Author FirstName" />
                                 </Form.Group>
                                 <Form.Group as={Col} controlId="formBasicbook">
-                                    <Form.Control type="text" placeholder="Edit Author LastName" />
+                                    <Form.Control onChange={this.handleChange} value={this.state.newLN} type="text" data-id="LN" placeholder="Edit Author LastName" />
                                 </Form.Group>
                                 <Form.Group as={Col} controlId="formBasicbook">
-                                    <Form.Control type="date"/>
+                                {this.props.R.DOB}
+                                    <Form.Control  ref={element => this.DOB = element} type="date"/>
                                 </Form.Group>
                                 <Form.Group as={Col} >
-                                    <Form.Control type="file" />
+                                    <Form.Control type="file" ref={element => this.image = element} />
                                 </Form.Group>
                                 <Modal.Footer>
                                     <Button variant="secondary" onClick={this.handleClose}>
                                         Cancel
                               </Button>
-                                    <Button variant="success" onClick={this.handleClose}>
-                                        Edit Name
+                                    <Button variant="success" onClick={this.handleEdit(value)}  data-id={this.props.R.id} onClick={this.handleEdit(value)}>
+                                        Edit Author
                               </Button>
                                 </Modal.Footer>
                             </Form>
@@ -86,9 +114,12 @@ class ListingRow extends React.Component {
                     </Modal>
                 </td>
             </tr>
-            )
-            )
-        )
-    }
+                    
+                    
+                )
+            }
+        </MyContext.Consumer>
+    )
+}
 }
 export default ListingRow;

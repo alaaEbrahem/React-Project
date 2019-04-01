@@ -26,6 +26,8 @@ import BookProfile from './components/BookProfile/BookProfile'
 import book1 from '../src/assets/images/book1.jpg';
 import book2 from '../src/assets/images/book2.jpg';
 import book3 from '../src/assets/images/book3.jpg';
+import author from '../src/assets/images/author.jpg'
+import author2 from '../src/assets/images/author2.jpg'
 // -----------------------Font Awesome Import-------------------------
 import { library } from '@fortawesome/fontawesome-svg-core'
 
@@ -36,23 +38,6 @@ library.add(faSearch, faUserCircle, faSignOutAlt)
 library.add(faHome);
 //--------------------------------------------------------------------
 
-// export const MyContext = React.createContext({
-//   users: [{ name: 'alaa Ebrahem', userGroup: 1, deleted: false, id: 1 }
-//     , { name: 'aya Ebrahem', userGroup: 1, deleted: false, id: 2 },
-//   { name: 'sara Ebrahem', userGroup: 2, deleted: false, id: 3 }],
-//   authors: [{ name: 'alaa Ebrahem', userGroup: 3, deleted: false, id: 1 }
-//     , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 },
-//   { name: 'sara Ebrahem', userGroup: 3, deleted: false, id: 3 }],
-//   books:
-//     [{ name: 'alaa Ebrahem', userGroup: 3, deleted: false, id: 1 }
-//       , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 },
-//     { name: 'sara Ebrahem', userGroup: 3, deleted: false, id: 3 }],
-//   categories:
-//     [{ name: 'alaa Ebrahem', userGroup: 3, deleted: false, id: 1 }
-//       , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 },
-//     { name: 'sara Ebrahem', userGroup: 3, deleted: false, id: 3 }],
-//   login: '',
-// });
 export const MyContext = React.createContext();
 class App extends Component {
   state = {
@@ -61,8 +46,8 @@ class App extends Component {
         , { name: 'aya', password: '123456', userGroup: 1, image: "pexels-photo-736716.jpeg", deleted: false, id: 2 },
       { name: 'sara', password: '123456', userGroup: 2, image: "pexels-photo-614810.jpeg", deleted: false, id: 3 }],
     authors:
-      [{ name: 'alaa Ebrahem', userGroup: 3, deleted: false, id: 1 }
-        , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 }
+      [{ FN: 'alaa',LN:'Ebrahim',DOB:'1/1/2010',image:author, deleted: false, id: 1 }
+        , { FN: 'aya',LN:'Ebrahim',DOB:'2/1/2012',image:author2, deleted: false, id: 2  }
       ],
     books:
       [{ name: 'alaa Ebrahem', userGroup: 3, deleted: false, id: 1 }
@@ -111,15 +96,6 @@ class App extends Component {
       }
     }
     return name;
-  }
-
-  deleteToDo = (id) => {
-    const index = id;
-    const newArray = this.state.data.map((item) => (
-      item.id == index ? { ...item, deleted: !item.deleted } : item
-    ))
-    this.setState({ data: newArray });
-
   }
   addLogin = (user) => {
     const u = user;
@@ -196,33 +172,59 @@ class App extends Component {
     this.state.categories=newArray;
   
   }
+  //author Functions
+  addAuthor = (author) => {
+  ;
+    const { authors } = this.state;
+    this.setState({ authors: authors.concat(author) });
+    
+  }
+  deleteAuthor = (id)=>{
+    this.state.authors.filter(a=>(a.id===id)).map(b=>{b.deleted=true});
+    const {authors}=this.state;
+    this.setState({authors:authors});
+  }
+  editAuthor =(id, edited)=>{ 
+    this.state.authors.filter(a=>(a.id===id)).map(a=>{
+    
+      if(edited.image!==''){
+        a.Image=edited.Image;
+      }
+      if(edited.FN!==''){
+        a.FN=edited.FN;
+      }
+      if(edited.LN!==''){
+        a.LN=edited.LN;
+      }
+      if(edited.DOB!==''){
+        a.DOB=edited.DOB;
+      }
+
+    });
+    const {authors}=this.state;
+
+    this.setState({authors:authors});
+  }
 
   //////////////////////////////////////
-  doneToDo = (id) => {
-    const index = id;
-
-    const newArray = this.state.data.map((item) => (
-      item.id == index ? { ...item, completed: !item.completed } : item
-    ))
-    this.setState({ data: newArray });
-  }
+ 
   render() {
     const value = {
       state: this.state,
       search: this.search,
-      deleteToDo: this.deleteToDo,
       addLogin: this.addLogin,
-      doneToDo: this.doneToDo,
-      addCategory: this.addCategory,
       addBook:this.addBook,
       deleteBook:this.deleteBook,
       editBook:this.editBook,
-      searchCategory: this.searchCategory,
-
+     
       addCategory:this.addCategory,
       searchCategory:this.searchCategory,
       deleteCategory:this.deleteCategory,
-      editCategory:this.editCategory
+      editCategory:this.editCategory,
+
+      addAuthor:this.addAuthor,
+      deleteAuthor:this.deleteAuthor,
+      editAuthor:this.editAuthor,
     
     }
     return (
