@@ -4,6 +4,7 @@ import './ImageUpload.scss';
 class ImageUpload extends Component {
     constructor(props) {
       super(props);
+      // debugger;
       this.state = {file: '',imagePreviewUrl: ''};
     }
     _handleSubmit(e) {
