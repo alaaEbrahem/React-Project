@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../../../App.scss';
-import { Col, Dropdown, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
+import DropdownComponent from '../../../shared/Dropdown/Dropdown';
 import './stars.scss'
 import './AuthorBook.scss'
 
@@ -43,16 +44,7 @@ const AuthorBook = (props) => (
          
             <Col md="2" className="m-auto">
             <div className="text-center">
-                <Dropdown>
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        Want to read
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                        <Dropdown.Item href="#/action-1">currently reading</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">read</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">want to read</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
+            <DropdownComponent></DropdownComponent>
                 <p className="greyText">Rate this book</p>
                 <span className="stars">
                 <svg height="10" width="10" className="star">
@@ -79,6 +71,7 @@ const AuthorBook = (props) => (
             </span>              
             </div>
             </Col>
+          
            
         </Row>
         <hr/>
