@@ -150,17 +150,13 @@ class App extends Component {
             {/* <Login/> */}
             <Route exact path="/user/:id" component={HomePage} />
 
-<<<<<<< HEAD
-            <Route exact path="/profile" component={UserProfile}/>
-=======
 
-    
       <Route exact path="/profile" component={UserProfile}/>
 
             {/* Just a Temporary route for testing */}
             <Route exact path="/userpage" component={UserNavbar} />
 
->>>>>>> b3c06a80790755e0b9caf4ed9aaef38925619ff2
+
 
             <Route exact path="/author" component={AuthorProfile} />
 
