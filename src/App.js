@@ -19,11 +19,9 @@ import Categories from './components/Admin/Categories/Categories';
 import HomePage from './components/Home/Home.js';
 import UserProfile from './components/UserProfile/UserProfile';
 
-<<<<<<< HEAD
+
 ////////////////////////End Admin pages///////////////////////////
 
-=======
->>>>>>> b3c06a80790755e0b9caf4ed9aaef38925619ff2
 import BookProfile from './components/BookProfile/BookProfile'
 
 // -----------------------Font Awesome Import-------------------------
@@ -151,11 +149,14 @@ class App extends Component {
             <Route exact path="/user/:id" component={HomePage} />
 
 
+            <Route exact path="/profile" component={UserProfile}/>
+
+
+    
       <Route exact path="/profile" component={UserProfile}/>
 
             {/* Just a Temporary route for testing */}
             <Route exact path="/userpage" component={UserNavbar} />
-
 
 
             <Route exact path="/author" component={AuthorProfile} />
