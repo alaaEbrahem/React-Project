@@ -4,7 +4,8 @@ import '../../../App.scss';
 import { MyContext } from '../../../App'
 import Navbar from '../../Navbar/Navbar';
 import SideMenue from '../../SideMenue/SideMenue';
-import Listing from './Listing/Listing'
+import Listing from './Listing/Listing';
+import uuidv4 from 'uuid/v4';
 
 
 class Book extends React.Component {
@@ -13,6 +14,7 @@ class Book extends React.Component {
     super(props);
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleCloseADD=this.handleCloseADD.bind(this);
     this.state = {
       show: false,
     };
@@ -23,6 +25,24 @@ class Book extends React.Component {
   handleShow() {
     this.setState({ show: true });
   }
+  handleCloseADD=(addBook)=>(e)=>{
+    e.preventDefault();
+    // debugger;
+    const img=this.Image.value.substring(12);
+    // console.log(img);
+    const newBook={
+      id:uuidv4(),
+      // photo:`../src/assets/images/${img}`,
+      photo:'',
+      name:this.bookName.value,
+      categoryId:this.catID.value,
+      authorId:this.authID.value,
+      deleted:false,
+    }
+    addBook(newBook);
+    this.setState({ show: false });
+  }
+
   render() {
 
     return (
@@ -45,31 +65,37 @@ class Book extends React.Component {
                       </Modal.Header>
                       <Modal.Body>
                         <Form>
-                          <Form.Group as={Col} controlId="formBasicbook">
-                            <Form.Control type="text" placeholder="Enter book Name" />
+                          <Form.Group as={Col} controlId="formBasicbook" >
+                            <Form.Control type="text" ref={element => this.bookName = element} placeholder="Enter book Name" />
                           </Form.Group>
 
                           <Form.Group as={Col} controlId="formGridState">
-                            <Form.Control as="select">
+                            <Form.Control as="select" ref={element => this.catID = element}>
                               <option>Category</option>
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
                               <option>...</option>
                             </Form.Control>
                           </Form.Group>
                           <Form.Group as={Col} controlId="formGridState">
-                            <Form.Control as="select">
+                            <Form.Control as="select" ref={element => this.authID = element}>
                               <option>Author</option>
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
                               <option>...</option>
                             </Form.Control>
                           </Form.Group>
                           <Form.Group as={Col} >          
-                            <Form.Control type="file" />
+                            <Form.Control type="file" ref={element => this.Image = element} />
                           </Form.Group>
 
                           <Modal.Footer>
                             <Button variant="secondary" onClick={this.handleClose}>
                               Cancel
                               </Button>
-                            <Button variant="success" onClick={this.handleClose}>
+                            <Button variant="success" onClick={this.handleCloseADD(value.addBook)}>
                               Add Book
                               </Button>
                           </Modal.Footer>
