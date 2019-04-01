@@ -15,9 +15,10 @@ const Listing = (props) => (
       </tr>
     </thead>
     <tbody>
-    
-      <ListingRow value={value}></ListingRow>
-    
+    {value.state.categories.filter(R => !(R.deleted)).map(R => (
+      <ListingRow  key={R.id} R={R}></ListingRow>
+      
+    ))}
     </tbody>
   </Table>
 
