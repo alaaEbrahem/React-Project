@@ -2,8 +2,9 @@ import React from 'react';
 import '../../../../App.scss';
 import { Col, Row } from 'react-bootstrap';
 import DropdownComponent from '../../../shared/Dropdown/Dropdown';
-import './stars.scss'
-import './AuthorBook.scss'
+import Stars from '../../../shared/Stars/Stars';
+import './stars.scss';
+import './AuthorBook.scss';
 
 
 const AuthorBook = (props) => (
@@ -46,29 +47,8 @@ const AuthorBook = (props) => (
             <div className="text-center">
             <DropdownComponent></DropdownComponent>
                 <p className="greyText">Rate this book</p>
-                <span className="stars">
-                <svg height="10" width="10" className="star">
-                    <polygon points="4.994,0.249 6.538,3.376 9.99,3.878 7.492,6.313 8.082,9.751 4.994,8.129 1.907,9.751 
-                2.495,6.313 -0.002,3.878 3.45,3.376 " />
-                </svg>
-                <svg height="10" width="10" className="star">
-                    <polygon points="4.994,0.249 6.538,3.376 9.99,3.878 7.492,6.313 8.082,9.751 4.994,8.129 1.907,9.751 
-                2.495,6.313 -0.002,3.878 3.45,3.376 "/>
-                </svg>
-                <svg height="10" width="10" className="star">
-                    <polygon points="4.994,0.249 6.538,3.376 9.99,3.878 7.492,6.313 8.082,9.751 4.994,8.129 1.907,9.751 
-                2.495,6.313 -0.002,3.878 3.45,3.376 8"/>
-                </svg>
-                <svg height="10" width="10" className="star">
-                    <polygon points="4.994,0.249 6.538,3.376 9.99,3.878 7.492,6.313 8.082,9.751 4.994,8.129 1.907,9.751 
-                2.495,6.313 -0.002,3.878 3.45,3.376 " />
-                </svg>
-                <svg height="10" width="10" className="star">
-                    <polygon points="4.994,0.249 6.538,3.376 9.99,3.878 7.492,6.313 8.082,9.751 4.994,8.129 1.907,9.751 
-                2.495,6.313 -0.002,3.878 3.45,3.376 " />
-                </svg>
-           
-            </span>              
+            <Stars/>
+
             </div>
             </Col>
           
