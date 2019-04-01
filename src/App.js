@@ -165,8 +165,10 @@ class App extends Component {
     const { categories } = this.state;
     
     for (var i = 0; i < categories.length; i++) {
-      if (categories[i].name.toLowerCase() === name.toLowerCase()&&!(categories[i].deleted)) {
-        return false;
+     
+     if (categories[i].name.toLowerCase() === name.toLowerCase()&&!(categories[i].deleted)) {
+ 
+      return false;
       }
     }
     return true;
@@ -255,7 +257,6 @@ class App extends Component {
             <Route exact path="/admin/authors" component={Author} />
 
             <Route exact path="/admin/categories" component={Categories} />
-            <Route exact path="/admin/users" component={Users} />
             <Route exact path="/error" component={Error} />
             /////////////////////////////////////////////////////////
             <Route path='*' exact={true} component={ErrorPage} />

@@ -12,7 +12,8 @@ class ListingRow extends React.Component {
         this.state = {
             show: false,
             id:-1,
-            newcategory:this.props.R.name
+            newcategory:this.props.R.name,
+            error:''
         
         };
     }
@@ -27,12 +28,28 @@ class ListingRow extends React.Component {
       this.setState({ show: true });
     }
     handleChange = (e) => {
+   
         const value = e.target.value;
         this.setState({ newcategory: value, error: '' });
       }
     handleEdit=(value)=>(e)=>{
+        if (!this.state.newcategory==='') {
+            this.setState({ newcategory: this.props.R.name, show: true
+               , error: 'category can not be null' });
+               return;
+            }
+        
+          else if (!isNaN(this.state.newcategory)) {
+            this.setState({ newcategory: this.props.R.name, show: true,error: 'category can not be number' })
+            return;
+          }
+          else if (!value.searchCategory(this.state.newcategory)) {
+            this.setState({ newcategory: this.props.R.name,error: 'category already exsist', show: true })
+            return;
+          }
+          else{
           value.editCategory(e.target.dataset.id,this.state.newcategory);
-          this.setState({ show: false });
+          this.setState({ show: false });}
       }
 
     render() {
@@ -55,6 +72,7 @@ class ListingRow extends React.Component {
                         <Modal.Body>
                             <Form>
                                 <Form.Group controlId="formBasicEmail">
+                                <h3>{this.state.error}</h3>
                                     <Form.Control  onChange={this.handleChange} value={this.state.newcategory} type="text" placeholder="enter new name"/>
                                    
                                 </Form.Group>
