@@ -46,10 +46,7 @@ class DropdownComponent extends Component {
         return (
             <Dropdown onSelect={(e) => this.handleDropdown(e)}>
                 <Dropdown.Toggle variant="success" id="dropdown-basic" >
-                    {/* {this.state["Want to read"] ? "want to read" : "read"} */}
                     {this.state["Want to read"] ? "want to read" :(this.state["currently reading"] ?"currently reading" : "read")}
-
-                   
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                     <Dropdown.Item eventKey="1" onChange={this.handleDropdown}> {data.readingState[0]}</Dropdown.Item>
