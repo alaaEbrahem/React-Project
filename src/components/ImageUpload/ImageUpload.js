@@ -44,7 +44,7 @@ class ImageUpload extends Component {
           </div>
           <form onSubmit={(e)=>this._handleSubmit(e)} className="col-sm-10">
             <input className="col-9" type="file" onChange={(e)=>this._handleImageChange(e)} />
-            <button className="col-3 btn btn-primary" 
+            <button className="col-3 btn btn-success" 
               type="submit" 
               onClick={(e)=>this._handleSubmit(e)}>Upload</button>
           </form>

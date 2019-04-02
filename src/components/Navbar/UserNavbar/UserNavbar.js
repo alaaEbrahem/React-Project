@@ -3,12 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import user2 from '../../../assets/images/user2.jpg';
 import { Image } from 'react-bootstrap';
 import './UserNavbar.scss';
+import { NavLink } from "react-router-dom";
 
 class UserNavbar extends Component {
     render() {
         return (
 
-            <div className="nav-wrap">
+            <div className="nav-wrap user-NavBar">
                 <nav className="user-nav navbar navbar-expand-lg navbar-light">
                     <a className="navbar-brand" >good<span className="font-weight-bold">reads</span></a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,16 +19,24 @@ class UserNavbar extends Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav">
                             <li className="nav-item mr-4">
-                                <a className="nav-link" >Home</a>
+                                <NavLink exact to={{
+                                    pathname: `/user/:id`,
+                                }}>Home</NavLink>
                             </li>
                             <li className="nav-item mr-4">
-                                <a className="nav-link">Categories</a>
+                                <NavLink exact to={{
+                                    pathname: `/category`,
+                                }}>Categories</NavLink>
                             </li>
                             <li className="nav-item mr-4">
-                                <a className="nav-link">Books</a>
+                                <NavLink exact to={{
+                                    pathname: `/BookPage`,
+                                }}>Books</NavLink>
                             </li>
                             <li className="nav-item mr-4">
-                                <a className="nav-link">Authors</a>
+                                <NavLink exact to={{
+                                    pathname: `/authorsPage`,
+                                }}>Authors</NavLink>
                             </li>
                         </ul>
                         <form className="form-inline my-2 my-lg-0 m-auto">
