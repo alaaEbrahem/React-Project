@@ -6,6 +6,11 @@ import AuthorProfile from './components/AuthorProfile/AuthorProfile';
 
 import UserNavbar from './components/Navbar/UserNavbar/UserNavbar'
 
+
+import SideNav from './components/Navbar/SideNav/SideNav'
+
+
+
 import category from './components/category/category';
 import Error from './components/ErrorPage/ErrorPage';
 import ErrorPage from './components/ErrorPage/ErrorPage';
@@ -235,17 +240,14 @@ class App extends Component {
           <Switch>
             {/* <Login/> */}
             <Route exact path="/user/:id" component={HomePage} />
-
+          
 
             <Route exact path="/profile" component={UserProfile}/>
 
 
-
-            <Route exact path="/profile" component={UserProfile} />
-
             {/* Just a Temporary route for testing */}
             <Route exact path="/userpage" component={UserNavbar} />
-
+            <Route exact path="/SideNav" component={SideNav} />
 
             <Route exact path="/author" component={AuthorProfile} />
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import bookImg from '../../assets/images/d.jpg';
 import bookbackImg from '../../assets/images/db.jpg'
+import SideNav from '../Navbar/UserNavbar/UserNavbar'
 import BookInfo from './BookInfo/BookInfo';
 import BookReview from './BookReviewsList/BookReviewList'
 import { Container, Col } from 'react-bootstrap';
@@ -23,23 +24,27 @@ class BookProfile extends Component {
 
     render() {
         return (
-            <Container>
-                <BookInfo bookImg={bookImg}
-                    bookbackImg={bookbackImg}
-                    bookName={this.state.data[0].bookName}
-                    authorName={this.state.data[0].authorName}
-                    description={this.state.data[0].description}
-                    ratingdesc={this.state.data[0].ratingdesc}
-                >
-                </BookInfo>
-                <Col md="11" className="m-auto">
-                    <fieldset>
-                        <legend>COMMUNITY REVIEW</legend>
-                        <BookReview></BookReview>
-                    </fieldset>
-                </Col>
+            <>
+                <SideNav />
+                <Container>
+                    <BookInfo bookImg={bookImg}
+                        bookbackImg={bookbackImg}
+                        bookName={this.state.data[0].bookName}
+                        authorName={this.state.data[0].authorName}
+                        description={this.state.data[0].description}
+                        ratingdesc={this.state.data[0].ratingdesc}
+                    >
+                    </BookInfo>
+                    <Col md="11" className="m-auto">
+                        <fieldset>
+                            <legend>COMMUNITY REVIEW</legend>
+                            <BookReview></BookReview>
+                        </fieldset>
+                    </Col>
 
-            </Container>
+                </Container>
+            </>
+
         )
     }
 }

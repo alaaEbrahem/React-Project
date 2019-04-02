@@ -1,5 +1,5 @@
 import React from 'react';
-import { faHome, faUsers, faBook, faAddressCard, faAlignJustify } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faBook, faAddressCard, faAlignJustify } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../../App.scss';
 import './SideMenue.scss';
