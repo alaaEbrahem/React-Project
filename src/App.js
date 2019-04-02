@@ -16,7 +16,6 @@ import authorsPage from './components/AuthorProfile/ListPage';
 import Home from './components/Admin/Home/Home.js';
 import Book from './components/Admin/Books/Books';
 import Author from './components/Admin/Authors/Author';
-import Users from './components/Admin/Users/Users';
 import Categories from './components/Admin/Categories/Categories';
 import HomePage from './components/Home/Home.js';
 import UserProfile from './components/UserProfile/UserProfile';
@@ -56,10 +55,10 @@ class App extends Component {
         , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 },
       { name: 'sara Ebrahem', userGroup: 3, deleted: false, id: 3 }],
     categories:
-      [{ id: 1, name: "Fantasy", deleted: false }
-        , { id: 2, name: "Science Fiction", deleted: false },
-      { id: 3, name: "Romance", deleted: false },
-      { id: 4, name: "Dystopia", deleted: false }
+      [{ id: '1', name: "Fantasy", deleted: false }
+        , { id: '2', name: "Science Fiction", deleted: false },
+      { id: '3', name: "Romance", deleted: false },
+      { id: '4', name: "Dystopia", deleted: false }
       ],
     login: false,
     Book: [
@@ -101,8 +100,7 @@ class App extends Component {
   }
   addLogin = (user) => {
     const u = user;
-
-    this.state.login = u;
+    this.setState({login:u});
   }
   //categoru function
   addCategory = (category) => {
@@ -117,6 +115,7 @@ class App extends Component {
     this.state.Book.filter(b=>(b.id===id)).map(b=>{b.deleted=true});
     const {Book}=this.state;
     this.setState({Book:Book});
+    return;
   }
   editBook =(id, edited)=>{
     this.state.Book.filter(b=>(b.id===id)).map(b=>{
@@ -154,29 +153,24 @@ class App extends Component {
   
   deleteCategory = (id) => {
     const index = id;
-
     const newArray = this.state.categories.map((item) => (
-      item.id == index ? { ...item, deleted: !item.deleted } : item
+      item.id === index ? { ...item, deleted: !item.deleted } : item
     ))
    
     this.setState({ categories: newArray });
-    this.state.categories=newArray;
-  
   }
   editCategory = (id,name) => {
     const index = id;
 
     const newArray = this.state.categories.map((item) => (
-      item.id == index ? { ...item, name: name } : item
+      item.id === index ? { ...item, name: name } : item
     ))
    
     this.setState({ categories: newArray });
-    this.state.categories=newArray;
-  
   }
   //author Functions
   addAuthor = (author) => {
-  ;
+  
     const { authors } = this.state;
     this.setState({ authors: authors.concat(author) });
     
