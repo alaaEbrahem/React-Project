@@ -77,7 +77,7 @@ class App extends Component {
     login: false,
     Book: [
       {
-          id: 1,
+          id: '1',
           photo: book1,
           name: "Divergent",
           categoryId: 1,
@@ -85,7 +85,7 @@ class App extends Component {
           deleted: false
       },
       {
-          id: 2,
+          id: '2',
           photo: book2,
           name: "Insergent",
           categoryId: 1,
@@ -93,7 +93,7 @@ class App extends Component {
           deleted: false
       },
       {
-          id: 3,
+          id: '3',
           photo: book3,
           name: "Allegiant",
           categoryId: 1,
@@ -102,7 +102,9 @@ class App extends Component {
       },
       
   ],
-  }
+  BookCurrstate:[],
+}
+
   search = (name, password) => {
     const { users } = this.state;
     for (var i = 0; i < users.length; i++) {
@@ -196,7 +198,14 @@ class App extends Component {
     this.state.categories=newArray;
   
   }
-
+getCurrentBook=(id)=>{
+  debugger
+const BookCurrstate= this.state.Book.filter(b=>(b.id===id));
+// const {BookCurrstate}=this.state;
+this.setState({BookCurrstate});
+this.state.BookCurrstate=BookCurrstate;
+console.log(this.state.BookCurrstate);
+}
   //////////////////////////////////////
   doneToDo = (id) => {
     const index = id;
@@ -218,12 +227,13 @@ class App extends Component {
       deleteBook:this.deleteBook,
       editBook:this.editBook,
       searchCategory: this.searchCategory,
-
       addCategory:this.addCategory,
       searchCategory:this.searchCategory,
       deleteCategory:this.deleteCategory,
-      editCategory:this.editCategory
-    
+      editCategory:this.editCategory,
+      getCurrentBook:this.getCurrentBook,
+      // BookCurrstate:this.BookCurrstate,
+      
     }
     return (
       <MyContext.Provider value={value}>
