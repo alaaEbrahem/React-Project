@@ -35,7 +35,7 @@ class HomePage extends Component {
                                 }}>Home</NavLink>
                             </li>
                             <li className="nav-item px-3">
-                                <a className="nav-link">About us</a>
+                                <NavLink>About us</NavLink>
                             </li>
                             <li className="nav-item px-3">
                                 <NavLink exact to={{
@@ -48,7 +48,7 @@ class HomePage extends Component {
                                 }}>Authors</NavLink>
                             </li>
                             <li className="nav-item px-3">
-                                <a className="nav-link">Terms & Conditions</a>
+                                <NavLink>Terms & Conditions</NavLink>
                             </li>
                         </ul>
                     </div>

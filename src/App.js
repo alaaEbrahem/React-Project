@@ -4,13 +4,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Switch } from 'react-router';
 import AuthorProfile from './components/User/AuthorProfile/AuthorProfile';
 
-import UserNavbar from './components/Navbar/UserNavbar/UserNavbar'
-
-
-import SideNav from './components/Navbar/SideNav/SideNav'
-
-
-
 import category from './components/User/category/category';
 import Error from './components/ErrorPage/ErrorPage';
 import ErrorPage from './components/ErrorPage/ErrorPage';
@@ -264,11 +257,6 @@ console.log(this.state.BookCurrstate);
 
             <Route exact path="/profile" component={UserProfile} />
 
-
-            {/* Just a Temporary route for testing */}
-            <Route exact path="/userpage" component={UserNavbar} />
-            <Route exact path="/SideNav" component={SideNav} />
-
             <Route exact path="/author" component={AuthorProfile} />
 
             <Route exact path="/" component={Login} />
@@ -279,7 +267,6 @@ console.log(this.state.BookCurrstate);
             <Route exact path="/BookPage" component={BookPage} />
             <Route exact path="/authorsPage" component={authorsPage} />
 
-            ///////////////////////Admin routes//////////////////////
             <Route exact path="/admin" component={Home} />
             {/* <Route exact path="/books" component={Books} /> */}
             <Route exact path="/admin/books" component={Book} />
@@ -287,7 +274,7 @@ console.log(this.state.BookCurrstate);
 
             <Route exact path="/admin/categories" component={Categories} />
             <Route exact path="/error" component={Error} />
-            /////////////////////////////////////////////////////////
+
             <Route path='*' exact={true} component={ErrorPage} />
           </Switch></>
 
