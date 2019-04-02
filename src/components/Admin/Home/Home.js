@@ -6,6 +6,7 @@ import Navbar from '../../Navbar/Navbar';
 import SideMenue from '../../SideMenue/SideMenue';
 import Card from './Card';
 import { MyContext } from '../../../App'
+import { withRouter } from "react-router";
 
 class Home extends React.Component {
   state={user:this.props.location.state?this.props.location.state.user:this.props.user}
@@ -53,4 +54,4 @@ class Home extends React.Component {
 }
 }
 
-export default Home;
+export default withRouter(Home);

@@ -25,8 +25,9 @@ import BookProfile from './components/User/BookProfile/BookProfile'
 import book1 from '../src/assets/images/book1.jpg';
 import book2 from '../src/assets/images/book2.jpg';
 import book3 from '../src/assets/images/book3.jpg';
-import author from '../src/assets/images/author.jpg'
-import author2 from '../src/assets/images/author2.jpg'
+import author from '../src/assets/images/author.jpg';
+import author2 from '../src/assets/images/author2.jpg';
+import CategorisList from '../src/components/User/CategoryList/CategoryList';
 // -----------------------Font Awesome Import-------------------------
 import { library } from '@fortawesome/fontawesome-svg-core'
 
@@ -53,10 +54,10 @@ class App extends Component {
         , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 },
       { name: 'sara Ebrahem', userGroup: 3, deleted: false, id: 3 }],
     categories:
-      [{ id: 1, name: "Fantasy", deleted: false }
-        , { id: 2, name: "Science Fiction", deleted: false },
-      { id: 3, name: "Romance", deleted: false },
-      { id: 4, name: "Dystopia", deleted: false }
+      [{ id: '1', name: "Fantasy", deleted: false }
+        , { id: '2', name: "Science Fiction", deleted: false },
+      { id: '3', name: "Romance", deleted: false },
+      { id: '4', name: "Dystopia", deleted: false }
       ],
     login: false,
     Book: [
@@ -73,7 +74,7 @@ class App extends Component {
           photo: book2,
           name: "Insergent",
           categoryId: 1,
-          authorId: 1,
+          authorId: 2,
           deleted: false
       },
       {
@@ -84,6 +85,22 @@ class App extends Component {
           authorId: 1,
           deleted: false
       },
+      {
+        id: '4',
+        photo: book2,
+        name: "harrypotter",
+        categoryId: 2,
+        authorId: 1,
+        deleted: false
+      },
+      {
+        id: '5',
+        photo: book3,
+        name: "blue elephent",
+        categoryId: 3,
+        authorId: 1,
+        deleted: false
+      }
       
   ],
   BookCurrstate:[],
@@ -99,8 +116,7 @@ class App extends Component {
   }
   addLogin = (user) => {
     const u = user;
-
-    this.state.login = u;
+    this.setState({login:u});
   }
   //categoru function
   addCategory = (category) => {
@@ -111,10 +127,12 @@ class App extends Component {
     const { Book } = this.state;
     this.setState({ Book: Book.concat(Bk) });
   }
-  deleteBook = (id) => {
-    this.state.Book.filter(b => (b.id === id)).map(b => { b.deleted = true });
-    const { Book } = this.state;
-    this.setState({ Book: Book });
+
+  deleteBook = (id)=>{
+    this.state.Book.filter(b=>(b.id===id)).map(b=>{b.deleted=true});
+    const {Book}=this.state;
+    this.setState({Book:Book});
+    return;
   }
   editBook = (id, edited) => {
     this.state.Book.filter(b => (b.id === id)).map(b => {
@@ -152,25 +170,20 @@ class App extends Component {
 
   deleteCategory = (id) => {
     const index = id;
-
     const newArray = this.state.categories.map((item) => (
-      item.id == index ? { ...item, deleted: !item.deleted } : item
+      item.id === index ? { ...item, deleted: !item.deleted } : item
     ))
 
     this.setState({ categories: newArray });
-    this.state.categories = newArray;
-
-  }
+    }
   editCategory = (id, name) => {
     const index = id;
 
     const newArray = this.state.categories.map((item) => (
-      item.id == index ? { ...item, name: name } : item
+      item.id === index ? { ...item, name: name } : item
     ))
 
     this.setState({ categories: newArray });
-    this.state.categories = newArray;
-
   }
 getCurrentBook=(id)=>{
   debugger
@@ -185,8 +198,8 @@ console.log(this.state.BookCurrstate);
 
   //author Functions
   addAuthor = (author) => {
-    
-    const { authors } = this.state;
+ 
+const { authors } = this.state;
     this.setState({ authors: authors.concat(author) });
 
   }
@@ -262,8 +275,8 @@ console.log(this.state.BookCurrstate);
             <Route exact path="/" component={Login} />
 
             <Route exact path="/book" component={BookProfile} />
-
-            <Route exact path="/category" component={category} />
+            <Route exact path="/category/:id" component={category} />
+            <Route exact path="/categories" component={CategorisList} />
             <Route exact path="/BookPage" component={BookPage} />
             <Route exact path="/authorsPage" component={authorsPage} />
 
@@ -271,7 +284,6 @@ console.log(this.state.BookCurrstate);
             {/* <Route exact path="/books" component={Books} /> */}
             <Route exact path="/admin/books" component={Book} />
             <Route exact path="/admin/authors" component={Author} />
-
             <Route exact path="/admin/categories" component={Categories} />
             <Route exact path="/error" component={Error} />
 

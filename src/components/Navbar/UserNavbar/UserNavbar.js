@@ -25,7 +25,7 @@ class UserNavbar extends Component {
                             </li>
                             <li className="nav-item mr-4">
                                 <NavLink exact to={{
-                                    pathname: `/category`,
+                                    pathname: `/categories`,
                                 }}>Categories</NavLink>
                             </li>
                             <li className="nav-item mr-4">
