@@ -32,8 +32,9 @@ import BookProfile from './components/User/BookProfile/BookProfile'
 import book1 from '../src/assets/images/book1.jpg';
 import book2 from '../src/assets/images/book2.jpg';
 import book3 from '../src/assets/images/book3.jpg';
-import author from '../src/assets/images/author.jpg'
-import author2 from '../src/assets/images/author2.jpg'
+import author from '../src/assets/images/author.jpg';
+import author2 from '../src/assets/images/author2.jpg';
+import CategorisList from '../src/components/User/CategoryList/CategoryList';
 // -----------------------Font Awesome Import-------------------------
 import { library } from '@fortawesome/fontawesome-svg-core'
 
@@ -80,7 +81,7 @@ class App extends Component {
           photo: book2,
           name: "Insergent",
           categoryId: 1,
-          authorId: 1,
+          authorId: 2,
           deleted: false
       },
       {
@@ -91,6 +92,22 @@ class App extends Component {
           authorId: 1,
           deleted: false
       },
+      {
+        id: '4',
+        photo: book2,
+        name: "harrypotter",
+        categoryId: 2,
+        authorId: 1,
+        deleted: false
+      },
+      {
+        id: '5',
+        photo: book3,
+        name: "blue elephent",
+        categoryId: 3,
+        authorId: 1,
+        deleted: false
+      }
       
   ],
   BookCurrstate:[],
@@ -270,8 +287,8 @@ const { authors } = this.state;
             <Route exact path="/" component={Login} />
 
             <Route exact path="/book" component={BookProfile} />
-
-            <Route exact path="/category" component={category} />
+            <Route exact path="/category/:id" component={category} />
+            <Route exact path="/categories" component={CategorisList} />
             <Route exact path="/BookPage" component={BookPage} />
             <Route exact path="/authorsPage" component={authorsPage} />
 
