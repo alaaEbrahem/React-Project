@@ -21,13 +21,13 @@ class UserNavbar extends Component {
                                 <a className="nav-link" >Home</a>
                             </li>
                             <li className="nav-item mr-4">
-                                <a className="nav-link" href="#">Categories</a>
+                                <a className="nav-link">Categories</a>
                             </li>
                             <li className="nav-item mr-4">
-                                <a className="nav-link" href="#">Books</a>
+                                <a className="nav-link">Books</a>
                             </li>
                             <li className="nav-item mr-4">
-                                <a className="nav-link" href="#">Authors</a>
+                                <a className="nav-link">Authors</a>
                             </li>
                         </ul>
                         <form className="form-inline my-2 my-lg-0 m-auto">

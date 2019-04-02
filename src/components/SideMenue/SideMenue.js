@@ -27,7 +27,8 @@ class SideMenue extends React.Component {
               <li className="li">
                 <NavLink exact to={{
                   pathname: `/admin`,
-                }} href="#"><FontAwesomeIcon icon={faHome} className="ml-5 mr-5 icon" />
+                }} 
+                ><FontAwesomeIcon icon={faHome} className="ml-5 mr-5 icon" />
                   Dashboard</NavLink> </li>
             
               <li className="li"><NavLink exact to={{
@@ -46,10 +47,10 @@ class SideMenue extends React.Component {
           </nav>
           <ul className="social-links list-inline unstyled list-hover-slide">
            
-            <li><a href="#">Rawan</a></li>
-            <li><a href="#">Bassant</a></li>
-            <li><a href="#">Mirhan</a></li>
-            <li><a href="#">Alaa</a></li>
+            <li><a>Rawan</a></li>
+            <li><a>Bassant</a></li>
+            <li><a>Mirhan</a></li>
+            <li><a>Alaa</a></li>
           </ul>
         </div>
       </header>

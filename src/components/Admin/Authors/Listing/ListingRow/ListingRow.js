@@ -23,7 +23,7 @@ class ListingRow extends React.Component {
     }
     handleChange = (e) => {
         const value = e.target.value;
-   if(e.target.dataset.id=='FN'){
+   if(e.target.dataset.id==='FN'){
        
      
         this.setState({ newFN: value, error: '' });

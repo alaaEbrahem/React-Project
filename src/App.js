@@ -21,7 +21,6 @@ import authorsPage from './components/AuthorProfile/ListPage';
 import Home from './components/Admin/Home/Home.js';
 import Book from './components/Admin/Books/Books';
 import Author from './components/Admin/Authors/Author';
-import Users from './components/Admin/Users/Users';
 import Categories from './components/Admin/Categories/Categories';
 import HomePage from './components/Home/Home.js';
 import UserProfile from './components/UserProfile/UserProfile';
