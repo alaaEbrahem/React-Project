@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import book1 from '../../../assets/images/d.jpg';
-import Item from '../../shared/item/item';
+import book1 from '../../../../assets/images/d.jpg';
+import Item from '../../../shared/item/item';
 class list extends Component {
     state = {
         data: [
@@ -32,7 +32,9 @@ class list extends Component {
     }
     render() {
         return (
-            this.state.data.map(i => (<Item itemImage={i.itemImg} itemTitle={i.itemTitle} itemSubTitle={i.itemSubTitle} key={i.id}></Item>))
+    
+        this.state.data.map(i => (<Item itemImage={i.itemImg} itemTitle={i.itemTitle} itemSubTitle={i.itemSubTitle} key={i.id}></Item>))
+
         )
     }
 

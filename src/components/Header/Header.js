@@ -11,7 +11,7 @@ class Header extends Component {
                         <form className="form-inline">
                             <input className="form-control mr-sm-2" type="text" placeholder="Username..."/>
                             <input className="form-control mr-sm-2" type="password" placeholder="Password..."/>
-                            <button className="btn btn-primary my-2 my-sm-0" type="submit">LOG IN</button>
+                            <button className="btn btn-success my-2 my-sm-0" type="submit">LOG IN</button>
                         </form>
                     </nav>
                 </div>

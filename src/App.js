@@ -2,28 +2,33 @@ import React, { Component } from 'react';
 import './App.scss';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Switch } from 'react-router';
-import AuthorProfile from './components/AuthorProfile/AuthorProfile';
+import AuthorProfile from './components/User/AuthorProfile/AuthorProfile';
 
 import UserNavbar from './components/Navbar/UserNavbar/UserNavbar'
 
-import category from './components/category/category';
+
+import SideNav from './components/Navbar/SideNav/SideNav'
+
+
+
+import category from './components/User/category/category';
 import Error from './components/ErrorPage/ErrorPage';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import Login from './components/Login/Login';
-import BookPage from './components/BookProfile/ListPage';
-import authorsPage from './components/AuthorProfile/ListPage';
+import BookPage from './components/User/BookProfile/ListPage';
+import authorsPage from './components/User/AuthorProfile/ListPage';
 ///////////import admin pages/////////////////////
 import Home from './components/Admin/Home/Home.js';
 import Book from './components/Admin/Books/Books';
 import Author from './components/Admin/Authors/Author';
 import Categories from './components/Admin/Categories/Categories';
 import HomePage from './components/Home/Home.js';
-import UserProfile from './components/UserProfile/UserProfile';
+import UserProfile from './components/User/UserProfile';
 
 
 ////////////////////////End Admin pages///////////////////////////
 
-import BookProfile from './components/BookProfile/BookProfile'
+import BookProfile from './components/User/BookProfile/BookProfile'
 import book1 from '../src/assets/images/book1.jpg';
 import book2 from '../src/assets/images/book2.jpg';
 import book3 from '../src/assets/images/book3.jpg';
@@ -47,8 +52,8 @@ class App extends Component {
         , { name: 'aya', password: '123456', userGroup: 1, image: "pexels-photo-736716.jpeg", deleted: false, id: 2 },
       { name: 'sara', password: '123456', userGroup: 2, image: "pexels-photo-614810.jpeg", deleted: false, id: 3 }],
     authors:
-      [{ FN: 'alaa',LN:'Ebrahim',DOB:'1/1/2010',image:author, deleted: false, id: 1 }
-        , { FN: 'aya',LN:'Ebrahim',DOB:'2/1/2012',image:author2, deleted: false, id: 2  }
+      [{ FN: 'alaa', LN: 'Ebrahim', DOB: '1/1/2010', image: author, deleted: false, id: 1 }
+        , { FN: 'aya', LN: 'Ebrahim', DOB: '2/1/2012', image: author2, deleted: false, id: 2 }
       ],
     books:
       [{ name: 'alaa Ebrahem', userGroup: 3, deleted: false, id: 1 }
@@ -63,7 +68,7 @@ class App extends Component {
     login: false,
     Book: [
       {
-          id: 1,
+          id: '1',
           photo: book1,
           name: "Divergent",
           categoryId: 1,
@@ -71,7 +76,7 @@ class App extends Component {
           deleted: false
       },
       {
-          id: 2,
+          id: '2',
           photo: book2,
           name: "Insergent",
           categoryId: 1,
@@ -79,7 +84,7 @@ class App extends Component {
           deleted: false
       },
       {
-          id: 3,
+          id: '3',
           photo: book3,
           name: "Allegiant",
           categoryId: 1,
@@ -88,7 +93,8 @@ class App extends Component {
       },
       
   ],
-  }
+  BookCurrstate:[],
+}
   search = (name, password) => {
     const { users } = this.state;
     for (var i = 0; i < users.length; i++) {
@@ -111,117 +117,138 @@ class App extends Component {
     const { Book } = this.state;
     this.setState({ Book: Book.concat(Bk) });
   }
+
   deleteBook = (id)=>{
     this.state.Book.filter(b=>(b.id===id)).map(b=>{b.deleted=true});
     const {Book}=this.state;
     this.setState({Book:Book});
     return;
   }
-  editBook =(id, edited)=>{
-    this.state.Book.filter(b=>(b.id===id)).map(b=>{
+  editBook = (id, edited) => {
+    this.state.Book.filter(b => (b.id === id)).map(b => {
       debugger
-      if(edited.photo!==''){
-        b.photo=edited.photo;
+      if (edited.photo !== '') {
+        b.photo = edited.photo;
       }
-      if(edited.name!==''){
-        b.name=edited.name;
+      if (edited.name !== '') {
+        b.name = edited.name;
       }
-      if(edited.categoryId!=='Category'){
-        b.categoryId=edited.categoryId;
+      if (edited.categoryId !== 'Category') {
+        b.categoryId = edited.categoryId;
       }
-      if(edited.authorId!=='Author'){
-        b.authorId=edited.authorId;
+      if (edited.authorId !== 'Author') {
+        b.authorId = edited.authorId;
       }
 
     });
-    const {Book}=this.state;
+    const { Book } = this.state;
 
-    this.setState({Book:Book});
+    this.setState({ Book: Book });
   }
   searchCategory = (name) => {
     const { categories } = this.state;
-    
+
     for (var i = 0; i < categories.length; i++) {
-     
-     if (categories[i].name.toLowerCase() === name.toLowerCase()&&!(categories[i].deleted)) {
- 
-      return false;
+
+      if (categories[i].name.toLowerCase() === name.toLowerCase() && !(categories[i].deleted)) {
+
+        return false;
       }
     }
     return true;
   }
-  
+
   deleteCategory = (id) => {
     const index = id;
     const newArray = this.state.categories.map((item) => (
       item.id === index ? { ...item, deleted: !item.deleted } : item
     ))
-   
+
     this.setState({ categories: newArray });
-  }
-  editCategory = (id,name) => {
+    }
+  editCategory = (id, name) => {
     const index = id;
 
     const newArray = this.state.categories.map((item) => (
       item.id === index ? { ...item, name: name } : item
     ))
-   
+
     this.setState({ categories: newArray });
   }
+getCurrentBook=(id)=>{
+  debugger
+const BookCurrstate= this.state.Book.filter(b=>(b.id===id));
+// const {BookCurrstate}=this.state;
+this.setState({BookCurrstate});
+this.state.BookCurrstate=BookCurrstate;
+console.log(this.state.BookCurrstate);
+}
+  //////////////////////////////////////
+ 
+
   //author Functions
   addAuthor = (author) => {
-  
-    const { authors } = this.state;
+ 
+const { authors } = this.state;
     this.setState({ authors: authors.concat(author) });
-    
+
   }
-  deleteAuthor = (id)=>{
-    this.state.authors.filter(a=>(a.id===id)).map(b=>{b.deleted=true});
-    const {authors}=this.state;
-    this.setState({authors:authors});
+  deleteAuthor = (id) => {
+    this.state.authors.filter(a => (a.id === id)).map(b => { b.deleted = true });
+    const { authors } = this.state;
+    this.setState({ authors: authors });
   }
-  editAuthor =(id, edited)=>{ 
-    this.state.authors.filter(a=>(a.id===id)).map(a=>{
-    
-      if(edited.image!==''){
-        a.Image=edited.Image;
+  editAuthor = (id, edited) => {
+    this.state.authors.filter(a => (a.id === id)).map(a => {
+
+      if (edited.image !== '') {
+        a.Image = edited.Image;
       }
-      if(edited.FN!==''){
-        a.FN=edited.FN;
+      if (edited.FN !== '') {
+        a.FN = edited.FN;
       }
-      if(edited.LN!==''){
-        a.LN=edited.LN;
+      if (edited.LN !== '') {
+        a.LN = edited.LN;
       }
-      if(edited.DOB!==''){
-        a.DOB=edited.DOB;
+      if (edited.DOB !== '') {
+        a.DOB = edited.DOB;
       }
 
     });
-    const {authors}=this.state;
+    const { authors } = this.state;
 
-    this.setState({authors:authors});
+    this.setState({ authors: authors });
   }
 
   //////////////////////////////////////
- 
+
   render() {
     const value = {
       state: this.state,
       search: this.search,
       addLogin: this.addLogin,
-      addBook:this.addBook,
-      deleteBook:this.deleteBook,
-      editBook:this.editBook,
-     
+      addBook: this.addBook,
+      deleteBook: this.deleteBook,
+      editBook: this.editBook,
+
+      addCategory: this.addCategory,
+      searchCategory: this.searchCategory,
+
       addCategory:this.addCategory,
       searchCategory:this.searchCategory,
       deleteCategory:this.deleteCategory,
       editCategory:this.editCategory,
+      getCurrentBook:this.getCurrentBook,
+      // BookCurrstate:this.BookCurrstate,
+      
+      deleteCategory: this.deleteCategory,
+      editCategory: this.editCategory,
 
-      addAuthor:this.addAuthor,
-      deleteAuthor:this.deleteAuthor,
-      editAuthor:this.editAuthor,
-    
+      addAuthor: this.addAuthor,
+      deleteAuthor: this.deleteAuthor,
+      editAuthor: this.editAuthor,
+
+
     }
     return (
       <MyContext.Provider value={value}>
@@ -231,15 +258,12 @@ class App extends Component {
             <Route exact path="/user/:id" component={HomePage} />
 
 
-            <Route exact path="/profile" component={UserProfile}/>
-
-
-
             <Route exact path="/profile" component={UserProfile} />
+
 
             {/* Just a Temporary route for testing */}
             <Route exact path="/userpage" component={UserNavbar} />
-
+            <Route exact path="/SideNav" component={SideNav} />
 
             <Route exact path="/author" component={AuthorProfile} />
 
@@ -250,7 +274,7 @@ class App extends Component {
             <Route exact path="/category" component={category} />
             <Route exact path="/BookPage" component={BookPage} />
             <Route exact path="/authorsPage" component={authorsPage} />
-            
+
             ///////////////////////Admin routes//////////////////////
             <Route exact path="/admin" component={Home} />
             {/* <Route exact path="/books" component={Books} /> */}

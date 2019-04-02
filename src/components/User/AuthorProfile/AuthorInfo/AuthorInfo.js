@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap';
-import '../../../App.scss'
+import '../../../../App.scss'
 const AuthorInfo = (props) => (
 
 

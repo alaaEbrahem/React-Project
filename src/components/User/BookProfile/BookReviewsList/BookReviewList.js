@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import BookReview from './BookReview.js/Bookreview'
-import user1 from '../../../assets/images/user1.jpg';
-import user2 from '../../../assets/images/user2.jpg';
+import user1 from '../../../../assets/images/user1.jpg';
+import user2 from '../../../../assets/images/user2.jpg';
 
 
 

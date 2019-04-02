@@ -3,15 +3,35 @@
 //     justify-content: center;
 //     align-items: center;
 // }
-.user-nav{
-    margin: 0;
+.user-nav {
+    margin: 0 !important;
+    padding: 0;
 }
-.fontIcon{
-    font-size: 5rem;
+.fontIcon {
+    font-size: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    & span{
+    & span {
         font-size: 2rem;
     }
+}
+.navbar-nav {
+    font-size: 2rem !important;
+   
+}
+.navbar {
+    margin: 0 5rem !important;
+}
+.navbar-brand {
+margin-right: 7rem!important;
+}
+.user-NavBar .active{
+    background-color: #ffffff !important;
+    padding: 3rem;
+    font-weight: 600
+}
+.user-NavBar .nav-item a{
+    color:  #32AD3C !important;
+   
 }

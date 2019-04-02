@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import AuthorBook from './AuthorBook/AuthorBook';
-import book1 from '../../../assets/images/book1.jpg';
-import book2 from '../../../assets/images/book2.jpg';
-import book3 from '../../../assets/images/book3.jpg';
+import book1 from '../../../../assets/images/book1.jpg';
+import book2 from '../../../../assets/images/book2.jpg';
+import book3 from '../../../../assets/images/book3.jpg';
 
 
 class AuthorBookList extends Component {
