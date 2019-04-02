@@ -262,7 +262,6 @@ class App extends Component {
             {/* <Route exact path="/books" component={Books} /> */}
             <Route exact path="/admin/books" component={Book} />
             <Route exact path="/admin/authors" component={Author} />
-
             <Route exact path="/admin/categories" component={Categories} />
             <Route exact path="/error" component={Error} />
             /////////////////////////////////////////////////////////

@@ -2,7 +2,6 @@ import React from 'react';
 import './Login.scss'
 import '../../App.scss';
 import { MyContext } from '../../App'
-import { Redirect } from 'react-router'
 import { withRouter } from "react-router";
 
 
