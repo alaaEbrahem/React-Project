@@ -2,10 +2,10 @@ import React from 'react';
 import { Container, Modal, Button, Form, Col } from 'react-bootstrap';
 import '../../../App.scss';
 import { MyContext } from '../../../App'
-
 import Navbar from '../../Navbar/Navbar';
 import SideMenue from '../../SideMenue/SideMenue';
 import Listing from './Listing/Listing'
+import uuidv4 from 'uuid/v4';
 
 
 class Autor extends React.Component {
@@ -13,10 +13,32 @@ class Autor extends React.Component {
     super(props);
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleCloseADD = this.handleCloseADD.bind(this);
     this.state = {
       show: false,
+      error: ''
     };
   }
+  handleCloseADD = (addAuthor) => (e) => {
+    e.preventDefault();
+    if (this.FN.value === '' || this.LN.value === "" || this.DOB.value === "") {
+      this.setState({ error: 'check filling all data', show: true });
+    }
+    else {
+      const newAuthor = {
+        id: uuidv4(),
+        image: '',
+        FN: this.FN.value,
+        LN: this.LN.value,
+        DOB: this.DOB.value,
+        deleted: false,
+      }
+      addAuthor(newAuthor);
+      this.setState({ show: false });
+    }
+  }
+
+
   handleClose() {
     this.setState({ show: false });
   }
@@ -46,31 +68,32 @@ class Autor extends React.Component {
                       </Modal.Header>
                       <Modal.Body>
                         <Form>
-                        <Form.Group as={Col} controlId="formBasicbook">
-                                    <Form.Control type="text" placeholder="Enter Author FirstName" />
-                                </Form.Group>
-                                <Form.Group as={Col} controlId="formBasicbook">
-                                    <Form.Control type="text" placeholder="Enter Author LastName" />
-                                </Form.Group>
-                                <Form.Group as={Col} controlId="formBasicbook">
-                                    <Form.Control type="date"/>
-                                </Form.Group>
-                                <Form.Group as={Col} >
-                                    <Form.Control type="file" />
-                                </Form.Group>
+                          <Form.Group as={Col} controlId="formBasicbook">
+                            <h3>{this.state.error}</h3>
+                            <Form.Control ref={element => this.FN = element} type="text" placeholder="Enter Author FirstName" />
+                          </Form.Group>
+                          <Form.Group as={Col} controlId="formBasicbook">
+                            <Form.Control ref={element => this.LN = element} type="text" placeholder="Enter Author LastName" />
+                          </Form.Group>
+                          <Form.Group as={Col} controlId="formBasicbook">
+                            <Form.Control ref={element => this.DOB = element} type="date" />
+                          </Form.Group>
+                          <Form.Group as={Col} >
+                            <Form.Control type="file" ref={element => this.image = element} />
+                          </Form.Group>
                           <Modal.Footer>
                             <Button variant="secondary" onClick={this.handleClose}>
                               Cancel
                               </Button>
-                            <Button variant="success" onClick={this.handleClose}>
-                              Add Book
+                            <Button variant="success" onClick={this.handleCloseADD(value.addAuthor)}>
+                              Add Author
                               </Button>
                           </Modal.Footer>
                         </Form>
                       </Modal.Body>
                     </Modal>
                     <Container>
-                      <div class="text-right mt-4">
+                      <div className="text-right mt-4">
                         <Button variant="success" onClick={this.handleShow}>
                           Add
                         </Button>

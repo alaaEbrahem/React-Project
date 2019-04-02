@@ -1,8 +1,10 @@
 import React from 'react';
-import '../../../../App.scss';
-import { Col, Dropdown, Row } from 'react-bootstrap';
-import './stars.scss'
-import './AuthorBook.scss'
+import '../../../../../App.scss';
+import { Col, Row } from 'react-bootstrap';
+import DropdownComponent from '../../../../shared/Dropdown/Dropdown';
+import Stars from '../../../../shared/Stars/Stars';
+import './stars.scss';
+import './AuthorBook.scss';
 
 
 const AuthorBook = (props) => (
@@ -43,42 +45,13 @@ const AuthorBook = (props) => (
          
             <Col md="2" className="m-auto">
             <div className="text-center">
-                <Dropdown>
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        Want to read
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                        <Dropdown.Item href="#/action-1">currently reading</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">read</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">want to read</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
+            <DropdownComponent></DropdownComponent>
                 <p className="greyText">Rate this book</p>
-                <span className="stars">
-                <svg height="10" width="10" className="star">
-                    <polygon points="4.994,0.249 6.538,3.376 9.99,3.878 7.492,6.313 8.082,9.751 4.994,8.129 1.907,9.751 
-                2.495,6.313 -0.002,3.878 3.45,3.376 " />
-                </svg>
-                <svg height="10" width="10" className="star">
-                    <polygon points="4.994,0.249 6.538,3.376 9.99,3.878 7.492,6.313 8.082,9.751 4.994,8.129 1.907,9.751 
-                2.495,6.313 -0.002,3.878 3.45,3.376 "/>
-                </svg>
-                <svg height="10" width="10" className="star">
-                    <polygon points="4.994,0.249 6.538,3.376 9.99,3.878 7.492,6.313 8.082,9.751 4.994,8.129 1.907,9.751 
-                2.495,6.313 -0.002,3.878 3.45,3.376 8"/>
-                </svg>
-                <svg height="10" width="10" className="star">
-                    <polygon points="4.994,0.249 6.538,3.376 9.99,3.878 7.492,6.313 8.082,9.751 4.994,8.129 1.907,9.751 
-                2.495,6.313 -0.002,3.878 3.45,3.376 " />
-                </svg>
-                <svg height="10" width="10" className="star">
-                    <polygon points="4.994,0.249 6.538,3.376 9.99,3.878 7.492,6.313 8.082,9.751 4.994,8.129 1.907,9.751 
-                2.495,6.313 -0.002,3.878 3.45,3.376 " />
-                </svg>
-           
-            </span>              
+            <Stars/>
+
             </div>
             </Col>
+          
            
         </Row>
         <hr/>

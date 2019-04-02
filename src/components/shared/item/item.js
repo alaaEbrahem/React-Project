@@ -8,7 +8,7 @@ const item = (props) => (
 
         <Card.Img className="item__img " variant="top" src={props.itemImage} alt="book" />
         <div className="item__layout">
-            <h2 className="text-center text-info font-weight-bold">View Book</h2>
+            <h2 className="text-center text-success font-weight-bold">Click to view</h2>
         </div>
         <Card.Body>
             <Card.Title>{props.itemTitle}</Card.Title>

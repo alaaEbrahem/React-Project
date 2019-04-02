@@ -2,7 +2,6 @@ import React from 'react';
 import './Login.scss'
 import '../../App.scss';
 import { MyContext } from '../../App'
-import { Redirect } from 'react-router'
 import { withRouter } from "react-router";
 
 
@@ -83,7 +82,7 @@ class Login extends React.Component {
                                             <label className="checkbox-container__label ml-3">Remember me</label>
                                         </div>
                                         <div className="offset-1 col-sm-12  col-md-4">
-                                            <a href="#" className="txt1"> Forgot Password?</a>
+                                            <a className="txt1"> Forgot Password?</a>
                                         </div>
                                     </div>
                                     <div className="row">
