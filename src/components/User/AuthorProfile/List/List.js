@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import author from '../../../assets/images/author.jpg';
-import Item from '../../shared/item/item';
+import author from '../../../../assets/images/author.jpg';
+import Item from '../../../shared/item/item';
 class list extends Component {
     state = {
         data: [

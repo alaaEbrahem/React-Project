@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import bookImg from '../../assets/images/d.jpg';
-import bookbackImg from '../../assets/images/db.jpg'
-import UserNavbar from '../Navbar/UserNavbar/UserNavbar'
+import bookImg from '../../../assets/images/d.jpg';
+import bookbackImg from '../../../assets/images/db.jpg'
+import UserNavbar from '../../Navbar/UserNavbar/UserNavbar'
 import BookInfo from './BookInfo/BookInfo';
 import BookReview from './BookReviewsList/BookReviewList'
 import { Container, Col } from 'react-bootstrap';

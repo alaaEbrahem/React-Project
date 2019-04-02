@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.scss';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Switch } from 'react-router';
-import AuthorProfile from './components/AuthorProfile/AuthorProfile';
+import AuthorProfile from './components/User/AuthorProfile/AuthorProfile';
 
 import UserNavbar from './components/Navbar/UserNavbar/UserNavbar'
 
@@ -11,24 +11,24 @@ import SideNav from './components/Navbar/SideNav/SideNav'
 
 
 
-import category from './components/category/category';
+import category from './components/User/category/category';
 import Error from './components/ErrorPage/ErrorPage';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import Login from './components/Login/Login';
-import BookPage from './components/BookProfile/ListPage';
-import authorsPage from './components/AuthorProfile/ListPage';
+import BookPage from './components/User/BookProfile/ListPage';
+import authorsPage from './components/User/AuthorProfile/ListPage';
 ///////////import admin pages/////////////////////
 import Home from './components/Admin/Home/Home.js';
 import Book from './components/Admin/Books/Books';
 import Author from './components/Admin/Authors/Author';
 import Categories from './components/Admin/Categories/Categories';
 import HomePage from './components/Home/Home.js';
-import UserProfile from './components/UserProfile/UserProfile';
+import UserProfile from './components/User/UserProfile';
 
 
 ////////////////////////End Admin pages///////////////////////////
 
-import BookProfile from './components/BookProfile/BookProfile'
+import BookProfile from './components/User/BookProfile/BookProfile'
 import book1 from '../src/assets/images/book1.jpg';
 import book2 from '../src/assets/images/book2.jpg';
 import book3 from '../src/assets/images/book3.jpg';

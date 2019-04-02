@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import authorImg from '../../assets/images/author.jpg'
+import authorImg from '../../../assets/images/author.jpg'
 import AuthorInfo from './AuthorInfo/AuthorInfo';
-import UserNavbar from '../Navbar/UserNavbar/UserNavbar'
+import UserNavbar from '../../Navbar/UserNavbar/UserNavbar'
 import AuthorBookList from './AuthorBooks/AuthorBookList'
 import { Col, Container } from 'react-bootstrap';
 import './AuthorProfile.scss';

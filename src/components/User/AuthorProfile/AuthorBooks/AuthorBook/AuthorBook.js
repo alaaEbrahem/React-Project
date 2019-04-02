@@ -1,8 +1,8 @@
 import React from 'react';
-import '../../../../App.scss';
+import '../../../../../App.scss';
 import { Col, Row } from 'react-bootstrap';
-import DropdownComponent from '../../../shared/Dropdown/Dropdown';
-import Stars from '../../../shared/Stars/Stars';
+import DropdownComponent from '../../../../shared/Dropdown/Dropdown';
+import Stars from '../../../../shared/Stars/Stars';
 import './stars.scss';
 import './AuthorBook.scss';
 

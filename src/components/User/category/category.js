@@ -1,8 +1,8 @@
 import React from 'react';
 import { Row, Container } from 'react-bootstrap';
 import List from './List/list';
-import UserNavbar from '../Navbar/UserNavbar/UserNavbar';
-import PaginationComponent from '../shared/pagination/pagination';
+import UserNavbar from '../../Navbar/UserNavbar/UserNavbar';
+import PaginationComponent from '../../shared/pagination/pagination';
 const category = (props) => (
     <>
             <UserNavbar />
