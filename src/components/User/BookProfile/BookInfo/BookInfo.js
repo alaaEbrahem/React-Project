@@ -1,6 +1,7 @@
 import React from 'react';
 import './BookInfo.scss';
-import { Col, Row, Dropdown,Button,ButtonGroup } from 'react-bootstrap';
+import DropdownComponent from '../../../shared/Dropdown/Dropdown';
+import { Col, Row } from 'react-bootstrap';
 const BookInfo = (props) => (
     <Col md="11" className="m-auto py-4">
         <Row>
@@ -14,14 +15,7 @@ const BookInfo = (props) => (
                     </div>
                 </div>
                 <br></br>
-                <Dropdown className="m-auto text-center" as={ButtonGroup}>
-                    <Button variant="success">Want to read</Button>
-                    <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
-                    <Dropdown.Menu>
-                        <Dropdown.Item hred="#/action-1">read</Dropdown.Item>
-                        <Dropdown.Item hred="#/action-2">currently reading</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
+                <DropdownComponent></DropdownComponent>
                 <p className="greyText mt-1">My rating: </p>
                 <span className="stars" data-stars="4">
                 <svg height="10" width="10" className="star" data-rating="1">

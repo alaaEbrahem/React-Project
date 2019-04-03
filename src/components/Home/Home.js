@@ -35,20 +35,24 @@ class HomePage extends Component {
                                 }}>Home</NavLink>
                             </li>
                             <li className="nav-item px-3">
-                                <a>About us</a>
+                                <NavLink exact to={{
+                                    pathname: `/error`,
+                                }}>About us</NavLink>
                             </li>
                             <li className="nav-item px-3">
                                 <NavLink exact to={{
-                                    pathname: `/category`,
+                                    pathname: `/categories`,
                                 }}>Categories</NavLink>
                             </li>
                             <li className="nav-item px-3">
-                            <NavLink exact to={{
+                                <NavLink exact to={{
                                     pathname: `/authorsPage`,
                                 }}>Authors</NavLink>
                             </li>
                             <li className="nav-item px-3">
-                                <a>Terms & Conditions</a>
+                                <NavLink exact to={{
+                                    pathname: `/error`,
+                                }}>Terms & conditions</NavLink>
                             </li>
                         </ul>
                     </div>
