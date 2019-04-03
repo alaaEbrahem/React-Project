@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import './item.scss';
+import { NavLink } from "react-router-dom";
 
 const item = (props) => (
 
@@ -11,9 +12,15 @@ const item = (props) => (
             <h2 className="text-center text-success font-weight-bold">Click to view</h2>
         </div>
         <Card.Body>
-            <Card.Title>{props.itemTitle}</Card.Title>
+            <Card.Title>
+    <NavLink exact to={{ pathname: `/book/${props.book.id}`,book:props.book,author:props.itemSubTitle }}>
+    {props.itemTitle}</NavLink>
+
+            </Card.Title>
             <Card.Text>
-                {props.itemSubTitle}
+     <NavLink exact to={{ pathname: `/author/${props.itemSubTitle.id}`,
+     author:props.itemSubTitle }}>{props.itemSubTitle.FN}</NavLink>
+
             </Card.Text>
         </Card.Body>
     </Card>

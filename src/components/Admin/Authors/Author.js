@@ -50,7 +50,7 @@ class Autor extends React.Component {
     return (
       <MyContext.Consumer>
         {value => (
-          value.state.login ?
+          value.state.login &&value.state.login.userGroup==1 ?
             <React.Fragment>
 
               <Navbar />

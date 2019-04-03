@@ -6,6 +6,7 @@ import UserNavbar from '../../Navbar/UserNavbar/UserNavbar'
 import AuthorBookList from './AuthorBooks/AuthorBookList'
 import { Col, Container } from 'react-bootstrap';
 import './AuthorProfile.scss';
+import { MyContext } from '../../../App';
 
 class AuthorProfile extends Component {
 
@@ -21,11 +22,14 @@ class AuthorProfile extends Component {
     }
     render() {
         return (
+            <MyContext.Consumer>
+            {value => (
+                
             <>
                 <UserNavbar />
                 <Container>
                     <AuthorInfo authorImg={authorImg}
-                        name={this.state.data[0].name}
+                        name={this.props.location.author.FN}
                         born={this.state.data[0].born}
                         website={this.state.data[0].website}
                         genre={this.state.data[0].genre}
@@ -33,13 +37,18 @@ class AuthorProfile extends Component {
                     </AuthorInfo>
                     <Col md="11" className="m-auto">
                         <fieldset>
+                       
                             <legend>{this.state.data[0].name}’S BOOKS:</legend>
-                            <AuthorBookList></AuthorBookList>
+                            {value.state.Book.filter(b=>(b.authorId==this.props.match.params.id)).map(b=>(<AuthorBookList book={b} authorName={this.props.location.author.FN}></AuthorBookList>))
+                            }
+                            
                         </fieldset>
                     </Col>
                 </Container>
             </>
-        )
+        )}
+        </MyContext.Consumer>
+        );
+      }
     }
-}
 export default AuthorProfile;

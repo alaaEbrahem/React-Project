@@ -16,7 +16,7 @@ class Home extends React.Component {
     return (
       <MyContext.Consumer>
          {value => ( 
-           value.state.login?  
+           value.state.login && value.state.login.userGroup==1?  
       <React.Fragment>
         <Navbar/>
         <div className="container-fluid no-gutters">

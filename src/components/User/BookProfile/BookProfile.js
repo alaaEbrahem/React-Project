@@ -24,13 +24,14 @@ class BookProfile extends Component {
 
     render() {
         return (
+            this.props.location.book.name?
             <>
                 <UserNavbar />
                 <Container>
                     <BookInfo bookImg={bookImg}
                         bookbackImg={bookbackImg}
-                        bookName={this.state.data[0].bookName}
-                        authorName={this.state.data[0].authorName}
+                        bookName={this.props.location.book.name}
+                        authorName={this.props.location.author.FN}
                         description={this.state.data[0].description}
                         ratingdesc={this.state.data[0].ratingdesc}
                     >
@@ -43,7 +44,7 @@ class BookProfile extends Component {
                     </Col>
 
                 </Container>
-            </>
+            </>:""
 
         )
     }

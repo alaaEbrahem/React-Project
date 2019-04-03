@@ -56,10 +56,7 @@ class App extends Component {
       [{ FN: 'alaa', LN: 'Ebrahim', DOB: '1/1/2010', image: author, deleted: false, id: 1 }
         , { FN: 'aya', LN: 'Ebrahim', DOB: '2/1/2012', image: author2, deleted: false, id: 2 }
       ],
-    books:
-      [{ name: 'alaa Ebrahem', userGroup: 3, deleted: false, id: 1 }
-        , { name: 'aya Ebrahem', userGroup: 3, deleted: false, id: 2 },
-      { name: 'sara Ebrahem', userGroup: 3, deleted: false, id: 3 }],
+ 
     categories:
       [{ id: '1', name: "Fantasy", deleted: false }
         , { id: '2', name: "Science Fiction", deleted: false },
@@ -282,15 +279,15 @@ const { authors } = this.state;
             <Route exact path="/userpage" component={UserNavbar} />
             <Route exact path="/SideNav" component={SideNav} />
 
-            <Route exact path="/author" component={AuthorProfile} />
+           
 
             <Route exact path="/" component={Login} />
 
-            <Route exact path="/book" component={BookProfile} />
+           //////////////////// user category routes///////////////////// 
             <Route exact path="/category/:id" component={category} />
             <Route exact path="/categories" component={CategorisList} />
-            <Route exact path="/BookPage" component={BookPage} />
-            <Route exact path="/authorsPage" component={authorsPage} />
+            <Route exact path="/book/:id" component={BookProfile} />
+            <Route exact path="/author/:id" component={AuthorProfile} />
 
             ///////////////////////Admin routes//////////////////////
             <Route exact path="/admin" component={Home} />

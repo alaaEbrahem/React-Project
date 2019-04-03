@@ -13,6 +13,7 @@ export default class CategorisList extends React.Component {
                 <MyContext.Consumer>
                     {
                         value => (
+                           
                             <Card style={{ width: '100rem', margin: 'auto', backgroundColor: '#32AD3C' }}>
                                 <Card.Img variant="top" src={catImg} style={{ height: '35rem' }} />
                                 <Card.Body>
@@ -24,6 +25,7 @@ export default class CategorisList extends React.Component {
                                     }}>{cat.name}</NavLink></h1></ListGroupItem>))}
                                 </ListGroup>
                             </Card>
+                            
                         )
                     }
 

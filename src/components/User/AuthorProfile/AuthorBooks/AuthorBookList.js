@@ -34,13 +34,14 @@ class AuthorBookList extends Component {
 
     render() {
         return (
-            this.state.data.map(B => (<AuthorBook key={B.id} title={B.title}
-                authorName={B.authorName} id={B.id} ratingdesc={B.ratingdesc}
-                bookImg={B.bookImg}
+           <AuthorBook key={this.props.book.id} title={this.props.book.name}
+                authorName={this.props.authorName} id={this.props.book.id} 
+                //ratingdesc={B.ratingdesc}
+               // bookImg={B.bookImg}
             />
+            
             )
-            )
-        )
+        
     }
 }
 export default AuthorBookList;
