@@ -28,18 +28,21 @@ class AuthorProfile extends Component {
             <>
                 <UserNavbar />
                 <Container>
-                    <AuthorInfo authorImg={authorImg}
-                        name={this.props.location.author.FN}
+                   
+                    {value.state.authors.filter(a=>a.id===this.props.match.params.id+'').map(b=>(
+                    <AuthorInfo authorImg={b.image}
+                        name={b.FN}
                         born={this.state.data[0].born}
                         website={this.state.data[0].website}
                         genre={this.state.data[0].genre}
                     >
-                    </AuthorInfo>
+                    </AuthorInfo>))}
                     <Col md="11" className="m-auto">
                         <fieldset>
                        
                             <legend>{this.state.data[0].name}’S BOOKS:</legend>
-                            {value.state.Book.filter(b=>(b.authorId==this.props.match.params.id)).map(b=>(<AuthorBookList book={b} authorName={this.props.location.author.FN}></AuthorBookList>))
+                            {
+                                value.state.Book.filter(b=>(b.authorId==this.props.match.params.id)).map(b=>(<AuthorBookList book={b} ></AuthorBookList>))
                             }
                             
                         </fieldset>

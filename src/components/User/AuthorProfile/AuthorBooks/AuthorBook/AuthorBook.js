@@ -16,7 +16,7 @@ const AuthorBook = (props) => (
             </Col>
             <Col md="9" sm="12">
                 <p>{props.title}</p>
-                <p>{props.authorName} <span className="greyText">(Goodreads Author)</span></p>
+                <p> <span className="greyText">(Goodreads Author)</span></p>
 
                 <span className="greyText">{props.ratingdesc}</span>
             </Col>

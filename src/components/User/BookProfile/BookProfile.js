@@ -24,7 +24,7 @@ class BookProfile extends Component {
 
     render() {
         return (
-            this.props.location.book.name?
+            this.props.location.book?
             <>
                 <UserNavbar />
                 <Container>

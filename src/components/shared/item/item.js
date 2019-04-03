@@ -20,8 +20,8 @@ const item = (props) => (
             </Card.Title>
             <Card.Text>
             {props.book?
-     <NavLink exact to={{ pathname: `/author/${props.itemSubTitle.id}`,
-     author:props.itemSubTitle }}>{props.itemSubTitle.FN}</NavLink>
+     <NavLink exact to={{ pathname: `/author/${props.itemSubTitle.id}`
+     }}>{props.itemSubTitle.FN}</NavLink>
      :props.itemSubTitle}
             </Card.Text>
         </Card.Body>
