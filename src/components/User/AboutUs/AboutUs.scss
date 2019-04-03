@@ -1,0 +1,59 @@
+.aboutus__img1 {
+    position: absolute !important;
+    top: 0;
+    left: 0rem;
+    z-index: 3;
+    animation-duration:3s;
+    animation-name: aboutUsimg1;
+    
+}
+
+.aboutus__img2 {
+    position: absolute !important;
+    top: 5rem;
+    left: 20rem;
+    z-index: 2;
+    animation-duration:3s;
+    animation-name: aboutUsimg2;
+}
+.aboutUs__images{
+    height: 60rem;
+}
+.aboutus{
+    overflow: hidden;
+}
+.aboutus__img3 {
+    position: absolute !important;
+    top: 8rem;
+    left: 40rem;
+    animation-duration:2s;
+    z-index: 1;
+    animation-name: aboutUsimg3;
+}
+.title{
+    font-size: 3.25rem !important;
+}
+@keyframes aboutUsimg1 {
+    from {
+        left: 140rem;
+    }
+    to {
+        left: 0rem;
+    }
+}
+@keyframes aboutUsimg2 {
+    from {
+        left: 100rem;
+    }
+    to {
+        left: 20rem
+    }
+}
+@keyframes aboutUsimg3 {
+    from {
+        left: 60rem;
+    }
+    to {
+        left: 40rem;
+    }
+}

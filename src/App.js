@@ -10,6 +10,8 @@ import ErrorPage from './components/ErrorPage/ErrorPage';
 import Login from './components/Login/Login';
 import BookPage from './components/User/BookProfile/ListPage';
 import authorsPage from './components/User/AuthorProfile/ListPage';
+
+import aboutus from './components/User/AboutUs/AboutUs';
 ///////////import admin pages/////////////////////
 import Home from './components/Admin/Home/Home.js';
 import Book from './components/Admin/Books/Books';
@@ -276,10 +278,11 @@ class App extends Component {
             <Route exact path="/author/:id" component={AuthorProfile} />
             <Route exact path="/authorsPage" component={authorsPage} />
 
-            authorsPage
-
+            
+            <Route exact path="/aboutus" component={aboutus} />
             <Route exact path="/admin" component={Home} />
             {/* <Route exact path="/books" component={Books} /> */}
+
             <Route exact path="/admin/books" component={Book} />
             <Route exact path="/admin/authors" component={Author} />
             <Route exact path="/admin/categories" component={Categories} />
