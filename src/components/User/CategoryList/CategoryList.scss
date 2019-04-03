@@ -1,0 +1,36 @@
+.category__Card {
+    width: 65%;
+    margin: auto;
+    text-align: center;
+    overflow: hidden;
+
+    &__text {
+        font-size: 2.2rem !important;
+        color: white;
+
+    }
+}
+
+.category__Img {
+
+    height: 35rem;
+    animation-name: imgTransform;
+    animation-duration:2s;
+    background-color: white;
+    position: relative;
+    left: 0;
+    top:0;
+}
+
+@keyframes imgTransform {
+    from {
+        left: 5rem;
+        top:-5rem;
+    }
+
+    to {
+        left: 0;
+        top:0;
+    }
+
+}

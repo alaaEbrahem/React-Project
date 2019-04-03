@@ -49,7 +49,7 @@ class App extends Component {
       [{ FN: 'alaa', LN: 'Ebrahim', DOB: '1/1/2010', image: author, deleted: false, id: 1 }
         , { FN: 'aya', LN: 'Ebrahim', DOB: '2/1/2012', image: author2, deleted: false, id: 2 }
       ],
- 
+
     categories:
       [{ id: '1', name: "Fantasy", deleted: false }
         , { id: '2', name: "Science Fiction", deleted: false },
@@ -59,28 +59,28 @@ class App extends Component {
     login: false,
     Book: [
       {
-          id: '1',
-          photo: book1,
-          name: "Divergent",
-          categoryId: 1,
-          authorId: 1,
-          deleted: false
+        id: '1',
+        photo: book1,
+        name: "Divergent",
+        categoryId: 1,
+        authorId: 1,
+        deleted: false
       },
       {
-          id: '2',
-          photo: book2,
-          name: "Insergent",
-          categoryId: 1,
-          authorId: 2,
-          deleted: false
+        id: '2',
+        photo: book2,
+        name: "Insergent",
+        categoryId: 1,
+        authorId: 2,
+        deleted: false
       },
       {
-          id: '3',
-          photo: book3,
-          name: "Allegiant",
-          categoryId: 1,
-          authorId: 1,
-          deleted: false
+        id: '3',
+        photo: book3,
+        name: "Allegiant",
+        categoryId: 1,
+        authorId: 1,
+        deleted: false
       },
       {
         id: '4',
@@ -98,10 +98,10 @@ class App extends Component {
         authorId: 1,
         deleted: false
       }
-      
-  ],
-  BookCurrstate:[],
-}
+
+    ],
+    BookCurrstate: [],
+  }
   search = (name, password) => {
     const { users } = this.state;
     for (var i = 0; i < users.length; i++) {
@@ -113,7 +113,7 @@ class App extends Component {
   }
   addLogin = (user) => {
     const u = user;
-    this.setState({login:u});
+    this.setState({ login: u });
   }
   //categoru function
   addCategory = (category) => {
@@ -125,10 +125,10 @@ class App extends Component {
     this.setState({ Book: Book.concat(Bk) });
   }
 
-  deleteBook = (id)=>{
-    this.state.Book.filter(b=>(b.id===id)).map(b=>{b.deleted=true});
-    const {Book}=this.state;
-    this.setState({Book:Book});
+  deleteBook = (id) => {
+    this.state.Book.filter(b => (b.id === id)).map(b => { b.deleted = true });
+    const { Book } = this.state;
+    this.setState({ Book: Book });
     return;
   }
   editBook = (id, edited) => {
@@ -172,7 +172,7 @@ class App extends Component {
     ))
 
     this.setState({ categories: newArray });
-    }
+  }
   editCategory = (id, name) => {
     const index = id;
 
@@ -182,21 +182,21 @@ class App extends Component {
 
     this.setState({ categories: newArray });
   }
-getCurrentBook=(id)=>{
-  debugger
-const BookCurrstate= this.state.Book.filter(b=>(b.id===id));
-// const {BookCurrstate}=this.state;
-this.setState({BookCurrstate});
-this.state.BookCurrstate=BookCurrstate;
-console.log(this.state.BookCurrstate);
-}
+  getCurrentBook = (id) => {
+    debugger
+    const BookCurrstate = this.state.Book.filter(b => (b.id === id));
+    // const {BookCurrstate}=this.state;
+    this.setState({ BookCurrstate });
+    this.state.BookCurrstate = BookCurrstate;
+    console.log(this.state.BookCurrstate);
+  }
   //////////////////////////////////////
- 
+
 
   //author Functions
   addAuthor = (author) => {
- 
-const { authors } = this.state;
+
+    const { authors } = this.state;
     this.setState({ authors: authors.concat(author) });
 
   }
@@ -241,13 +241,13 @@ const { authors } = this.state;
       addCategory: this.addCategory,
       searchCategory: this.searchCategory,
 
-      addCategory:this.addCategory,
-      searchCategory:this.searchCategory,
-      deleteCategory:this.deleteCategory,
-      editCategory:this.editCategory,
-      getCurrentBook:this.getCurrentBook,
+      addCategory: this.addCategory,
+      searchCategory: this.searchCategory,
+      deleteCategory: this.deleteCategory,
+      editCategory: this.editCategory,
+      getCurrentBook: this.getCurrentBook,
       // BookCurrstate:this.BookCurrstate,
-      
+
       deleteCategory: this.deleteCategory,
       editCategory: this.editCategory,
 
@@ -261,17 +261,22 @@ const { authors } = this.state;
       <MyContext.Provider value={value}>
         <Router><>
           <Switch>
+
           
             <Route exact path="/user" component={HomePage} />
+
             <Route exact path="/profile" component={UserProfile} />
             <Route exact path="/author" component={AuthorProfile} />
             <Route exact path="/" component={Login} />
 
-           //////////////////// user category routes///////////////////// 
+            //////////////////// user category routes///////////////////// 
             <Route exact path="/category/:id" component={category} />
             <Route exact path="/categories" component={CategorisList} />
             <Route exact path="/book/:id" component={BookProfile} />
             <Route exact path="/author/:id" component={AuthorProfile} />
+            <Route exact path="/authorsPage" component={authorsPage} />
+
+            authorsPage
 
             <Route exact path="/admin" component={Home} />
             {/* <Route exact path="/books" component={Books} /> */}

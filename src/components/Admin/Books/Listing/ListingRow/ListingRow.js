@@ -1,6 +1,4 @@
 import React from 'react';
-import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Modal, Button, Form, Col } from 'react-bootstrap';
 import { MyContext } from '../../../../../App';
 import edit from '../../../../../assets/images/edit-solid.png';
@@ -17,24 +15,24 @@ class ListingRow extends React.Component {
         this.state = {
             show: false,
             ID: '',
-            name:'',
-            catID:'',
-            authID:''
+            name: '',
+            catID: '',
+            authID: ''
         };
     }
     handleClose() {
         this.setState({ show: false });
     }
-    handleShow = (val)=>(e) => {
+    handleShow = (val) => (e) => {
         e.preventDefault();
         const id = e.target.dataset.id;
         debugger
         val.getCurrentBook(id);
         // console.log(val.state.BookCurrstate[0].name);
         this.setState({ show: true, ID: id });
-        this.state.name=val.state.BookCurrstate[0].name;
-        this.state.catID=val.state.BookCurrstate[0].categoryId;
-        this.state.authID=val.state.BookCurrstate[0].authorId;
+        this.state.name = val.state.BookCurrstate[0].name;
+        this.state.catID = val.state.BookCurrstate[0].categoryId;
+        this.state.authID = val.state.BookCurrstate[0].authorId;
         // console.log(this.state)
     }
     del = (deleteBook) => (e) => {
@@ -59,10 +57,10 @@ class ListingRow extends React.Component {
         this.setState({ show: false });
     }
     handleChange = (e) => {
-   
+
         const value = e.target.value;
-        this.setState({ name: value});
-      }
+        this.setState({ name: value });
+    }
     render() {
         return (
 
@@ -89,7 +87,7 @@ class ListingRow extends React.Component {
                                     <Modal.Body>
                                         <Form>
                                             <Form.Group as={Col} controlId="formBasicbook">
-                                            
+
                                                 <Form.Control type="text" ref={element => this.bookName = element} placeholder="Edit book Name" value={this.state.name} onChange={this.handleChange}></Form.Control>
                                             </Form.Group>
 
@@ -117,10 +115,10 @@ class ListingRow extends React.Component {
                                             <Modal.Footer>
                                                 <Button variant="secondary" onClick={this.handleClose}>
                                                     Cancel
-                              </Button>
+                                                </Button>
                                                 <Button variant="success" onClick={this.edit(value.editBook)}>
                                                     Edit Name
-                              </Button>
+                                                </Button>
                                             </Modal.Footer>
                                         </Form>
                                     </Modal.Body>
