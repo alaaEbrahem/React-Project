@@ -115,6 +115,9 @@ class App extends Component {
     const u = user;
     this.setState({ login: u });
   }
+  logout=()=>{ 
+    this.setState({ login: false });
+  }
   //categoru function
   addCategory = (category) => {
     const { categories } = this.state;
@@ -254,6 +257,7 @@ class App extends Component {
       addAuthor: this.addAuthor,
       deleteAuthor: this.deleteAuthor,
       editAuthor: this.editAuthor,
+      logout:this.logout
 
 
     }
