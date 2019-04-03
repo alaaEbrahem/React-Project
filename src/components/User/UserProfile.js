@@ -38,18 +38,7 @@ class BooksData extends Component{
                                 <td><NavLink exact to={{pathname: `/author`,}}>{book.author}</NavLink></td>
                                 <td><Stars/></td>
                                 <td><Stars/></td>
-                                {/* <td>
-                                <Dropdown className="m-auto text-center" as={ButtonGroup}>
-                                    <Button variant="success">{book.status}</Button>
-                                    <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
-                                    <Dropdown.Menu>
-                                        <Dropdown.Item hred="#/action-1">Want to read</Dropdown.Item>
-                                        <Dropdown.Item hred="#/action-1">Already read</Dropdown.Item>
-                                        <Dropdown.Item hred="#/action-2">Currently reading</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
-                                </td> */}
-                                <td><DropdownComponent/></td>
+                                <td><DropdownComponent>{book.status}</DropdownComponent></td>
                             </tr>
                             </tbody>
                         )
@@ -61,27 +50,17 @@ class BooksData extends Component{
                             <tr key={book.id}>
                          
                                 <td>{book.cover}</td>
-                                <td><NavLink exact to={{pathname: `/book`,}}>{book.name}</NavLink></td>
-                                <td><NavLink exact to={{pathname: `/author`,}}>{book.author}</NavLink></td>
+                                <td><NavLink exact to={{pathname: `/book/1`,}}>{book.name}</NavLink></td>
+                                <td><NavLink exact to={{pathname: `/author/1`,}}>{book.author}</NavLink></td>
                                 <td><Stars/></td>
                                 <td><Stars/></td>
-                                {/* <td><Dropdown className="m-auto text-center" as={ButtonGroup}>
-                                    <Button variant="success">{book.status}</Button>
-                                    <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
-                                    <Dropdown.Menu>
-                                        <Dropdown.Item hred="#/action-1">Want to read</Dropdown.Item>
-                                        <Dropdown.Item hred="#/action-1">Already read</Dropdown.Item>
-                                        <Dropdown.Item hred="#/action-2">Currently reading</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown></td> */}
-                                <td><DropdownComponent/></td>
+                                <td><DropdownComponent>{book.status}</DropdownComponent></td>
                             </tr>
                             </tbody>
                         )
                     }
-                    
-                    }
-                    )
+                }
+            )
             }
              <tbody>
             <tr key={23}>
@@ -92,6 +71,8 @@ class BooksData extends Component{
                 <td></td>
                 <td></td>
             </tr>
+            </tbody>
+            <tbody>
             <tr key={24}>
                 <td></td>
                 <td></td>
@@ -100,6 +81,8 @@ class BooksData extends Component{
                 <td></td>
                 <td></td>
             </tr>
+            </tbody>
+            <tbody>
             <tr key={25}>
                 <td></td>
                 <td></td>

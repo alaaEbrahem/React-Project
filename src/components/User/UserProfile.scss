@@ -36,10 +36,10 @@
     padding: 15px;
     text-align: left;
   }
-  & tr:nth-child(even) {
+  & tbody:nth-child(even) {
     background-color: #eee;
   }
-  & tr:nth-child(odd) {
+  & tbody:nth-child(odd) {
    background-color: #fff;
   }
   & th {

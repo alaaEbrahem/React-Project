@@ -9,12 +9,12 @@ class DropdownComponent extends Component {
                 readingState: [
                     "Want to read",
                     "currently reading",
-                    "read"
+                    "already read"
                 ],
             },
-            "Want to read": true,
-            "currently reading": false,
-            "read": false
+            "Want to read": this.props.children === "want to read"? true : false,
+            "currently reading":  this.props.children === "currently reading" ? true : false,
+            "already read":  this.props.children === "already read"? true : false
         };
         this.handleDropdown = this.handleDropdown.bind(this);
     }
@@ -23,21 +23,21 @@ class DropdownComponent extends Component {
             this.setState({
                 "Want to read": true,
                 "currently reading": false,
-                "read": false
+                "already read": false
             });
         }
         else if (e === "2") {
             this.setState({
                 "Want to read": false,
                 "currently reading": true,
-                "read": false
+                "already read": false
             });
         }
         else if (e === "3") {
             this.setState({
                 "Want to read": false,
                 "currently reading": false,
-                "read": true
+                "already read": true
             });
         }
     }
@@ -46,7 +46,7 @@ class DropdownComponent extends Component {
         return (
             <Dropdown onSelect={(e) => this.handleDropdown(e)}>
                 <Dropdown.Toggle variant="success" id="dropdown-basic" >
-                    {this.state["Want to read"] ? "want to read" :(this.state["currently reading"] ?"currently reading" : "read")}
+                    {this.state["Want to read"] ? "want to read" :(this.state["currently reading"] ?"currently reading" : "already read")}
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                     <Dropdown.Item eventKey="1" onChange={this.handleDropdown}> {data.readingState[0]}</Dropdown.Item>
