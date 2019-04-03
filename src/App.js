@@ -12,6 +12,8 @@ import BookPage from './components/User/BookProfile/ListPage';
 import authorsPage from './components/User/AuthorProfile/ListPage';
 
 import aboutus from './components/User/AboutUs/AboutUs';
+
+import termsandconditions from './components/User/TermsAndConditions/TermsAndCondition';
 ///////////import admin pages/////////////////////
 import Home from './components/Admin/Home/Home.js';
 import Book from './components/Admin/Books/Books';
@@ -275,7 +277,7 @@ class App extends Component {
             <Route exact path="/author" component={AuthorProfile} />
             <Route exact path="/" component={Login} />
 
-            //////////////////// user category routes///////////////////// 
+            {/* //////////////////// user category routes/////////////////////  */}
             <Route exact path="/category/:id" component={category} />
             <Route exact path="/categories" component={CategorisList} />
             <Route exact path="/book/:id" component={BookProfile} />
@@ -284,6 +286,8 @@ class App extends Component {
 
             
             <Route exact path="/aboutus" component={aboutus} />
+            <Route exact path="/termsandconditions" component={termsandconditions} />
+            
             <Route exact path="/admin" component={Home} />
             {/* <Route exact path="/books" component={Books} /> */}
 

@@ -36,7 +36,7 @@ class HomePage extends Component {
                             </li>
                             <li className="nav-item px-3">
                                 <NavLink exact to={{
-                                    pathname: `/error`,
+                                    pathname: `/aboutus`,
                                 }}>About us</NavLink>
                             </li>
                             <li className="nav-item px-3">
@@ -51,7 +51,7 @@ class HomePage extends Component {
                             </li>
                             <li className="nav-item px-3">
                                 <NavLink exact to={{
-                                    pathname: `/error`,
+                                    pathname: `/termsandconditions`,
                                 }}>Terms & conditions</NavLink>
                             </li>
                         </ul>
