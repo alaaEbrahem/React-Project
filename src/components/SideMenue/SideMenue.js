@@ -45,12 +45,11 @@ class SideMenue extends React.Component {
               }} ><FontAwesomeIcon icon={faAlignJustify} className="ml-5 mr-5 icon" />Categoties</NavLink></li>
             </ul>
           </nav>
-          <ul className="social-links list-inline unstyled list-hover-slide">
-           
-            <li><a>Rawan</a></li>
-            <li><a>Bassant</a></li>
-            <li><a>Mirhan</a></li>
-            <li><a>Alaa</a></li>
+          <ul className="social-links list-inline unstyled list-hover-slide">            
+            <li><p className="names">Rawan</p></li>
+            <li><p className="names">Bassant</p></li>
+            <li><p className="names">Mirhan</p></li>
+            <li><p className="names">Alaa</p></li>
           </ul>
         </div>
       </header>

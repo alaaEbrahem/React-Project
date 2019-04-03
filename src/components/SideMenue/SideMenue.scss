@@ -71,7 +71,7 @@ $white-off: #DFDBD9;
     border-bottom: solid 1px $gray-shine;
   }
   
-  a{
+  a, .names{
     padding: 1.1em 0;
     color: $white-off;
     font: 400 1.5rem $sans;
@@ -95,7 +95,7 @@ $white-off: #DFDBD9;
     &:first-child{ border: none; }
   }
   
-  a{
+  a, .names{
     display: block;
     height: 5.5em;
     text-align: center;
@@ -113,7 +113,7 @@ $white-off: #DFDBD9;
     overflow: hidden;
   }
   
-  a{
+  a, .names{
     display: block;
     position: relative;
     z-index: 1;
@@ -148,7 +148,7 @@ $white-off: #DFDBD9;
   .icon{
    display: none;}
    .li{
-     a{
+     a, .names{
        padding-left: 2rem;
      }
    margin-left: 1rem;
