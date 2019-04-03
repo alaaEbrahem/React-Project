@@ -12,7 +12,6 @@ class Stars extends Component {
            star4:false,
            star5:false,
         };
-        this.handleStars = this.handleStars.bind(this);
     }
     handleStars(no,e) {
         if(no==="1"){
@@ -61,11 +60,33 @@ class Stars extends Component {
             });
         }
     }
+    starNo = () => {
+        if(this.state.star1){
+            return "1";
+        }
+        else if(this.state.star2)
+        {
+            return "2";
+        }
+        else if(this.state.star3){
+            return "3";
+        }
+        else if(this.state.star4){
+            return "4";
+        }
+        else if(this.state.star5){
+            return "5";
+        }
+        else{
+            return "0";
+        }
+    }
     render() {
         // const { data } = this.state;
         return (
-            <span className="stars" data-stars={this.state.star1 ? "1" :(this.state.star2? "2" : 
-            (this.state.star3? "3" : (this.state.star4? "4" : (this.state.star5? "5" : "0"))))}>
+            // <span className="stars" data-stars={this.state.star1 ? "1" :(this.state.star2? "2" : 
+            // (this.state.star3? "3" : (this.state.star4? "4" : (this.state.star5? "5" : "0"))))}>
+            <span className="stars" data-stars={this.starNo()}>
             <svg height="10" width="10" className="star" data-rating="1" onClick={(e)=>this.handleStars("1",e)}>
                 <polygon points="4.994,0.249 6.538,3.376 9.99,3.878 7.492,6.313 8.082,9.751 4.994,8.129 1.907,9.751 
             2.495,6.313 -0.002,3.878 3.45,3.376 " />
