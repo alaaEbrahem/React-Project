@@ -3,7 +3,7 @@ import Item from '../../../shared/item/item';
 import { MyContext } from '../../../../App';
 const list = (props) => (
     <>
-        {console.log(props.id)}
+      
         <MyContext.Consumer>
             {
 
