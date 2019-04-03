@@ -3,7 +3,7 @@ import UserNavbar from '../Navbar/UserNavbar/UserNavbar';
 import './UserProfile.scss';
 import { NavLink } from "react-router-dom";
 import Stars from '../shared/Stars/Stars';
-import { Dropdown,Button,ButtonGroup } from 'react-bootstrap';
+import  DropdownComponent  from '../shared/Dropdown/Dropdown';
 import PaginationComponent from '../shared/pagination/pagination';
 import TempData from './TempData';
 
@@ -34,7 +34,7 @@ class BooksData extends Component{
                                 <td><NavLink exact to={{pathname: `/author`,}}>{book.author}</NavLink></td>
                                 <td><Stars/></td>
                                 <td><Stars/></td>
-                                <td>
+                                {/* <td>
                                 <Dropdown className="m-auto text-center" as={ButtonGroup}>
                                     <Button variant="success">{book.status}</Button>
                                     <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
@@ -44,7 +44,8 @@ class BooksData extends Component{
                                         <Dropdown.Item hred="#/action-2">Currently reading</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
-                                </td>
+                                </td> */}
+                                <td><DropdownComponent/></td>
                             </tr>
                         )
                     }
@@ -57,7 +58,7 @@ class BooksData extends Component{
                                 <td><NavLink exact to={{pathname: `/author`,}}>{book.author}</NavLink></td>
                                 <td><Stars/></td>
                                 <td><Stars/></td>
-                                <td><Dropdown className="m-auto text-center" as={ButtonGroup}>
+                                {/* <td><Dropdown className="m-auto text-center" as={ButtonGroup}>
                                     <Button variant="success">{book.status}</Button>
                                     <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
                                     <Dropdown.Menu>
@@ -65,7 +66,8 @@ class BooksData extends Component{
                                         <Dropdown.Item hred="#/action-1">Already read</Dropdown.Item>
                                         <Dropdown.Item hred="#/action-2">Currently reading</Dropdown.Item>
                                     </Dropdown.Menu>
-                                </Dropdown></td>
+                                </Dropdown></td> */}
+                                <td><DropdownComponent/></td>
                             </tr>
                         )
                     }
