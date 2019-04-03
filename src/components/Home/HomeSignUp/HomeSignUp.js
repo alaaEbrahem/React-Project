@@ -58,7 +58,7 @@ class HomeSignUp extends Component{
     render(){
         return(
             <form className="container col-sm-4 m-5" onSubmit= {this.handleSubmit}>
-                <h3>New here? Create free account!</h3>
+                <h2>New here? Create free account!</h2>
                 <div className="form-group">
                     <input type="text" className="form-control" name="fname" onChange={this.handleChange} placeholder="Enter your first name"/>
                 </div>

@@ -1,0 +1,56 @@
+.tab-content{
+    height: 100%;
+    & > .active {
+        height: 100%;
+    }
+}
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: black !important;
+    background-color: white !important;
+}
+.tab-pane{
+    background-color: transparent !important;
+}
+.tab-wrapper
+{
+    padding: 1rem !important;
+    height: 40rem;
+    font-size: 1.5rem;
+}
+
+.tab-content > .active {
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+}
+
+.t-1 {
+  
+    width:100% ;
+    height: 80%;
+    border: 2px solid white;
+  & table, th, td {
+    // border: 1px solid black;
+    border-collapse: collapse;
+  }
+  & th, td {
+    padding: 15px;
+    text-align: left;
+  }
+  & tr:nth-child(even) {
+    background-color: #eee;
+  }
+  & tr:nth-child(odd) {
+   background-color: #fff;
+  }
+  & th {
+    background-color: #32AD3C;
+    color: white;
+  }
+}
+
+
+  
+
+  
+  
+
