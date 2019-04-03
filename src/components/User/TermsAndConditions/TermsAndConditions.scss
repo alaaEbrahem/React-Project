@@ -2,26 +2,27 @@
     position: absolute !important;
     top: 0;
     left: 0rem;
-    z-index: 3;
-    animation-duration:2s;
+    animation-duration: 2s;
     animation-name: termsimg;
-    
 }
 
-.terms__images{
+.terms__images {
     height: 61.6rem;
 }
-.terms{
+
+.terms {
     overflow: hidden;
 }
 
-.title{
+.title {
     font-size: 3.25rem !important;
 }
+
 @keyframes termsimg {
     from {
         left: 80rem;
     }
+
     to {
         left: 0rem;
     }
