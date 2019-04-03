@@ -6,6 +6,7 @@ import Stars from '../shared/Stars/Stars';
 import  DropdownComponent  from '../shared/Dropdown/Dropdown';
 import PaginationComponent from '../shared/pagination/pagination';
 import TempData from './TempData';
+import { MyContext } from '../../App'
 
 class BooksData extends Component{
     constructor(props) {
@@ -107,7 +108,10 @@ class BooksData extends Component{
 class UserProfile extends Component {
     render() {
         return (
-            <>
+            <MyContext.Consumer>
+        {value => (
+          value.state.login ?
+            <React.Fragment>
                 <UserNavbar />
                 <div className="row no-gutters m-4 tab-wrapper">
                 <div className="col-md-3 p-3">
@@ -127,9 +131,12 @@ class UserProfile extends Component {
                     </div>
                 </div>
                 </div>
-            </>
-        )
-    }
+                </React.Fragment> : this.props.history.push(`/`)
+
+)}
+</MyContext.Consumer>
+);
+}
 }
 
 export default UserProfile

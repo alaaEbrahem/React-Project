@@ -31,7 +31,7 @@ class Login extends React.Component {
 
         }
         else if (user.userGroup === 2) {
-            this.props.history.push(`/user/${user.id}`);
+            this.props.history.push(`/profile`);
         }
         else {
             this.setState({ password: '', username: '', error: 'Invalid username or password*' });

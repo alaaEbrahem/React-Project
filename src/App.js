@@ -262,7 +262,7 @@ const { authors } = this.state;
         <Router><>
           <Switch>
           
-            <Route exact path="/user/:id" component={HomePage} />
+            <Route exact path="/user" component={HomePage} />
             <Route exact path="/profile" component={UserProfile} />
             <Route exact path="/author" component={AuthorProfile} />
             <Route exact path="/" component={Login} />
