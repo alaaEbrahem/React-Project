@@ -50,8 +50,8 @@ class App extends Component {
         , { name: 'aya', password: '123456', userGroup: 1, image: "pexels-photo-736716.jpeg", deleted: false, id: 2 },
       { name: 'sara', password: '123456', userGroup: 2, image: "pexels-photo-614810.jpeg", deleted: false, id: 3 }],
     authors:
-      [{ FN: 'alaa', LN: 'Ebrahim', DOB: '1/1/2010', image: author, deleted: false, id: 1 }
-        , { FN: 'aya', LN: 'Ebrahim', DOB: '2/1/2012', image: author2, deleted: false, id: 2 }
+      [{ FN: 'alaa', LN: 'Ebrahim', DOB: '1/1/2010', image: author, deleted: false, id: '1' }
+        , { FN: 'aya', LN: 'Ebrahim', DOB: '2/1/2012', image: author2, deleted: false, id: '2' }
       ],
 
     categories:
@@ -121,6 +121,10 @@ class App extends Component {
   }
   logout=()=>{ 
     this.setState({ login: false });
+  }
+  addUser = (user) => {
+    const { users } = this.state;
+    this.setState({ users: users.concat(user) })
   }
   //categoru function
   addCategory = (category) => {
@@ -261,7 +265,8 @@ class App extends Component {
       addAuthor: this.addAuthor,
       deleteAuthor: this.deleteAuthor,
       editAuthor: this.editAuthor,
-      logout:this.logout
+      logout:this.logout,
+      addUser:this.addUser
 
 
     }

@@ -17,6 +17,7 @@ class BooksData extends Component{
     render(){
         return(
             <table className="t-1">
+            <thead>
             <tr>
                 <th>Cover</th>
                 <th>Name</th> 
@@ -25,10 +26,12 @@ class BooksData extends Component{
                 <th>Rating</th>
                 <th>Shelve</th>
             </tr>
+            </thead>
             { 
                 this.props.TempData.map((book) => {
                      if(book.status === this.props.val){
                         return(
+                            <tbody>
                             <tr key={book.id}>
                                 <td>{book.cover}</td>
                                 <td><NavLink exact to={{pathname: `/book`,}}>{book.name}</NavLink></td>
@@ -48,12 +51,15 @@ class BooksData extends Component{
                                 </td> */}
                                 <td><DropdownComponent/></td>
                             </tr>
+                            </tbody>
                         )
                     }
                     else if(this.props.val === "all")
                     {
                         return(
+                            <tbody>
                             <tr key={book.id}>
+                         
                                 <td>{book.cover}</td>
                                 <td><NavLink exact to={{pathname: `/book`,}}>{book.name}</NavLink></td>
                                 <td><NavLink exact to={{pathname: `/author`,}}>{book.author}</NavLink></td>
@@ -70,13 +76,15 @@ class BooksData extends Component{
                                 </Dropdown></td> */}
                                 <td><DropdownComponent/></td>
                             </tr>
+                            </tbody>
                         )
                     }
                     
                     }
                     )
             }
-            <tr>
+             <tbody>
+            <tr key={23}>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -84,7 +92,7 @@ class BooksData extends Component{
                 <td></td>
                 <td></td>
             </tr>
-            <tr>
+            <tr key={24}>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -92,7 +100,7 @@ class BooksData extends Component{
                 <td></td>
                 <td></td>
             </tr>
-            <tr>
+            <tr key={25}>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -100,6 +108,7 @@ class BooksData extends Component{
                 <td></td>
                 <td></td>
             </tr> 
+            </tbody>
             </table>
         )
     }
@@ -110,7 +119,7 @@ class UserProfile extends Component {
         return (
             <MyContext.Consumer>
         {value => (
-          value.state.login ?
+        
             <React.Fragment>
                 <UserNavbar />
                 <div className="row no-gutters m-4 tab-wrapper">
@@ -131,7 +140,7 @@ class UserProfile extends Component {
                     </div>
                 </div>
                 </div>
-                </React.Fragment> : this.props.history.push(`/`)
+                </React.Fragment> 
 
 )}
 </MyContext.Consumer>
