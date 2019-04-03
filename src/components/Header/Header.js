@@ -16,7 +16,7 @@ class Header extends Component {
     }
     handleChangepassword = (e) => {
         const value = e.target.value;
-        this.setState({ password: value,error:'' });
+        this.setState({ loginPassword: value,error:'' });
     }
 
     handleSubmit = (value) => (e) => {

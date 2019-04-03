@@ -4,11 +4,20 @@ import user2 from '../../../assets/images/user2.jpg';
 import { Image } from 'react-bootstrap';
 import './UserNavbar.scss';
 import { NavLink } from "react-router-dom";
+import { MyContext } from '../../../App'
+import { withRouter } from "react-router";
+
 
 class UserNavbar extends Component {
+    handleLogOut= (value) => (e) => {
+        value.logout();
+        this.props.history.push(`/user`);
+      }
     render() {
         return (
-
+<MyContext.Consumer>
+      {value => ( 
+          value.state.login?
             <div className="nav-wrap user-NavBar">
                 <nav className="user-nav navbar navbar-expand-lg navbar-light">
                     <a className="navbar-brand" >good<span className="font-weight-bold">reads</span></a>
@@ -20,7 +29,7 @@ class UserNavbar extends Component {
                         <ul className="navbar-nav">
                             <li className="nav-item mr-4">
                                 <NavLink exact to={{
-                                    pathname: `/user/:id`,
+                                    pathname: `/user`,
                                 }}>Home</NavLink>
                             </li>
                             <li className="nav-item mr-4">
@@ -45,16 +54,18 @@ class UserNavbar extends Component {
                             <button className="btn btn-outline-primary my-2 my-sm-0" type="submit"><FontAwesomeIcon icon="search" /></button>
                         </form>
                         <div className="fontIcon ml-auto align-content-center">
-                            <Image src={user2} roundedCircle alt="user-img" />
-                            <span className="px-3">User Name</span>
-                            <FontAwesomeIcon icon="sign-out-alt" className="ml-5" />
+                            <Image width="73" height="73" src={value.state.login ? require(`../../../assets/images/${value.state.login.image}`):user2} roundedCircle alt="user-img" />
+                            <span className="px-3">{value.state.login?value.state.login.name:'User Name'}</span>
+                            <FontAwesomeIcon onClick={this.handleLogOut(value)} icon="sign-out-alt" className="ml-5" />
                         </div>
                     </div>
                 </nav>
                 <hr className="m-0"></hr>
             </div>
-        )
-    }
-}
-
-export default UserNavbar
+ :this.props.history.push(`/user`)
+ )}
+ </MyContext.Consumer>
+ );
+ }
+ }
+ export default withRouter(UserNavbar);

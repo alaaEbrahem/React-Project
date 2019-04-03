@@ -3,10 +3,18 @@ import '../../App.scss'
 import './Navbar.scss';
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { MyContext } from '../../App'
+
 
 class Navbar extends React.Component {
+  handleLogOut= (value) => (e) => {
+    value.logout();
+   
+  }
   render() {
     return (
+      <MyContext.Consumer>
+                {value => (
       <div className="container-fluid no-gutters">
         <section className="top-nav">
           <div className="ml-5  logo">
@@ -34,13 +42,17 @@ class Navbar extends React.Component {
               user: this.props.user
             }}>Categories</NavLink></li>
             <div className="fontIcon mr-5">
-              <FontAwesomeIcon icon="sign-out-alt" className="ml-5" />
+             <div ><FontAwesomeIcon onClick={this.handleLogOut(value)}  icon="sign-out-alt" className="ml-5" /></div> 
             </div>
 
           </ul>
         </section>
       </div>
-    );
-  }
-}
-export default Navbar;
+               )}
+               </MyContext.Consumer>
+           );
+       }
+   
+   };
+   export default Navbar
+

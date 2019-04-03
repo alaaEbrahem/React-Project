@@ -31,7 +31,7 @@ class HomePage extends Component {
                         <ul className="navbar-nav">
                             <li className="nav-item px-3">
                                 <NavLink exact to={{
-                                    pathname: `/user/:id`,
+                                    pathname: `/user`,
                                 }}>Home</NavLink>
                             </li>
                             <li className="nav-item px-3">
