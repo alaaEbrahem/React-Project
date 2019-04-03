@@ -16,83 +16,87 @@ class BooksData extends Component{
     }
     render(){
         return(
-            <table className="t-1">
-            <thead>
-            <tr>
-                <th>Cover</th>
-                <th>Name</th> 
-                <th>Author</th>
-                <th>Avg Rating</th>
-                <th>Rating</th>
-                <th>Shelve</th>
-            </tr>
-            </thead>
-            { 
-                this.props.TempData.map((book) => {
-                     if(book.status === this.props.val){
-                        return(
-                            <tbody>
-                            <tr key={book.id}>
-                                <td>{book.cover}</td>
-                                <td><NavLink exact to={{pathname: `/book`,}}>{book.name}</NavLink></td>
-                                <td><NavLink exact to={{pathname: `/author`,}}>{book.author}</NavLink></td>
-                                <td><Stars/></td>
-                                <td><Stars/></td>
-                                <td><DropdownComponent>{book.status}</DropdownComponent></td>
-                            </tr>
-                            </tbody>
-                        )
+            <MyContext.Consumer>
+                {(value)=>(
+                    <table className="t-1">
+                    <thead>
+                    <tr>
+                        <th>Cover</th>
+                        <th>Name</th> 
+                        <th>Author</th>
+                        <th>Avg Rating</th>
+                        <th>Rating</th>
+                        <th>Shelve</th>
+                    </tr>
+                    </thead>
+                    { 
+                        this.props.TempData.map((book) => {
+                            if(book.status === this.props.val){
+                                return(
+                                    <tbody>
+                                    <tr key={book.id}>
+                                        <td><img src={book.cover} height="100" alt="cover"/></td>
+                                        <td><NavLink exact to={{pathname: `/book/1`,}}>{book.name}</NavLink></td>
+                                        <td><NavLink exact to={{pathname: `/author/1`,}}>{book.author}</NavLink></td>
+                                        <td><Stars/></td>
+                                        <td><Stars/></td>
+                                        <td><DropdownComponent>{book.status}</DropdownComponent></td>
+                                    </tr>
+                                    </tbody>
+                                )
+                            }
+                            else if(this.props.val === "all")
+                            {
+                                return(
+                                    <tbody>
+                                    <tr key={book.id}>
+                                
+                                        <td><img src={book.cover} height="100" alt="cover"/></td>
+                                        <td><NavLink exact to={{pathname: `/book/1`,}}>{book.name}</NavLink></td>
+                                        <td><NavLink exact to={{pathname: `/author/1`,}}>{book.author}</NavLink></td>
+                                        <td><Stars/></td>
+                                        <td><Stars/></td>
+                                        <td><DropdownComponent>{book.status}</DropdownComponent></td>
+                                    </tr>
+                                    </tbody>
+                                )
+                            }
+                        }
+                    )
                     }
-                    else if(this.props.val === "all")
-                    {
-                        return(
-                            <tbody>
-                            <tr key={book.id}>
-                         
-                                <td>{book.cover}</td>
-                                <td><NavLink exact to={{pathname: `/book/1`,}}>{book.name}</NavLink></td>
-                                <td><NavLink exact to={{pathname: `/author/1`,}}>{book.author}</NavLink></td>
-                                <td><Stars/></td>
-                                <td><Stars/></td>
-                                <td><DropdownComponent>{book.status}</DropdownComponent></td>
-                            </tr>
-                            </tbody>
-                        )
-                    }
-                }
-            )
-            }
-             <tbody>
-            <tr key={23}>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            </tbody>
-            <tbody>
-            <tr key={24}>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            </tbody>
-            <tbody>
-            <tr key={25}>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr> 
-            </tbody>
-            </table>
+                    <tbody>
+                    <tr key={23}>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                    <tbody>
+                    <tr key={24}>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                    <tbody>
+                    <tr key={25}>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr> 
+                    </tbody>
+                    </table>
+                )}
+            </MyContext.Consumer>
         )
     }
 }
