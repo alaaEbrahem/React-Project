@@ -272,6 +272,9 @@ const { authors } = this.state;
             <Route exact path="/categories" component={CategorisList} />
             <Route exact path="/book/:id" component={BookProfile} />
             <Route exact path="/author/:id" component={AuthorProfile} />
+            <Route exact path="/authorsPage" component={authorsPage} />
+
+            authorsPage
 
             <Route exact path="/admin" component={Home} />
             {/* <Route exact path="/books" component={Books} /> */}

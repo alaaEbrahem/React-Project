@@ -2,6 +2,7 @@ import React from 'react';
 import '../../App.scss'
 import './Navbar.scss';
 import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Navbar extends React.Component {
   render() {
@@ -32,6 +33,9 @@ class Navbar extends React.Component {
               pathname: `/admin/categories`,
               user: this.props.user
             }}>Categories</NavLink></li>
+            <div className="fontIcon mr-5">
+              <FontAwesomeIcon icon="sign-out-alt" className="ml-5" />
+            </div>
 
           </ul>
         </section>
