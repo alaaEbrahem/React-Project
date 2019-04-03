@@ -288,7 +288,7 @@ class App extends Component {
             <Route exact path="/book/:id" component={BookProfile} />
             <Route exact path="/author/:id" component={AuthorProfile} />
             <Route exact path="/authorsPage" component={authorsPage} />
-
+            <Route exact path="/BookPage" component={BookPage} />
             
             <Route exact path="/aboutus" component={aboutus} />
             <Route exact path="/termsandconditions" component={termsandconditions} />

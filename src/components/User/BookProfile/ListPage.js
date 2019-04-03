@@ -7,9 +7,9 @@ const BookPage = (props) => (
     <>
         <UserNavbar />
         <Container >
-            <a className="navbar-brand text-center">Adventure<span className="font-weight-bold"></span></a>
+            <a className="navbar-brand text-center">Books<span className="font-weight-bold"></span></a>
             <Row className="text-center m-auto justify-content-between">
-                <List></List>
+                <List ></List>
             </Row>
             <PaginationComponent></PaginationComponent>
         </Container>

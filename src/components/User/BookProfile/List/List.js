@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import book1 from '../../../../assets/images/d.jpg';
 import Item from '../../../shared/item/item';
+import { MyContext } from '../../../../App'
 class list extends Component {
     state = {
         data: [
@@ -32,11 +33,14 @@ class list extends Component {
     }
     render() {
         return (
-    
-        this.state.data.map(i => (<Item itemImage={i.itemImg} itemTitle={i.itemTitle} itemSubTitle={i.itemSubTitle} key={i.id}></Item>))
+            <MyContext.Consumer>
+            {value => (
+        value.state.Book.map(b => (<Item itemImage={b.photo} itemTitle={b.name} itemSubTitle={b.name} key={b.id}></Item>))
 
-        )
-    }
-
+        )}
+        </MyContext.Consumer>
+    );
 }
+
+};
 export default list;

@@ -35,14 +35,14 @@ class Login extends React.Component {
         }
         else {
             this.setState({ password: '', username: '', error: 'Invalid username or password*' });
-            this.props.history.push(`/`);
+            this.props.history.push(`/user`);
         }
     }
     render() {
         return (
 
-            <MyContext.Consumer>
-                {value => (
+                <MyContext.Consumer>
+                    {value => (
                     <div className="container mt-5 mt-md-4">
                         <div className="row">
                             <div className="col-sm-5 offset-1  col-10 offset-md-2 col-md-8 login-form">
