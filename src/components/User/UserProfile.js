@@ -106,7 +106,7 @@ class UserProfile extends Component {
         return (
             <MyContext.Consumer>
         {value => (
-        
+        value.state.login?
             <React.Fragment>
                 <UserNavbar />
                 <div className="row no-gutters m-4 tab-wrapper">
@@ -129,7 +129,7 @@ class UserProfile extends Component {
                 </div>
                 </React.Fragment> 
 
-)}
+: this.props.history.push(`/user`))}
 </MyContext.Consumer>
 );
 }
