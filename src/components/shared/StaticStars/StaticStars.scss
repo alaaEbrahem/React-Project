@@ -1,0 +1,55 @@
+.sstars {
+    cursor: pointer;
+    margin-left: auto;
+    .sstar {
+        polygon {
+            fill: #d8d8d8;
+        }
+
+        &:hover~.star {
+            polygon {
+                fill: #d8d8d8 !important;
+            }
+        }
+    }
+    &[data-sstars="0"] {
+        polygon {
+            fill: #d8d8d8 !important;
+        }
+    }
+    &[data-sstars] {
+        .sstar polygon {
+            fill: #ffd055;
+        }
+    }
+   
+    &[data-sstars="1"] {
+        .sstar:nth-child(1)~.sstar polygon {
+            fill: #d8d8d8;
+        }
+    }
+
+    &[data-sstars="2"] {
+        .sstar:nth-child(2)~.sstar polygon {
+            fill: #d8d8d8;
+        }
+    }
+
+    &[data-sstars="3"] {
+        .sstar:nth-child(3)~.sstar polygon {
+            fill: #d8d8d8;
+        }
+    }
+
+    &[data-sstars="4"] {
+        .sstar:nth-child(4)~.sstar polygon {
+            fill: #d8d8d8;
+        }
+    }
+
+    &[data-sstars="5"] {
+        .sstar:nth-child(5)~.sstar polygon {
+            fill: #d8d8d8;
+        }
+    }
+}
