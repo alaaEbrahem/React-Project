@@ -105,6 +105,7 @@ class App extends Component {
 
     ],
     BookCurrstate: [],
+    searchValue:''
   }
   search = (name, password) => {
     const { users } = this.state;
@@ -237,7 +238,10 @@ class App extends Component {
 
     this.setState({ authors: authors });
   }
-
+Search=(text)=>{
+this.state.searchValue=text;
+console.log(this.state.searchValue)
+}
   //////////////////////////////////////
 
   render() {
@@ -266,7 +270,8 @@ class App extends Component {
       deleteAuthor: this.deleteAuthor,
       editAuthor: this.editAuthor,
       logout:this.logout,
-      addUser:this.addUser
+      addUser:this.addUser,
+      Search:this.Search
 
 
     }
