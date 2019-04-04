@@ -12,8 +12,9 @@ class BooksData extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            query:false,
             TempData: this.props.TempData,
-            // filterData: this.props.TempData,
+            filterData: this.props.TempData,
         }
     }
     render() {
@@ -32,9 +33,28 @@ class BooksData extends Component {
                                 <th>Shelve</th>
                             </tr>
                         </thead>
-                        {
-                            value.state.searchValue === '' ?
-                                this.state.TempData.map((book) => {
+                        {  
+                            value.state.searchValue.trim() !== "" && this.state.query==false?
+                            this.setState(prevState => {
+                                const filterData = prevState.TempData.filter(element => {
+                                    if( element.name.toLowerCase().includes(value.state.searchValue.toLowerCase()))
+                                    {
+                                        return element;
+                                    }
+                                });
+                                if(filterData.length!==0){
+                                    return {
+                                    filterData,
+                                    query:true
+                                };
+                                }
+                               
+                            }):
+                            this.state.query==true && value.state.searchValue.trim() == ""?
+                            this.setState({filterData:this.state.TempData,query:false})
+                            
+                            :this.state.filterData.map((book) => {
+                                 this.state.query=false
                                     if (book.status === this.props.val) {
                                         return (
                                             <tbody>
@@ -64,70 +84,9 @@ class BooksData extends Component {
                                             </tbody>
                                         )
                                     }
-                                }) : this.state.TempData.filter(element => {
-                                    if (element.name.toLowerCase().includes(value.state.searchValue.toLowerCase())) {
-                                        if (element.status === this.props.val) {
-                                            return (
-                                                <tbody>
-                                                    <tr key={element.id}>
-                                                        <td><img src={element.cover} height="100" alt="cover" /></td>
-                                                        <td><NavLink exact to={{ pathname: `/book/1`, }}>{element.name}</NavLink></td>
-                                                        <td><NavLink exact to={{ pathname: `/author/1`, }}>{element.author}</NavLink></td>
-                                                        <td><Stars /></td>
-                                                        <td><Stars /></td>
-                                                        <td><DropdownComponent>{element.status}</DropdownComponent></td>
-                                                    </tr>
-                                                </tbody>
-                                            )
-                                        }
-                                        else if (this.props.val === "all") {
-                                            return (
-                                                <tbody>
-                                                    <tr key={element.id}>
-
-                                                        <td><img src={element.cover} height="100" alt="cover" /></td>
-                                                        <td><NavLink exact to={{ pathname: `/book/1`, }}>{element.name}</NavLink></td>
-                                                        <td><NavLink exact to={{ pathname: `/author/1`, }}>{element.author}</NavLink></td>
-                                                        <td><Stars /></td>
-                                                        <td><Stars /></td>
-                                                        <td><DropdownComponent>{element.status}</DropdownComponent></td>
-                                                    </tr>
-                                                </tbody>
-                                            )
-                                        }
-                                    }
                                 })
                         }
-                        <tbody>
-                            <tr key={23}>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr key={24}>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr key={25}>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
+                        
                     </table>
                 )}
             </MyContext.Consumer>

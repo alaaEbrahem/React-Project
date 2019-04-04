@@ -241,6 +241,7 @@ class App extends Component {
   }
 Search=(text)=>{
 this.state.searchValue=text;
+this.setState({searchValue:text});
 console.log(this.state.searchValue)
 }
   //////////////////////////////////////
