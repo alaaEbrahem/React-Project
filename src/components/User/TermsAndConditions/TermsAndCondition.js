@@ -12,7 +12,7 @@ const TermsAndConditions = (props) => (
             <Container className="mt-5 ">
                 <Row>
                     <Col md-4>
-                        <h1 className="title">Terms & conditions <span className="font-weight-bold">Us</span></h1>
+                        <h1 className="title">Terms <span className="font-weight-bold">& Conditions</span></h1>
                         <p className="mt-3">Lorem ipsum dolor sit amet conse ctetur adipisicing
                             elit, sed do eiusmod tempor incididunt ut labore et dolore
                             magna aliqua. Ut enim ad minim veniam, qused do eiusmod

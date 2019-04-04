@@ -109,18 +109,20 @@ class App extends Component {
   }
   search = (name, password) => {
     const { users } = this.state;
-    for (var i = 0; i < users.length; i++) {
-      if (users[i].name === name && users[i].password === password) {
-        return users[i];
-      }
+    const result=users.filter(u=>u.name === name && u.password === password);
+    if(result.length>0){
+      return result[0];
     }
-    return name;
+    else{
+      return name;
+    }
+  
   }
   addLogin = (user) => {
     const u = user;
     this.setState({ login: u });
   }
-  logout=()=>{ 
+  logout = () => {
     this.setState({ login: false });
   }
   addUser = (user) => {
@@ -166,15 +168,14 @@ class App extends Component {
   }
   searchCategory = (name) => {
     const { categories } = this.state;
-
-    for (var i = 0; i < categories.length; i++) {
-
-      if (categories[i].name.toLowerCase() === name.toLowerCase() && !(categories[i].deleted)) {
-
-        return false;
-      }
+    const result = categories.filter(c => c.name.toLowerCase() === name.toLowerCase() && !(c.deleted));
+    if (result.length > 0) {
+      return false;
     }
-    return true;
+    else {
+      return true;
+    }
+  
   }
 
   deleteCategory = (id) => {
@@ -195,7 +196,7 @@ class App extends Component {
     this.setState({ categories: newArray });
   }
   getCurrentBook = (id) => {
-    debugger
+   
     const BookCurrstate = this.state.Book.filter(b => (b.id === id));
     // const {BookCurrstate}=this.state;
     this.setState({ BookCurrstate });
@@ -280,7 +281,7 @@ console.log(this.state.searchValue)
         <Router><>
           <Switch>
 
-          
+
             <Route exact path="/user" component={HomePage} />
 
             <Route exact path="/profile" component={UserProfile} />
@@ -294,10 +295,10 @@ console.log(this.state.searchValue)
             <Route exact path="/author/:id" component={AuthorProfile} />
             <Route exact path="/authorsPage" component={authorsPage} />
             <Route exact path="/BookPage" component={BookPage} />
-            
+
             <Route exact path="/aboutus" component={aboutus} />
             <Route exact path="/termsandconditions" component={termsandconditions} />
-            
+
             <Route exact path="/admin" component={Home} />
             {/* <Route exact path="/books" component={Books} /> */}
 
