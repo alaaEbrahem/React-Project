@@ -33,9 +33,9 @@ class UserNavbar extends Component {
                                             }}>Home</NavLink>
                                         </li>
                                         <li className="nav-item mr-4">
-                                            <NavLink exact to={{
+                                        {value.state.login?  <NavLink exact to={{
                                                 pathname: `/profile`,
-                                            }}>Profile</NavLink>
+                                            }}>Profile</NavLink>:""}
                                         </li>
                                         <li className="nav-item mr-4">
                                             <NavLink exact to={{
