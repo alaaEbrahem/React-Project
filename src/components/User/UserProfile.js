@@ -20,7 +20,7 @@ class BooksData extends Component {
         return (
             <MyContext.Consumer>
                 {(value) => (
-
+                 
                     <table className="t-1">
                         <thead>
                             <tr>
@@ -33,7 +33,9 @@ class BooksData extends Component {
                             </tr>
                         </thead>
                         {
+                           
                             value.state.searchValue === '' ?
+                            
                                 this.state.TempData.map((book) => {
                                     if (book.status === this.props.val) {
                                         return (
