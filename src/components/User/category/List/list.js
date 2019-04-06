@@ -8,7 +8,7 @@ const list = (props) => (
             {
 
                 value => (
-                    value.state.Book.filter(i => (i.categoryId == props.id)).map(i => (<Item itemImage={i.photo} bookId={i.id} book={i} itemTitle={i.name}
+                    value.state.Book.filter(i => (i.categoryId == props.id)).map(i => (<Item itemImage={i.photo} id={i.id} book={i} itemTitle={i.name}
                       
                         itemSubTitle={
                             value.state.authors.filter(a => (a.id == i.authorId))[0]

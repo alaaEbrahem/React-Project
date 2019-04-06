@@ -35,7 +35,10 @@ class list extends Component {
         return (
             <MyContext.Consumer>
             {value => (
-        value.state.Book.map(b => (<Item itemImage={b.photo} itemTitle={b.name} itemSubTitle={b.name} key={b.id}></Item>))
+        value.state.Book.map(b => (<Item itemImage={b.photo} itemTitle={b.name}  key={b.id} id={b.id}book={b}
+            itemSubTitle={
+                value.state.authors.filter(a => (a.id == b.authorId))[0]
+            } key={b.id}></Item>))
 
         )}
         </MyContext.Consumer>
