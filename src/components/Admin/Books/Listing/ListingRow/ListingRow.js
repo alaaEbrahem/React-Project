@@ -5,8 +5,6 @@ import edit from '../../../../../assets/images/edit-solid.png';
 import remove from '../../../../../assets/images/trash-solid.png';
 import '../../Book.scss';
 
-
-
 class ListingRow extends React.Component {
     constructor(props) {
         super(props);
@@ -14,12 +12,13 @@ class ListingRow extends React.Component {
         this.handleClose = this.handleClose.bind(this);
         this.state = {
             show: false,
-            ID: '',
-            name: '',
-            catID: '',
-            authID: ''
+            curr_id: '',
+            currName: '',
+            currCatID: '',
+            currAuthID: ''
         };
     }
+
     handleClose() {
         this.setState({ show: false });
     }
@@ -27,39 +26,33 @@ class ListingRow extends React.Component {
         e.preventDefault();
         const id = e.target.dataset.id;
         debugger
-        val.getCurrentBook(id);
-        // console.log(val.state.BookCurrstate[0].name);
-        this.setState({ show: true, ID: id });
-        this.state.name = val.state.BookCurrstate[0].name;
-        this.state.catID = val.state.BookCurrstate[0].categoryId;
-        this.state.authID = val.state.BookCurrstate[0].authorId;
-        // console.log(this.state)
+        const currentBook = val.state.Book.filter(b => b._id === id)
+        this.setState({ show: true, curr_id: currentBook[0]._id, currName: currentBook[0].Name, currCatID: currentBook[0].CategoryID, currAuthID: currentBook[0].AuthorID });
+        this.setState({ show: true });
     }
     del = (deleteBook) => (e) => {
         e.preventDefault();
+        debugger
         const id = e.target.dataset.id;
         deleteBook(id);
     }
-    edit = (EditBook) => (e) => {
+    edit = (editBook) => (e) => {
         e.preventDefault();
-        // const id=e.target.dataset.id;
-        const img = this.Image.value.substring(12);
-        console.log(img);
-        const editBook = {
-            // photo: `../src/assets/images/${img}`,
-            photo: '',
-            name: this.bookName.value,
-            categoryId: this.catID.value,
-            authorId: this.authID.value,
-        }
         debugger
-        EditBook(this.state.ID, editBook);
+        const editedBook = {
+            // photo: `../src/assets/images/${img}`,
+            // photo: '',
+            _id: this.state.curr_id,
+            Name: this.state.currName,
+            CategoryID: this.catID.value,
+            AuthorID: this.authID.value,
+        }
+        editBook(editedBook);
         this.setState({ show: false });
     }
     handleChange = (e) => {
-
         const value = e.target.value;
-        this.setState({ name: value });
+        this.setState({ currName: value });
     }
     render() {
         return (
@@ -68,17 +61,17 @@ class ListingRow extends React.Component {
                 {
 
                     value => (
-                        value.state.Book.filter(R => (R.deleted === false)).map(R => (<tr>
-                            <td>{R.id}</td>
+                        value.state.Book.map(R => (<tr>
+                            <td>{R._id}</td>
                             <td><img src={R.photo} alt="bookimg" /></td>
 
-                            <td>{R.name}</td>
-                            <td>{R.categoryId}</td>
-                            <td>{R.authorId}</td>
+                            <td>{R.Name}</td>
+                            <td>{R.CategoryID}</td>
+                            <td>{R.AuthorID}</td>
                             <td class="td">
                                 {/* <FontAwesomeIcon icon={faEdit} onClick={this.handleShow} className="icon mr-3" /> */}
-                                <img class="B" src={edit} data-id={R.id} onClick={this.handleShow(value)}></img>
-                                <img class="B" src={remove} data-id={R.id} onClick={this.del(value.deleteBook)}></img>
+                                <img class="B" src={edit} data-id={R._id} onClick={this.handleShow(value)}></img>
+                                <img class="B" src={remove} data-id={R._id} onClick={this.del(value.deleteBook)}></img>
                                 {/* <FontAwesomeIcon icon={faTrash} className="icon" data-id={R.id} onClick={this.del(value.deleteBook)}/> */}
                                 <Modal show={this.state.show} onHide={this.handleClose}>
                                     <Modal.Header closeButton>
@@ -88,12 +81,12 @@ class ListingRow extends React.Component {
                                         <Form>
                                             <Form.Group as={Col} controlId="formBasicbook">
 
-                                                <Form.Control type="text" ref={element => this.bookName = element} placeholder="Edit book Name" value={this.state.name} onChange={this.handleChange}></Form.Control>
+                                                <Form.Control type="text" ref={element => this.bookName = element} placeholder="Edit book Name" value={this.state.currName} onChange={this.handleChange}></Form.Control>
                                             </Form.Group>
 
                                             <Form.Group as={Col} controlId="formGridState">
                                                 <Form.Control as="select" ref={element => this.catID = element}>
-                                                    <option>{this.state.catID}</option>
+                                                    <option>{this.state.currCatID}</option>
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
@@ -102,7 +95,7 @@ class ListingRow extends React.Component {
                                             </Form.Group>
                                             <Form.Group as={Col} controlId="formGridState">
                                                 <Form.Control as="select" ref={element => this.authID = element}>
-                                                    <option>{this.state.authID}</option>
+                                                    <option>{this.state.currAuthID}</option>
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>

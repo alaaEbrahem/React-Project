@@ -5,8 +5,6 @@ import { MyContext } from '../../../App'
 import Navbar from '../../Navbar/Navbar';
 import SideMenue from '../../SideMenue/SideMenue';
 import Listing from './Listing/Listing';
-import uuidv4 from 'uuid/v4';
-
 
 class Book extends React.Component {
 
@@ -17,8 +15,12 @@ class Book extends React.Component {
     this.handleCloseADD=this.handleCloseADD.bind(this);
     this.state = {
       show: false,
+      books:[]
     };
   }
+
+  
+
   handleClose() {
     this.setState({ show: false });
   }
@@ -28,16 +30,16 @@ class Book extends React.Component {
   handleCloseADD=(addBook)=>(e)=>{
     e.preventDefault();
     // debugger;
-    const img=this.Image.value.substring(12);
+    // const img=this.Image.value.substring(12);
     // console.log(img);
     const newBook={
-      id:uuidv4(),
+      // id:uuidv4(),
       // photo:`../src/assets/images/${img}`,
-      photo:'',
-      name:this.bookName.value,
-      categoryId:this.catID.value,
-      authorId:this.authID.value,
-      deleted:false,
+      // photo:'',
+      Name:this.bookName.value,
+      CategoryID:this.catID.value,
+      AuthorID:this.authID.value,
+      // deleted:false,
     }
     addBook(newBook);
     this.setState({ show: false });
@@ -108,7 +110,7 @@ class Book extends React.Component {
                           Add
                         </Button>
                       </div>
-                      <Listing ></Listing>
+                      <Listing></Listing>
 
                     </Container>
                   </div>

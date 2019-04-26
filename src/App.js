@@ -21,7 +21,10 @@ import Author from './components/Admin/Authors/Author';
 import Categories from './components/Admin/Categories/Categories';
 import HomePage from './components/Home/Home.js';
 import UserProfile from './components/User/UserProfile';
-
+import { getBooks } from './API/Books';
+import { deleteBook } from './API/Books';
+import { EditBook } from './API/Books';
+import { addBook } from './API/Books';
 
 ////////////////////////End Admin pages///////////////////////////
 
@@ -61,62 +64,33 @@ class App extends Component {
       { id: '4', name: "Dystopia", deleted: false }
       ],
     login: false,
-    Book: [
-      {
-        id: '1',
-        photo: book1,
-        name: "Divergent",
-        categoryId: 1,
-        authorId: 1,
-        deleted: false
-      },
-      {
-        id: '2',
-        photo: book2,
-        name: "Insergent",
-        categoryId: 1,
-        authorId: 2,
-        deleted: false
-      },
-      {
-        id: '3',
-        photo: book3,
-        name: "Allegiant",
-        categoryId: 1,
-        authorId: 1,
-        deleted: false
-      },
-      {
-        id: '4',
-        photo: book2,
-        name: "harrypotter",
-        categoryId: 2,
-        authorId: 1,
-        deleted: false
-      },
-      {
-        id: '5',
-        photo: book3,
-        name: "blue elephent",
-        categoryId: 3,
-        authorId: 1,
-        deleted: false
-      }
-
-    ],
+    Book: [],
     BookCurrstate: [],
-    searchValue:''
+    searchValue: ''
+  }
+
+  componentDidMount() {
+    debugger
+    getBooks()
+      .then(res => {
+        debugger
+        const Book = res;
+        this.setState({ Book })
+      }).catch(err => {
+        debugger
+      })
+
   }
   search = (name, password) => {
     const { users } = this.state;
-    const result=users.filter(u=>u.name === name && u.password === password);
-    if(result.length>0){
+    const result = users.filter(u => u.name === name && u.password === password);
+    if (result.length > 0) {
       return result[0];
     }
-    else{
+    else {
       return name;
     }
-  
+
   }
   addLogin = (user) => {
     const u = user;
@@ -135,36 +109,55 @@ class App extends Component {
     this.setState({ categories: categories.concat(category) })
   }
   addBook = (Bk) => {
-    const { Book } = this.state;
-    this.setState({ Book: Book.concat(Bk) });
+    addBook(Bk)
+      .then(res => {
+        debugger
+        getBooks()
+          .then(res => {
+            debugger
+            const Book = res;
+            this.setState({ Book })
+          }).catch(err => {
+            debugger
+          })
+      })
+      .catch(err => {
+        debugger
+      })
   }
 
   deleteBook = (id) => {
-    this.state.Book.filter(b => (b.id === id)).map(b => { b.deleted = true });
-    const { Book } = this.state;
-    this.setState({ Book: Book });
-    return;
+    deleteBook(id)
+      .then(res => {
+        debugger
+        getBooks()
+          .then(res => {
+            debugger
+            const Book = res;
+            this.setState({ Book })
+          }).catch(err => {
+            debugger
+          })
+      })
+      .catch(err => {
+        debugger
+      })
   }
-  editBook = (id, edited) => {
-    this.state.Book.filter(b => (b.id === id)).map(b => {
-      debugger
-      if (edited.photo !== '') {
-        b.photo = edited.photo;
-      }
-      if (edited.name !== '') {
-        b.name = edited.name;
-      }
-      if (edited.categoryId !== 'Category') {
-        b.categoryId = edited.categoryId;
-      }
-      if (edited.authorId !== 'Author') {
-        b.authorId = edited.authorId;
-      }
+  editBook = (edited) => {
+    EditBook(edited)
+      .then(res => {
+        getBooks()
+          .then(res => {
+            debugger
+            const Book = res;
+            this.setState({ Book })
+          }).catch(err => {
+            debugger
+          })
 
-    });
-    const { Book } = this.state;
-
-    this.setState({ Book: Book });
+      }).catch(err => {
+        debugger
+      })
   }
   searchCategory = (name) => {
     const { categories } = this.state;
@@ -175,7 +168,7 @@ class App extends Component {
     else {
       return true;
     }
-  
+
   }
 
   deleteCategory = (id) => {
@@ -196,7 +189,7 @@ class App extends Component {
     this.setState({ categories: newArray });
   }
   getCurrentBook = (id) => {
-   
+
     const BookCurrstate = this.state.Book.filter(b => (b.id === id));
     // const {BookCurrstate}=this.state;
     this.setState({ BookCurrstate });
@@ -239,11 +232,11 @@ class App extends Component {
 
     this.setState({ authors: authors });
   }
-Search=(text)=>{
-this.state.searchValue=text;
-this.setState({searchValue:text});
-console.log(this.state.searchValue)
-}
+  Search = (text) => {
+    this.state.searchValue = text;
+    this.setState({ searchValue: text });
+    console.log(this.state.searchValue)
+  }
   //////////////////////////////////////
 
   render() {
@@ -271,9 +264,9 @@ console.log(this.state.searchValue)
       addAuthor: this.addAuthor,
       deleteAuthor: this.deleteAuthor,
       editAuthor: this.editAuthor,
-      logout:this.logout,
-      addUser:this.addUser,
-      Search:this.Search
+      logout: this.logout,
+      addUser: this.addUser,
+      Search: this.Search
 
 
     }
