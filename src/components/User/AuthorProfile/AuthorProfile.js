@@ -31,7 +31,7 @@ class AuthorProfile extends Component {
                    
                     {value.state.authors.filter(a=>a.id===this.props.match.params.id+'').map(b=>(
                     <AuthorInfo authorImg={b.image}
-                        name={b.FN}
+                        name={b.FN+" "+b.LN}
                         born={this.state.data[0].born}
                         website={this.state.data[0].website}
                         genre={this.state.data[0].genre}

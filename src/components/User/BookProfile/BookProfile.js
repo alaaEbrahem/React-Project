@@ -28,10 +28,10 @@ class BookProfile extends Component {
             <>
                 <UserNavbar />
                 <Container>
-                    <BookInfo bookImg={bookImg}
-                        bookbackImg={bookbackImg}
+                    <BookInfo bookImg={this.props.location.book.photo}
+                        bookbackImg={this.props.location.book.photo}
                         bookName={this.props.location.book.name}
-                        authorName={this.props.location.author.FN}
+                        authorName={this.props.location.author.FN+" "+this.props.location.author.LN}
                         description={this.state.data[0].description}
                         ratingdesc={this.state.data[0].ratingdesc}
                     >

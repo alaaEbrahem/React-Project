@@ -21,7 +21,7 @@ class BooksData extends Component {
         return (
             <MyContext.Consumer>
                 {(value) => (
-
+                 
                     <table className="t-1">
                         <thead>
                             <tr>
@@ -33,6 +33,7 @@ class BooksData extends Component {
                                 <th>Shelve</th>
                             </tr>
                         </thead>
+
                         {  
                             value.state.searchValue.trim() !== "" && this.state.query==false?
                             this.setState(prevState => {
@@ -55,6 +56,7 @@ class BooksData extends Component {
                             
                             :this.state.filterData.map((book) => {
                                  this.state.query=false
+
                                     if (book.status === this.props.val) {
                                         return (
                                             <tbody>
