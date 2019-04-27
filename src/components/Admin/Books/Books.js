@@ -74,13 +74,13 @@ class Book extends React.Component {
                           <Form.Group as={Col} controlId="formGridState">
                             <Form.Control as="select" ref={element => this.catID = element}>
                               <option>Category</option>
-                              <Options options={value.state.CatID}/>
+                              <Options options={value.state.categories}/>
                             </Form.Control>
                           </Form.Group>
                           <Form.Group as={Col} controlId="formGridState">
                             <Form.Control as="select" ref={element => this.authID = element}>
                               <option>Author</option>
-                              <Options options={value.state.AuthID}/>
+                              <Options options={value.state.authors}/>
                             </Form.Control>
                           </Form.Group>
                           <Form.Group as={Col} >          

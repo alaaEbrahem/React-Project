@@ -13,7 +13,7 @@ class Categories extends React.Component {
   constructor(props) {
     super(props);
     this.handleShow = this.handleShow.bind(this);
-    this.handleClose = this.handleClose.bind(this);
+    //this.handleClose = this.handleClose.bind(this);
     this.state = {
       show: false,
       category: '',
@@ -25,25 +25,15 @@ class Categories extends React.Component {
     this.setState({ category: value, error: '' });
   }
   handleClose = (value) => (e) => {
-    e.preventDefault();
-    if (!this.state.category) {
-      this.setState({ category: '', show: false });
-    }
-    else if (!value.searchCategory(this.state.category)) {
-      this.setState({ error: 'category already exsist' })
-      return;
-    }
-    else if (!isNaN(this.state.category)) {
-      this.setState({ error: 'category can not be number' })
-      return;
-    }
-    else {
+   
+    
       const category = {
-        name: this.state.category, deleted: false, id: uuidv4(),
+        
+        Name:this.categoryName.value,
       };
-      value.addCategory(category);
-      this.setState({ category: '', show: false });
-    }
+     value.addCategory(category);
+      this.setState({ show: false });
+    
   }
   handleHide=()=>{
     this.setState({ show: false });
@@ -75,7 +65,7 @@ class Categories extends React.Component {
                           <Form>
                             <Form.Group controlId="formBasicEmail">
                               <h3>{this.state.error}</h3>
-                              <Form.Control onChange={this.handleChange} type="text" placeholder="Enter category Name" />
+                              <Form.Control onChange={this.handleChange} ref={element => this.categoryName = element} type="text" placeholder="Enter category Name" />
                             </Form.Group>
                             <Modal.Footer>
 
