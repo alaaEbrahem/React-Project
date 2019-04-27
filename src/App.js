@@ -279,7 +279,7 @@ class App extends Component {
       .catch(err => {
       })
   }
-  EditAuthor = (edited) => {
+  editAuthor = (edited) => {
     EditAuthor(edited)
       .then(res => {
         getAuthors()
