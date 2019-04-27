@@ -25,7 +25,10 @@ import { getBooks } from './API/Books';
 import { deleteBook } from './API/Books';
 import { EditBook } from './API/Books';
 import { addBook } from './API/Books';
-
+import { getCategories } from './API/Categories';
+import { deleteCategory } from './API/Categories';
+import { EditCategory } from './API/Categories';
+import { addCategory } from './API/Categories';
 ////////////////////////End Admin pages///////////////////////////
 
 import BookProfile from './components/User/BookProfile/BookProfile'
@@ -61,12 +64,7 @@ class App extends Component {
         { FN: 'Ahmed', LN: 'Khaled Tawfik', DOB: '1/6/1962', image: author4, deleted: false, id: '4' }
       ],
 
-    categories:
-      [{ id: '1', name: "Fantasy", deleted: false }
-        , { id: '2', name: "Science Fiction", deleted: false },
-      { id: '3', name: "Romance", deleted: false },
-      { id: '4', name: "Dystopia", deleted: false }
-      ],
+    categories:[],  
     login: false,
     Book: [],
     BookCurrstate: [],
@@ -75,15 +73,18 @@ class App extends Component {
 
   componentDidMount() {
     debugger
-    getBooks()
-      .then(res => {
+    getBooks().then(res => {
         debugger
         const Book = res;
         this.setState({ Book })
       }).catch(err => {
         debugger
       })
-
+      getCategories().then(res => {
+        const categories = res;
+        this.setState({ categories })
+      }).catch(err => {
+      })
   }
   search = (name, password) => {
     const { users } = this.state;
@@ -107,10 +108,57 @@ class App extends Component {
     const { users } = this.state;
     this.setState({ users: users.concat(user) })
   }
-  //categoru function
-  addCategory = (category) => {
-    const { categories } = this.state;
-    this.setState({ categories: categories.concat(category) })
+  //category function
+  addCategory = (ca) => {
+    debugger
+    addCategory(ca)
+      .then(res => {
+        debugger
+        getCategories()
+          .then(res => {
+            debugger
+            const categories = res;
+            this.setState({ categories })
+          }).catch(err => {
+            debugger
+          })
+      })
+      .catch(err => {
+        debugger
+      })
+  }
+  deleteCategory = (id) => {
+    deleteCategory(id)
+      .then(res => {
+        debugger
+        getCategories()
+          .then(res => {
+            debugger
+            const categories = res;
+            this.setState({ categories })
+          }).catch(err => {
+            debugger
+          })
+      })
+      .catch(err => {
+        debugger
+      })
+  }
+  editCategory = (edited) => {
+    EditCategory(edited)
+      .then(res => {
+        getCategories()
+          .then(res => {
+            debugger
+            const categories = res;
+            this.setState({ categories })
+          }).catch(err => {
+            debugger
+          })
+
+      }).catch(err => {
+        debugger
+      })
   }
   addBook = (Bk) => {
     addBook(Bk)
@@ -165,7 +213,7 @@ class App extends Component {
   }
   searchCategory = (name) => {
     const { categories } = this.state;
-    const result = categories.filter(c => c.name.toLowerCase() === name.toLowerCase() && !(c.deleted));
+    const result = categories.filter(c => c.Name.toLowerCase() === name.toLowerCase() && !(c.deleted));
     if (result.length > 0) {
       return false;
     }
@@ -175,23 +223,7 @@ class App extends Component {
 
   }
 
-  deleteCategory = (id) => {
-    const index = id;
-    const newArray = this.state.categories.map((item) => (
-      item.id === index ? { ...item, deleted: !item.deleted } : item
-    ))
-
-    this.setState({ categories: newArray });
-  }
-  editCategory = (id, name) => {
-    const index = id;
-
-    const newArray = this.state.categories.map((item) => (
-      item.id === index ? { ...item, name: name } : item
-    ))
-
-    this.setState({ categories: newArray });
-  }
+ 
   getCurrentBook = (id) => {
 
     const BookCurrstate = this.state.Book.filter(b => (b.id === id));
@@ -262,8 +294,8 @@ class App extends Component {
       getCurrentBook: this.getCurrentBook,
       // BookCurrstate:this.BookCurrstate,
 
-      deleteCategory: this.deleteCategory,
-      editCategory: this.editCategory,
+     
+     
 
       addAuthor: this.addAuthor,
       deleteAuthor: this.deleteAuthor,
