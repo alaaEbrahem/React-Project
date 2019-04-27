@@ -11,21 +11,24 @@ class ListingRow extends React.Component {
         this.handleClose = this.handleClose.bind(this);
         this.state = {
             show: false,
-            id:-1,
-            newcategory:this.props.R.name,
+            
+            newcategory:this.props.R.Name,
             error:''
         
         };
     }
-    handleDelete = (value) => (e) => {
     
-       value.deleteCategory(this.props.R.id); 
+    handleDelete = (value) => (e) => {
+        const id = this.props.R._id;
+        value.deleteCategory(id); 
       }
     handleClose() {
         this.setState({ show: false });
     }
     handleShow(){
-      this.setState({ show: true });
+     
+        this.setState({ show: true });
+     
     }
     handleChange = (e) => {
    
@@ -33,23 +36,35 @@ class ListingRow extends React.Component {
         this.setState({ newcategory: value, error: '' });
       }
     handleEdit=(value)=>(e)=>{
-        if (!this.state.newcategory==='') {
-            this.setState({ newcategory: this.props.R.name, show: true
-               , error: 'category can not be null' });
-               return;
-            }
+        // if (!this.state.newcategory==='') {
+        //     this.setState({ newcategory: this.props.R.Name, show: true
+        //        , error: 'category can not be null' });
+        //        return;
+        //     }
         
-          else if (!isNaN(this.state.newcategory)) {
-            this.setState({ newcategory: this.props.R.name, show: true,error: 'category can not be number' })
-            return;
+        //   else if (!isNaN(this.state.newcategory)) {
+        //     this.setState({ newcategory: this.props.R.name, show: true,error: 'category can not be number' })
+        //     return;
+        //   }
+        //   else if (!value.searchCategory(this.state.newcategory)) {
+        //     this.setState({ newcategory: this.props.R.name,error: 'category already exsist', show: true })
+        //     return;
+        //   }
+        //   else{
+        //   value.editCategory(e.target.dataset.id,this.state.newcategory);
+        //   this.setState({ show: false });}
+
+          e.preventDefault();
+          debugger
+          const editedCategory = {
+              // photo: `../src/assets/images/${img}`,
+              // photo: '',
+              _id: e.target.dataset.id,
+              Name: this.state.newcategory,
           }
-          else if (!value.searchCategory(this.state.newcategory)) {
-            this.setState({ newcategory: this.props.R.name,error: 'category already exsist', show: true })
-            return;
-          }
-          else{
-          value.editCategory(e.target.dataset.id,this.state.newcategory);
-          this.setState({ show: false });}
+          value.editCategory(editedCategory);
+          this.setState({ show: false });
+          
       }
 
     render() {
@@ -58,8 +73,8 @@ class ListingRow extends React.Component {
             <MyContext.Consumer>
             {value => (
                 <tr>
-                <td>{this.props.R.id}</td>
-                <td>{this.props.R.name}</td>
+                <td>{this.props.R._id}</td>
+                <td>{this.props.R.Name}</td>
                 <td>
                   
              <FontAwesomeIcon icon={faEdit} onClick={this.handleShow}  className="icon mr-3" />
@@ -73,6 +88,7 @@ class ListingRow extends React.Component {
                             <Form>
                                 <Form.Group controlId="formBasicEmail">
                                 <h3>{this.state.error}</h3>
+                               { console.log(this.state.newcategory)}
                                     <Form.Control  onChange={this.handleChange} value={this.state.newcategory} type="text" placeholder="enter new name"/>
                                    
                                 </Form.Group>
@@ -80,7 +96,7 @@ class ListingRow extends React.Component {
                                     <Button variant="secondary" onClick={this.handleClose}>
                                         Cancel
                               </Button>
-                                    <Button variant="success" data-id={this.props.R.id} onClick={this.handleEdit(value)}>
+                                    <Button variant="success" data-id={this.props.R._id} onClick={this.handleEdit(value)}>
                                         Edit Name
                               </Button>
                                 </Modal.Footer>

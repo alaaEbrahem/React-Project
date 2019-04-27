@@ -32,6 +32,10 @@ import { deleteAuthor } from './API/Authors';
 import { addAuthor } from './API/Authors';
 
 
+import { getCategories } from './API/Categories';
+import { deleteCategory } from './API/Categories';
+import { EditCategory } from './API/Categories';
+import { addCategory } from './API/Categories';
 ////////////////////////End Admin pages///////////////////////////
 
 import BookProfile from './components/User/BookProfile/BookProfile'
@@ -60,20 +64,8 @@ class App extends Component {
       [{ name: 'alaa', password: '123456', image: "pexels-photo-614810.jpeg", userGroup: 1, deleted: false, id: 1 }
         , { name: 'aya', password: '123456', userGroup: 1, image: "pexels-photo-736716.jpeg", deleted: false, id: 2 },
       { name: 'sara', password: '123456', userGroup: 2, image: "pexels-photo-614810.jpeg", deleted: false, id: 3 }],
-    // authors:
-    //   [{ FN: 'veronica', LN: 'roth', DOB: '1/1/2010', image: author, deleted: false, id: '1' }
-    //     , { FN: 'Ahmed', LN: 'khairy El-omary', DOB: '2/1/1973', image: author2, deleted: false, id: '2' },
-    //     { FN: 'Ahmed', LN: 'Saad El-Din', DOB: '1/1/1980', image: author3, deleted: false, id: '3' },
-    //     { FN: 'Ahmed', LN: 'Khaled Tawfik', DOB: '1/6/1962', image: author4, deleted: false, id: '4' }
-    //   ]
     authors: [],
-
-    categories:
-      [{ id: '1', name: "Fantasy", deleted: false }
-        , { id: '2', name: "Science Fiction", deleted: false },
-      { id: '3', name: "Romance", deleted: false },
-      { id: '4', name: "Dystopia", deleted: false }
-      ],
+    categories: [],
     login: false,
     Book: [],
     BookCurrstate: [],
@@ -82,16 +74,19 @@ class App extends Component {
 
   componentDidMount() {
     // debugger
-    getBooks()
-      .then(res => {
-        // debugger
-        const Book = res;
-        this.setState({ Book })
-      })
+    getBooks().then(res => {
+      // debugger
+      const Book = res;
+      this.setState({ Book })
+    })
       .catch(err => {
         // debugger
       })
-
+    getCategories().then(res => {
+      const categories = res;
+      this.setState({ categories })
+    }).catch(err => {
+    })
   }
   search = (name, password) => {
     const { users } = this.state;
@@ -115,10 +110,57 @@ class App extends Component {
     const { users } = this.state;
     this.setState({ users: users.concat(user) })
   }
-  //categoru function
-  addCategory = (category) => {
-    const { categories } = this.state;
-    this.setState({ categories: categories.concat(category) })
+  //category function
+  addCategory = (ca) => {
+    // debugger
+    addCategory(ca)
+      .then(res => {
+        // debugger
+        getCategories()
+          .then(res => {
+            // debugger
+            const categories = res;
+            this.setState({ categories })
+          }).catch(err => {
+            // debugger
+          })
+      })
+      .catch(err => {
+        // debugger
+      })
+  }
+  deleteCategory = (id) => {
+    deleteCategory(id)
+      .then(res => {
+        debugger
+        getCategories()
+          .then(res => {
+            debugger
+            const categories = res;
+            this.setState({ categories })
+          }).catch(err => {
+            debugger
+          })
+      })
+      .catch(err => {
+        debugger
+      })
+  }
+  editCategory = (edited) => {
+    EditCategory(edited)
+      .then(res => {
+        getCategories()
+          .then(res => {
+            debugger
+            const categories = res;
+            this.setState({ categories })
+          }).catch(err => {
+            debugger
+          })
+
+      }).catch(err => {
+        debugger
+      })
   }
   addBook = (Bk) => {
     addBook(Bk)
@@ -173,7 +215,7 @@ class App extends Component {
   }
   searchCategory = (name) => {
     const { categories } = this.state;
-    const result = categories.filter(c => c.name.toLowerCase() === name.toLowerCase() && !(c.deleted));
+    const result = categories.filter(c => c.Name.toLowerCase() === name.toLowerCase() && !(c.deleted));
     if (result.length > 0) {
       return false;
     }
@@ -183,23 +225,7 @@ class App extends Component {
 
   }
 
-  deleteCategory = (id) => {
-    const index = id;
-    const newArray = this.state.categories.map((item) => (
-      item.id === index ? { ...item, deleted: !item.deleted } : item
-    ))
 
-    this.setState({ categories: newArray });
-  }
-  editCategory = (id, name) => {
-    const index = id;
-
-    const newArray = this.state.categories.map((item) => (
-      item.id === index ? { ...item, name: name } : item
-    ))
-
-    this.setState({ categories: newArray });
-  }
   getCurrentBook = (id) => {
 
     const BookCurrstate = this.state.Book.filter(b => (b.id === id));
@@ -215,38 +241,80 @@ class App extends Component {
 
 
 
+  // addAuthor = (author) => {
+
+  //   const { authors } = this.state;
+  //   this.setState({ authors: authors.concat(author) });
+
+  // }
+
   addAuthor = (author) => {
-
-    const { authors } = this.state;
-    this.setState({ authors: authors.concat(author) });
-
+    addAuthor(author)
+      .then(res => {
+        getAuthors()
+          .then(res => {
+            const authors = res;
+            this.setState({ authors })
+          }).catch(err => {
+          })
+      })
+      .catch(err => {
+      })
   }
   deleteAuthor = (id) => {
-    this.state.authors.filter(a => (a.id === id)).map(b => { b.deleted = true });
-    const { authors } = this.state;
-    this.setState({ authors: authors });
+    deleteAuthor(id)
+      .then(res => {
+        getAuthors()
+          .then(res => {
+            const authors = res;
+            this.setState({ authors })
+          }).catch(err => {
+          })
+      })
+      .catch(err => {
+      })
   }
-  editAuthor = (id, edited) => {
-    this.state.authors.filter(a => (a.id === id)).map(a => {
-
-      if (edited.image !== '') {
-        a.Image = edited.Image;
-      }
-      if (edited.FN !== '') {
-        a.FN = edited.FN;
-      }
-      if (edited.LN !== '') {
-        a.LN = edited.LN;
-      }
-      if (edited.DOB !== '') {
-        a.DOB = edited.DOB;
-      }
-
-    });
-    const { authors } = this.state;
-
-    this.setState({ authors: authors });
+  EditAuthor = (edited) => {
+    EditAuthor(edited)
+      .then(res => {
+        getAuthors()
+          .then(res => {
+            const authors = res;
+            this.setState({ authors })
+          }).catch(err => {
+          })
+      }).catch(err => {
+      })
   }
+  // deleteAuthor = (id) => {
+  //   this.state.authors.filter(a => (a.id === id)).map(b => { b.deleted = true });
+  //   const { authors } = this.state;
+  //   this.setState({ authors: authors });
+  // }
+
+
+
+  // editAuthor = (id, edited) => {
+  //   this.state.authors.filter(a => (a.id === id)).map(a => {
+
+  //     if (edited.image !== '') {
+  //       a.Image = edited.Image;
+  //     }
+  //     if (edited.FN !== '') {
+  //       a.FN = edited.FN;
+  //     }
+  //     if (edited.LN !== '') {
+  //       a.LN = edited.LN;
+  //     }
+  //     if (edited.DOB !== '') {
+  //       a.DOB = edited.DOB;
+  //     }
+
+  //   });
+  //   const { authors } = this.state;
+
+  //   this.setState({ authors: authors });
+  // }
   Search = (text) => {
     this.state.searchValue = text;
     this.setState({ searchValue: text });
@@ -273,8 +341,8 @@ class App extends Component {
       getCurrentBook: this.getCurrentBook,
       // BookCurrstate:this.BookCurrstate,
 
-      deleteCategory: this.deleteCategory,
-      editCategory: this.editCategory,
+
+
 
       addAuthor: this.addAuthor,
       deleteAuthor: this.deleteAuthor,

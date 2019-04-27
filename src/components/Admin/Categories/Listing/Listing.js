@@ -16,7 +16,7 @@ const Listing = (props) => (
     </thead>
     <tbody>
     {value.state.categories.filter(R => !(R.deleted)).map(R => (
-      <ListingRow  key={R.id} R={R}></ListingRow>
+      <ListingRow  key={R._id} R={R}></ListingRow>
       
     ))}
     </tbody>
