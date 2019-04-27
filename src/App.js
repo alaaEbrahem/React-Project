@@ -87,6 +87,11 @@ class App extends Component {
       this.setState({ categories })
     }).catch(err => {
     })
+    getAuthors().then(res => {
+      const authors = res;
+      this.setState({ authors })
+    }).catch(err => {
+    })
   }
   search = (name, password) => {
     const { users } = this.state;
