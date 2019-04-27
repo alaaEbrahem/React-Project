@@ -26,6 +26,12 @@ import { deleteBook } from './API/Books';
 import { EditBook } from './API/Books';
 import { addBook } from './API/Books';
 
+import { getAuthors } from './API/Authors';
+import { EditAuthor } from './API/Authors';
+import { deleteAuthor } from './API/Authors';
+import { addAuthor } from './API/Authors';
+
+
 ////////////////////////End Admin pages///////////////////////////
 
 import BookProfile from './components/User/BookProfile/BookProfile'
@@ -54,12 +60,13 @@ class App extends Component {
       [{ name: 'alaa', password: '123456', image: "pexels-photo-614810.jpeg", userGroup: 1, deleted: false, id: 1 }
         , { name: 'aya', password: '123456', userGroup: 1, image: "pexels-photo-736716.jpeg", deleted: false, id: 2 },
       { name: 'sara', password: '123456', userGroup: 2, image: "pexels-photo-614810.jpeg", deleted: false, id: 3 }],
-    authors:
-      [{ FN: 'veronica', LN: 'roth', DOB: '1/1/2010', image: author, deleted: false, id: '1' }
-        , { FN: 'Ahmed', LN: 'khairy El-omary', DOB: '2/1/1973', image: author2, deleted: false, id: '2' },
-        { FN: 'Ahmed', LN: 'Saad El-Din', DOB: '1/1/1980', image: author3, deleted: false, id: '3' },
-        { FN: 'Ahmed', LN: 'Khaled Tawfik', DOB: '1/6/1962', image: author4, deleted: false, id: '4' }
-      ],
+    // authors:
+    //   [{ FN: 'veronica', LN: 'roth', DOB: '1/1/2010', image: author, deleted: false, id: '1' }
+    //     , { FN: 'Ahmed', LN: 'khairy El-omary', DOB: '2/1/1973', image: author2, deleted: false, id: '2' },
+    //     { FN: 'Ahmed', LN: 'Saad El-Din', DOB: '1/1/1980', image: author3, deleted: false, id: '3' },
+    //     { FN: 'Ahmed', LN: 'Khaled Tawfik', DOB: '1/6/1962', image: author4, deleted: false, id: '4' }
+    //   ]
+    authors: [],
 
     categories:
       [{ id: '1', name: "Fantasy", deleted: false }
@@ -74,14 +81,15 @@ class App extends Component {
   }
 
   componentDidMount() {
-    debugger
+    // debugger
     getBooks()
       .then(res => {
-        debugger
+        // debugger
         const Book = res;
         this.setState({ Book })
-      }).catch(err => {
-        debugger
+      })
+      .catch(err => {
+        // debugger
       })
 
   }
@@ -115,18 +123,18 @@ class App extends Component {
   addBook = (Bk) => {
     addBook(Bk)
       .then(res => {
-        debugger
+        // debugger
         getBooks()
           .then(res => {
-            debugger
+            // debugger
             const Book = res;
             this.setState({ Book })
           }).catch(err => {
-            debugger
+            // debugger
           })
       })
       .catch(err => {
-        debugger
+        // debugger
       })
   }
 
@@ -204,6 +212,9 @@ class App extends Component {
 
 
   //author Functions
+
+
+
   addAuthor = (author) => {
 
     const { authors } = this.state;
@@ -277,6 +288,7 @@ class App extends Component {
     return (
       <MyContext.Provider value={value}>
         <Router><>
+
           <Switch>
 
 
