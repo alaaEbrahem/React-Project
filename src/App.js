@@ -25,13 +25,15 @@ import { getBooks } from './API/Books';
 import { deleteBook } from './API/Books';
 import { EditBook } from './API/Books';
 import { addBook } from './API/Books';
+import { getAuthorID } from './API/Author';
+import { getCategoryID } from './API/Category';
 
 ////////////////////////End Admin pages///////////////////////////
 
 import BookProfile from './components/User/BookProfile/BookProfile'
-import book1 from '../src/assets/images/book1.jpg';
-import book2 from '../src/assets/images/book2.jpg';
-import book3 from '../src/assets/images/book3.jpg';
+// import book1 from '../src/assets/images/book1.jpg';
+// import book2 from '../src/assets/images/book2.jpg';
+// import book3 from '../src/assets/images/book3.jpg';
 import author from '../src/assets/images/author.jpg';
 import author2 from '../src/assets/images/author2.jpg';
 import author3 from '../src/assets/images/author3.jpg';
@@ -69,7 +71,9 @@ class App extends Component {
       ],
     login: false,
     Book: [],
-    BookCurrstate: [],
+    // BookCurrstate: [],
+    CatID:[],
+    AuthID:[],
     searchValue: ''
   }
 
@@ -82,7 +86,23 @@ class App extends Component {
         this.setState({ Book })
       }).catch(err => {
         debugger
-      })
+      });
+      getAuthorID()
+      .then(res=>{
+        debugger
+        const AuthID = res;
+        this.setState({ AuthID })
+      }).catch(err => {
+        debugger
+      });
+      getCategoryID()
+      .then(res=>{
+        debugger
+        const CatID = res;
+        this.setState({ CatID })
+      }).catch(err => {
+        debugger
+      });
 
   }
   search = (name, password) => {
@@ -117,9 +137,9 @@ class App extends Component {
       .then(res => {
         debugger
         getBooks()
-          .then(res => {
+          .then(data => {
             debugger
-            const Book = res;
+            const Book = data;
             this.setState({ Book })
           }).catch(err => {
             debugger
