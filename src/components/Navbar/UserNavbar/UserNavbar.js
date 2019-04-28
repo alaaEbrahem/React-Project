@@ -63,7 +63,7 @@ class UserNavbar extends Component {
                                         <button className="btn btn-outline-primary my-2 my-sm-0" type="submit"><FontAwesomeIcon icon="search" /></button>
                                     </form>
                                     <div className="fontIcon ml-auto align-content-center">
-                                        <Image width="73" height="73" src={value.state.login.image!==''&&value.state.login ? require(`../../../assets/images/${value.state.login.image}`) : user2} roundedCircle alt="user-img" />
+                                        {/* <Image width="73" height="73" src={value.state.login.image!==''&&value.state.login ? require(`../../../assets/images/${value.state.login.image}`) : user2} roundedCircle alt="user-img" /> */}
                                         <span className="px-3">{value.state.login ? value.state.login.name : 'User Name'}</span>
                                        {value.state.login?<FontAwesomeIcon onClick={this.handleLogOut(value)} icon="sign-out-alt" className="ml-5" />:''} 
                                     </div>

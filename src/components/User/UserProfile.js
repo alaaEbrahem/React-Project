@@ -122,9 +122,9 @@ class UserProfile extends Component {
                                     </div>
                                 </div>
                             </div>
-                        </React.Fragment>
+                        </React.Fragment> : this.props.history.push(`/user`))}
 
-                        : this.props.history.push(`/user`))}
+                       
             </MyContext.Consumer>
         );
     }
