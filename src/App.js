@@ -261,15 +261,6 @@ class App extends Component {
 
   //author Functions
 
-
-
-  // addAuthor = (author) => {
-
-  //   const { authors } = this.state;
-  //   this.setState({ authors: authors.concat(author) });
-
-  // }
-
   addAuthor = (author) => {
     addAuthor(author)
       .then(res => {
@@ -308,35 +299,10 @@ class App extends Component {
       }).catch(err => {
       })
   }
-  // deleteAuthor = (id) => {
-  //   this.state.authors.filter(a => (a.id === id)).map(b => { b.deleted = true });
-  //   const { authors } = this.state;
-  //   this.setState({ authors: authors });
-  // }
 
 
 
-  // editAuthor = (id, edited) => {
-  //   this.state.authors.filter(a => (a.id === id)).map(a => {
 
-  //     if (edited.image !== '') {
-  //       a.Image = edited.Image;
-  //     }
-  //     if (edited.FN !== '') {
-  //       a.FN = edited.FN;
-  //     }
-  //     if (edited.LN !== '') {
-  //       a.LN = edited.LN;
-  //     }
-  //     if (edited.DOB !== '') {
-  //       a.DOB = edited.DOB;
-  //     }
-
-  //   });
-  //   const { authors } = this.state;
-
-  //   this.setState({ authors: authors });
-  // }
   Search = (text) => {
     this.state.searchValue = text;
     this.setState({ searchValue: text });
@@ -368,7 +334,7 @@ class App extends Component {
 
 
       addAuthor: this.addAuthor,
-      //deleteAuthor: this.deleteAuthor,
+      deleteAuthor: this.deleteAuthor,
       editAuthor: this.editAuthor,
       logout: this.logout,
       addUser: this.addUser,

@@ -22,7 +22,7 @@ class ListingRow extends React.Component {
     }
     
     handleDelete = (value) => (e) => {
-        //el delete ahe
+        
         const id = this.props.R._id;
         value.deleteCategory(id); 
       }
