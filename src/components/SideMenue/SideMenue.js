@@ -15,8 +15,8 @@ class SideMenue extends React.Component {
       <header className="header" role="banner">
         <div className="row">
           <h1 className="logo pt-4 col-12">
-            <img width="100" height="73" src={value.state.login ?
-              require(`../../assets/images/${value.state.login.image}`) : "https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg"}></img>
+            <img width="100" height="73" src={ "https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg"}></img>
+           
             <p>{value.state.login ? value.state.login.name : 'Def'}</p>
 
           </h1>
@@ -26,7 +26,7 @@ class SideMenue extends React.Component {
             <ul className="unstyled list-hover-slide">
               <li className="li">
                 <NavLink exact to={{
-                  pathname: `/admin`,
+                  pathname: `/admin/home`,
                 }} 
                 ><FontAwesomeIcon icon={faHome} className="ml-5 mr-5 icon" />
                   Dashboard</NavLink> </li>

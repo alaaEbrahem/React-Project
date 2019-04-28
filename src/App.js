@@ -26,6 +26,15 @@ import { deleteBook } from './API/Books';
 import { EditBook } from './API/Books';
 import { addBook } from './API/Books';
 
+import { getAuthorID } from './API/Author';
+
+
+import { getAuthors } from './API/Authors';
+import { EditAuthor } from './API/Authors';
+import { deleteAuthor } from './API/Authors';
+import { addAuthor } from './API/Authors';
+
+
 import { getCategories } from './API/Categories';
 import { deleteCategory } from './API/Categories';
 import { EditCategory } from './API/Categories';
@@ -39,9 +48,9 @@ import { addLogin } from './API/user';
 ////////////////////////End Admin pages///////////////////////////
 
 import BookProfile from './components/User/BookProfile/BookProfile'
-import book1 from '../src/assets/images/book1.jpg';
-import book2 from '../src/assets/images/book2.jpg';
-import book3 from '../src/assets/images/book3.jpg';
+// import book1 from '../src/assets/images/book1.jpg';
+// import book2 from '../src/assets/images/book2.jpg';
+// import book3 from '../src/assets/images/book3.jpg';
 import author from '../src/assets/images/author.jpg';
 import author2 from '../src/assets/images/author2.jpg';
 import author3 from '../src/assets/images/author3.jpg';
@@ -60,29 +69,31 @@ library.add(faHome);
 export const MyContext = React.createContext();
 class App extends Component {
   state = {
-    users: [], 
-      authors:
-      [{ FN: 'veronica', LN: 'roth', DOB: '1/1/2010', image: author, deleted: false, id: '1' }
-        , { FN: 'Ahmed', LN: 'khairy El-omary', DOB: '2/1/1973', image: author2, deleted: false, id: '2' },
-        { FN: 'Ahmed', LN: 'Saad El-Din', DOB: '1/1/1980', image: author3, deleted: false, id: '3' },
-        { FN: 'Ahmed', LN: 'Khaled Tawfik', DOB: '1/6/1962', image: author4, deleted: false, id: '4' }
-      ],
 
-    categories:[],  
+    users:[],
+     
+      authors: [],
+    categories: [],
+
     login: false,
     Book: [],
-    BookCurrstate: [],
+    // BookCurrstate: [],
+    // CatID:[],
+    // AuthID:[],
     searchValue: ''
   }
 
   componentDidMount() {
+
     debugger
-    getBooks().then(res => {
+    getBooks()
+      .then(res => {
         debugger
         const Book = res;
         this.setState({ Book })
       }).catch(err => {
         debugger
+
       })
       getCategories().then(res => {
         const categories = res;
@@ -94,6 +105,44 @@ class App extends Component {
         this.setState({ users })
       }).catch(err => {
       })
+
+      // getAuthorID()
+      // .then(res=>{
+      //   debugger
+      //   const AuthID = res;
+      //   this.setState({ AuthID })
+      // }).catch(err => {
+      //   debugger
+      // });
+      // getCategoryID()
+      // .then(res=>{
+      //   debugger
+      //   const CatID = res;
+      //   this.setState({ CatID })
+      // }).catch(err => {
+      //   debugger
+      // });
+
+
+    // debugger
+    // getBooks().then(res => {
+    //   // debugger
+    //   const Book = res;
+    //   this.setState({ Book })
+    // })
+    //   .catch(err => {
+    //     // debugger
+    //   })
+    getCategories().then(res => {
+      const categories = res;
+      this.setState({ categories })
+    }).catch(err => {
+    })
+    getAuthors().then(res => {
+      const authors = res;
+      this.setState({ authors })
+    }).catch(err => {
+    });
   }
   search = (name, password) => {
     const { users } = this.state;
@@ -106,7 +155,7 @@ class App extends Component {
     }
 
   }
-  addLogin = (user) => {
+  addLoginContext = (user) => {
     const u = user;
     this.setState({ login: u });
   }
@@ -131,33 +180,20 @@ class App extends Component {
         debugger
       })
   }
-  Login = (u) => {
-    debugger
-    addLogin(u)
-      .then(res => {
-     
-      })
+  Login = (u) => {addLogin(u).then(res => {})
       .catch(err => {
-        debugger
       })
   }
   //category function
-  addCategory = (ca) => {
-    debugger
-    addCategory(ca)
-      .then(res => {
-        debugger
-        getCategories()
+  addCategory = (ca) => { addCategory(ca).then(res => { getCategories()
           .then(res => {
-            debugger
             const categories = res;
             this.setState({ categories })
           }).catch(err => {
-            debugger
           })
       })
       .catch(err => {
-        debugger
+      
       })
   }
   deleteCategory = (id) => {
@@ -196,18 +232,18 @@ class App extends Component {
   addBook = (Bk) => {
     addBook(Bk)
       .then(res => {
-        debugger
+        // debugger
         getBooks()
-          .then(res => {
+          .then(data => {
             debugger
-            const Book = res;
+            const Book = data;
             this.setState({ Book })
           }).catch(err => {
-            debugger
+            // debugger
           })
       })
       .catch(err => {
-        debugger
+        // debugger
       })
   }
 
@@ -229,19 +265,11 @@ class App extends Component {
       })
   }
   editBook = (edited) => {
-    EditBook(edited)
-      .then(res => {
-        getBooks()
-          .then(res => {
-            debugger
+    EditBook(edited).then(res => {getBooks().then(res => {
             const Book = res;
-            this.setState({ Book })
-          }).catch(err => {
-            debugger
-          })
-
-      }).catch(err => {
-        debugger
+            this.setState({ Book }) }).catch(err => {
+          })}).catch(err => {
+      
       })
   }
   searchCategory = (name) => {
@@ -256,7 +284,7 @@ class App extends Component {
 
   }
 
- 
+
   getCurrentBook = (id) => {
 
     const BookCurrstate = this.state.Book.filter(b => (b.id === id));
@@ -269,38 +297,83 @@ class App extends Component {
 
 
   //author Functions
+
+
+
+  // addAuthor = (author) => {
+
+  //   const { authors } = this.state;
+  //   this.setState({ authors: authors.concat(author) });
+
+  // }
+
   addAuthor = (author) => {
-
-    const { authors } = this.state;
-    this.setState({ authors: authors.concat(author) });
-
+    addAuthor(author)
+      .then(res => {
+        getAuthors()
+          .then(res => {
+            const authors = res;
+            this.setState({ authors })
+          }).catch(err => {
+          })
+      })
+      .catch(err => {
+      })
   }
   deleteAuthor = (id) => {
-    this.state.authors.filter(a => (a.id === id)).map(b => { b.deleted = true });
-    const { authors } = this.state;
-    this.setState({ authors: authors });
+    deleteAuthor(id)
+      .then(res => {
+        getAuthors()
+          .then(res => {
+            const authors = res;
+            this.setState({ authors })
+          }).catch(err => {
+          })
+      })
+      .catch(err => {
+      })
   }
-  editAuthor = (id, edited) => {
-    this.state.authors.filter(a => (a.id === id)).map(a => {
-
-      if (edited.image !== '') {
-        a.Image = edited.Image;
-      }
-      if (edited.FN !== '') {
-        a.FN = edited.FN;
-      }
-      if (edited.LN !== '') {
-        a.LN = edited.LN;
-      }
-      if (edited.DOB !== '') {
-        a.DOB = edited.DOB;
-      }
-
-    });
-    const { authors } = this.state;
-
-    this.setState({ authors: authors });
+  editAuthor = (edited) => {
+    EditAuthor(edited)
+      .then(res => {
+        getAuthors()
+          .then(res => {
+            const authors = res;
+            this.setState({ authors })
+          }).catch(err => {
+          })
+      }).catch(err => {
+      })
   }
+  // deleteAuthor = (id) => {
+  //   this.state.authors.filter(a => (a.id === id)).map(b => { b.deleted = true });
+  //   const { authors } = this.state;
+  //   this.setState({ authors: authors });
+  // }
+
+
+
+  // editAuthor = (id, edited) => {
+  //   this.state.authors.filter(a => (a.id === id)).map(a => {
+
+  //     if (edited.image !== '') {
+  //       a.Image = edited.Image;
+  //     }
+  //     if (edited.FN !== '') {
+  //       a.FN = edited.FN;
+  //     }
+  //     if (edited.LN !== '') {
+  //       a.LN = edited.LN;
+  //     }
+  //     if (edited.DOB !== '') {
+  //       a.DOB = edited.DOB;
+  //     }
+
+  //   });
+  //   const { authors } = this.state;
+
+  //   this.setState({ authors: authors });
+  // }
   Search = (text) => {
     this.state.searchValue = text;
     this.setState({ searchValue: text });
@@ -313,6 +386,7 @@ class App extends Component {
       state: this.state,
       search: this.search,
       addLogin: this.addLogin,
+      addLoginContext: this.addLoginContext,
       addBook: this.addBook,
       deleteBook: this.deleteBook,
       editBook: this.editBook,
@@ -327,8 +401,8 @@ class App extends Component {
       getCurrentBook: this.getCurrentBook,
       // BookCurrstate:this.BookCurrstate,
 
-     
-     
+
+
 
       addAuthor: this.addAuthor,
       //deleteAuthor: this.deleteAuthor,
@@ -342,6 +416,7 @@ class App extends Component {
     return (
       <MyContext.Provider value={value}>
         <Router><>
+
           <Switch>
 
 
@@ -349,8 +424,8 @@ class App extends Component {
 
             <Route exact path="/profile" component={UserProfile} />
             <Route exact path="/author" component={AuthorProfile} />
-            <Route exact path="/" component={Login} />
-
+            <Route exact path="/admin/home" component={Home} />
+            <Route exact path="/admin" component={Login} />
             {/* //////////////////// user category routes/////////////////////  */}
             <Route exact path="/category/:id" component={category} />
             <Route exact path="/categories" component={CategorisList} />
@@ -362,7 +437,7 @@ class App extends Component {
             <Route exact path="/aboutus" component={aboutus} />
             <Route exact path="/termsandconditions" component={termsandconditions} />
 
-            <Route exact path="/admin" component={Home} />
+          
             {/* <Route exact path="/books" component={Books} /> */}
 
             <Route exact path="/admin/books" component={Book} />

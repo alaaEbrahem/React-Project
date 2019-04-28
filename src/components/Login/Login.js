@@ -23,14 +23,22 @@ class Login extends React.Component {
         this.setState({ password: value, error: '' });
     }
 
-    handleSubmit = () => {
+    handleSubmit = (value)=>(e)=> {
         const { username, password } = this.state;
+        debugger;
         addLogin({ username, password })
+
             .then(res => {
+                debugger;
+                value.addLoginContext(res.profile);
                 localStorage.setItem("token", res.token);
-                this.props.history.push(`/admin`);
+                this.props.history.push(`/admin/home`);
             })
-            .catch(err => { console.log(err); });
+            .catch(err => { 
+                debugger;
+                console.log(err);
+                this.setState({ error: 'invalid username or password !!' });
+             });
 
 
     }
@@ -39,6 +47,7 @@ class Login extends React.Component {
 
             <MyContext.Consumer>
                 {value => (
+                  
                     <div className="container mt-5 mt-md-4">
                         <div className="row">
                             <div className="col-sm-5 offset-1  col-10 offset-md-2 col-md-8 login-form">
@@ -52,10 +61,22 @@ class Login extends React.Component {
                                 </div>
                                 <form >
                                     <div className="row">
-
+                                   
                                         <div className="col-12">
-                                            <div className="row offset-3 pt-2"><h3>{this.state.error ? this.state.error : ""}</h3></div>
+                                        {this.state.error ? 
+                                        <div class="alert alert-danger mt-3 " role="alert">
+                                          {this.state.error}
+                                          </div>:""}
+                                            {/* <div className="row offset-3 pt-2"><h3>{this.state.error ? this.state.error : ""}</h3></div> */}
                                             <div className="row pt-3 input-field">
+             
+             
+             
+
+             
+             
+             
+             
                                                 <div className="offset-lg-2 pl-4 pl-lg-0 pb-3 col-sm-3 col-lg-2 pt-lg-5 input-field__input-label">username</div>
                                                 <div className="pl-1 pl-lg-4  col-lg-8 pt-lg-5">
                                                     <input onChange={this.handleChangeuser} value={this.state.username} className="col-12 col-lg-10  input-field__input" type="text" name="username" placeholder="Enter username" />
@@ -83,7 +104,7 @@ class Login extends React.Component {
                                     </div>
                                     <div className="row">
                                         <div className="col-5 offset-md-3 mt-4 mb-5">
-                                            <button type="button" onClick={this.handleSubmit} className="button pb-2">Login</button>
+                                            <button type="button" onClick={this.handleSubmit(value)} className="button pb-2">Login</button>
 
                                         </div>
                                     </div>

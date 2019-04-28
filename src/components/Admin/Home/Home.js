@@ -9,14 +9,14 @@ import { MyContext } from '../../../App'
 import { withRouter } from "react-router";
 
 class Home extends React.Component {
-  state={user:this.props.location.state?this.props.location.state.user:this.props.user}
+ // state={user:this.props.location.state?this.props.location.state.user:this.props.user}
   render() {
 
 
     return (
       <MyContext.Consumer>
          {value => ( 
-          // value.state.login && value.state.login.userGroup==1?  
+           value.state.login && value.state.login.userGroup==1?  
       <React.Fragment>
         <Navbar/>
         <div className="container-fluid no-gutters">
@@ -46,8 +46,7 @@ class Home extends React.Component {
           </div>
         </div>
 
-      </React.Fragment>
-  
+      </React.Fragment>:this.props.history.push(`/admin`)
 
 )}
 </MyContext.Consumer>

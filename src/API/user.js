@@ -54,4 +54,5 @@ export const addLogin=({username,password})=>{
         username,password
     })
     .then(res=>res.data)
+   
 }

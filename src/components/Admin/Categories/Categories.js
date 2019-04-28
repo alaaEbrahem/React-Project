@@ -25,15 +25,18 @@ class Categories extends React.Component {
     this.setState({ category: value, error: '' });
   }
   handleClose = (value) => (e) => {
-   
-    
-      const category = {
-        
+      const category = { 
         Name:this.categoryName.value,
       };
+      if(category.Name==''||!(isNaN)(this.categoryName.value)){
+        console.log((isNaN)(this.categoryName.value));
+        this.setState({error:'name can not be empty or number' });
+      }
+      else{
+        console.log((isNaN)(this.categoryName.value));
      value.addCategory(category);
-      this.setState({ show: false });
-    
+      this.setState({ show: false,error:'' });
+    }
   }
   handleHide=()=>{
     this.setState({ show: false });
@@ -64,7 +67,11 @@ class Categories extends React.Component {
                         <Modal.Body>
                           <Form>
                             <Form.Group controlId="formBasicEmail">
-                              <h3>{this.state.error}</h3>
+                            {this.state.error ? 
+                                        <div class="alert alert-danger mt-3 " role="alert">
+                                          {this.state.error}
+                                          </div>:""}
+                             
                               <Form.Control onChange={this.handleChange} ref={element => this.categoryName = element} type="text" placeholder="Enter category Name" />
                             </Form.Group>
                             <Modal.Footer>
@@ -93,7 +100,7 @@ class Categories extends React.Component {
                   </div>
                 </div>
               </div>
-            </React.Fragment> : this.props.history.push(`/`)
+            </React.Fragment> : this.props.history.push(`/admin`)
 
 
         )}

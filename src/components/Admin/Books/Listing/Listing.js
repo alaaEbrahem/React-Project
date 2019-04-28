@@ -8,7 +8,7 @@ const Listing = (props) => (
     <thead>
       <tr>
         <th>ID</th>
-        <th>photo</th>
+        {/* <th>photo</th> */}
         <th>Name</th>
         <th>CategoryId</th>
         <th>AuthorId</th>

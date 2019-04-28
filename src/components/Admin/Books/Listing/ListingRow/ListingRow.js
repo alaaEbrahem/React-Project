@@ -4,7 +4,7 @@ import { MyContext } from '../../../../../App';
 import edit from '../../../../../assets/images/edit-solid.png';
 import remove from '../../../../../assets/images/trash-solid.png';
 import '../../Book.scss';
-
+import Options from './Options';
 class ListingRow extends React.Component {
     constructor(props) {
         super(props);
@@ -12,6 +12,7 @@ class ListingRow extends React.Component {
         this.handleClose = this.handleClose.bind(this);
         this.state = {
             show: false,
+            currPhoto:'',
             curr_id: '',
             currName: '',
             currCatID: '',
@@ -27,8 +28,7 @@ class ListingRow extends React.Component {
         const id = e.target.dataset.id;
         debugger
         const currentBook = val.state.Book.filter(b => b._id === id)
-        this.setState({ show: true, curr_id: currentBook[0]._id, currName: currentBook[0].Name, currCatID: currentBook[0].CategoryID, currAuthID: currentBook[0].AuthorID });
-        this.setState({ show: true });
+        this.setState({ show: true,currPhoto:currentBook[0].Photo, curr_id: currentBook[0]._id, currName: currentBook[0].Name, currCatID: currentBook[0].CategoryID, currAuthID: currentBook[0].AuthorID });
     }
     del = (deleteBook) => (e) => {
         e.preventDefault();
@@ -39,9 +39,9 @@ class ListingRow extends React.Component {
     edit = (editBook) => (e) => {
         e.preventDefault();
         debugger
+        const img=this.Image.value.substring(12);
         const editedBook = {
-            // photo: `../src/assets/images/${img}`,
-            // photo: '',
+            Photo:img,
             _id: this.state.curr_id,
             Name: this.state.currName,
             CategoryID: this.catID.value,
@@ -55,16 +55,17 @@ class ListingRow extends React.Component {
         this.setState({ currName: value });
     }
     render() {
+        debugger
+        
         return (
 
             <MyContext.Consumer>
                 {
-
                     value => (
                         value.state.Book.map(R => (<tr>
                             <td>{R._id}</td>
-                            <td><img src={R.photo} alt="bookimg" /></td>
-
+                            {/* //<td><img src={require(`../../../../../assets/images/${R.Photo}`)} alt="bookimg" /></td> */}
+                            {/* <td><img src={edit} alt="bookimg" /></td> */}
                             <td>{R.Name}</td>
                             <td>{R.CategoryID}</td>
                             <td>{R.AuthorID}</td>
@@ -87,19 +88,13 @@ class ListingRow extends React.Component {
                                             <Form.Group as={Col} controlId="formGridState">
                                                 <Form.Control as="select" ref={element => this.catID = element}>
                                                     <option>{this.state.currCatID}</option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>...</option>
+                                                    <Options options={value.state.categories}/>
                                                 </Form.Control>
                                             </Form.Group>
                                             <Form.Group as={Col} controlId="formGridState">
                                                 <Form.Control as="select" ref={element => this.authID = element}>
                                                     <option>{this.state.currAuthID}</option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>...</option>
+                                                    <Options options={value.state.authors}/>
                                                 </Form.Control>
                                             </Form.Group>
                                             <Form.Group as={Col} >

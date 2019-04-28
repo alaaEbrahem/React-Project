@@ -107,7 +107,7 @@ class Autor extends React.Component {
                 </div>
               </div>
 
-            </React.Fragment> : this.props.history.push(`/`)
+            </React.Fragment> : this.props.history.push(`/admin`)
 
         )}
       </MyContext.Consumer>

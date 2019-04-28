@@ -5,7 +5,7 @@ import { MyContext } from '../../../App'
 import Navbar from '../../Navbar/Navbar';
 import SideMenue from '../../SideMenue/SideMenue';
 import Listing from './Listing/Listing';
-
+import Options from '../Books/Listing/ListingRow/Options';
 class Book extends React.Component {
 
   constructor(props) {
@@ -30,11 +30,11 @@ class Book extends React.Component {
   handleCloseADD=(addBook)=>(e)=>{
     e.preventDefault();
     // debugger;
-    // const img=this.Image.value.substring(12);
+    const img=this.Image.value.substring(12);
     // console.log(img);
     const newBook={
       // id:uuidv4(),
-      // photo:`../src/assets/images/${img}`,
+      Photo:img,
       // photo:'',
       Name:this.bookName.value,
       CategoryID:this.catID.value,
@@ -74,19 +74,13 @@ class Book extends React.Component {
                           <Form.Group as={Col} controlId="formGridState">
                             <Form.Control as="select" ref={element => this.catID = element}>
                               <option>Category</option>
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>...</option>
+                              <Options options={value.state.categories}/>
                             </Form.Control>
                           </Form.Group>
                           <Form.Group as={Col} controlId="formGridState">
                             <Form.Control as="select" ref={element => this.authID = element}>
                               <option>Author</option>
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>...</option>
+                              <Options options={value.state.authors}/>
                             </Form.Control>
                           </Form.Group>
                           <Form.Group as={Col} >          
@@ -120,7 +114,7 @@ class Book extends React.Component {
               </div>
 
 
-            </React.Fragment> : this.props.history.push(`/`)
+            </React.Fragment> : this.props.history.push(`/admin`)
 
 
         )}
