@@ -12,14 +12,15 @@ export const getAuthors = () => {
 }
 
 
-export const EditAuthor = ({ _id, firstname, lastname }) => {
+export const EditAuthor = ({ _id, FN, LN, DOB }) => {
     return axios.patch(`${BACKEND_URL}/api/authors/${_id}`, {
         headers: {
             authorization: `bearer ${localStorage.getItem('token')}`
         },
         _id,
-        firstname,
-        lastname
+        FN,
+        LN,
+        DOB
     })
         .then(res => res.data)
 }
@@ -33,14 +34,14 @@ export const deleteAuthor = (id) => {
         .then(res => res.data)
 }
 
-export const addAuthor = ({ firstname, lastname, birthdate }) => {
+export const addAuthor = ({ FN, LN, DOB }) => {
     return axios.post(`${BACKEND_URL}/api/authors/`, {
         headers: {
             authorization: `bearer ${localStorage.getItem('token')}`
         },
-        firstname,
-        lastname,
-        birthdate
+        FN,
+        LN,
+        DOB
     })
         .then(res => res.data)
 }

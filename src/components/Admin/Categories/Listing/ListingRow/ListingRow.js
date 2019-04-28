@@ -22,6 +22,7 @@ class ListingRow extends React.Component {
     }
     
     handleDelete = (value) => (e) => {
+        //el delete ahe
         const id = this.props.R._id;
         value.deleteCategory(id); 
       }
@@ -47,6 +48,8 @@ class ListingRow extends React.Component {
         this.setState({ newcategory: value, error: '' });
       }
     handleEdit=(value)=>(e)=>{
+     // 
+
    
           e.preventDefault();
         

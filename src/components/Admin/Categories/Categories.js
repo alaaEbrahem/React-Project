@@ -38,7 +38,7 @@ class Categories extends React.Component {
       this.setState({ show: false,error:'' });
     }
   }
-  handleHide=()=>{
+  handleHide = () => {
     this.setState({ show: false });
   }
   handleShow() {
@@ -49,7 +49,7 @@ class Categories extends React.Component {
     return (
       <MyContext.Consumer>
         {value => (
-          value.state.login &&value.state.login.userGroup==1 ?
+          value.state.login && value.state.login.userGroup == 1 ?
             <React.Fragment>
               <Navbar />
               <div className="container-fluid no-gutters">

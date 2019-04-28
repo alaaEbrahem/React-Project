@@ -5,7 +5,6 @@ import { MyContext } from '../../../App'
 import Navbar from '../../Navbar/Navbar';
 import SideMenue from '../../SideMenue/SideMenue';
 import Listing from './Listing/Listing'
-import uuidv4 from 'uuid/v4';
 
 
 class Autor extends React.Component {
@@ -19,25 +18,24 @@ class Autor extends React.Component {
       error: ''
     };
   }
-  handleCloseADD = (addAuthor) => (e) => {
-    e.preventDefault();
-    if (this.FN.value === '' || this.LN.value === "" || this.DOB.value === "") {
-      this.setState({ error: 'check filling all data', show: true });
-    }
-    else {
-      const newAuthor = {
-        id: uuidv4(),
-        image: '',
-        FN: this.FN.value,
-        LN: this.LN.value,
-        DOB: this.DOB.value,
-        deleted: false,
-      }
-      addAuthor(newAuthor);
-      this.setState({ show: false });
-    }
+  handleChange = (e) => {
+    const value = e.target.value;
+    this.setState({ author: value, error: '' });
   }
 
+
+  handleCloseADD = (addAuthor) => (e) => {
+    e.preventDefault();
+    // const img = this.Image.value.substring(12);
+    const author = {
+      // Photo: img,
+      FN: this.FN.value,
+      LN: this.LN.value,
+      DOB: this.DOB.value,
+    }
+    addAuthor(author);
+    this.setState({ show: false });
+  }
 
   handleClose() {
     this.setState({ show: false });
@@ -50,7 +48,7 @@ class Autor extends React.Component {
     return (
       <MyContext.Consumer>
         {value => (
-          value.state.login &&value.state.login.userGroup==1 ?
+          value.state.login && value.state.login.userGroup == 1 ?
             <React.Fragment>
 
               <Navbar />

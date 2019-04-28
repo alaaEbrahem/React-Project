@@ -13,6 +13,7 @@ import authorsPage from './components/User/AuthorProfile/ListPage';
 
 import aboutus from './components/User/AboutUs/AboutUs';
 
+
 import termsandconditions from './components/User/TermsAndConditions/TermsAndCondition';
 ///////////import admin pages/////////////////////
 import Home from './components/Admin/Home/Home.js';
@@ -51,10 +52,10 @@ import BookProfile from './components/User/BookProfile/BookProfile'
 // import book1 from '../src/assets/images/book1.jpg';
 // import book2 from '../src/assets/images/book2.jpg';
 // import book3 from '../src/assets/images/book3.jpg';
-import author from '../src/assets/images/author.jpg';
-import author2 from '../src/assets/images/author2.jpg';
-import author3 from '../src/assets/images/author3.jpg';
-import author4 from '../src/assets/images/author4.jpg';
+// import author from '../src/assets/images/author.jpg';
+// import author2 from '../src/assets/images/author2.jpg';
+// import author3 from '../src/assets/images/author3.jpg';
+// import author4 from '../src/assets/images/author4.jpg';
 import CategorisList from '../src/components/User/CategoryList/CategoryList';
 // -----------------------Font Awesome Import-------------------------
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -196,6 +197,10 @@ class App extends Component {
       
       })
   }
+
+
+
+
   deleteCategory = (id) => {
     deleteCategory(id)
       .then(res => {
