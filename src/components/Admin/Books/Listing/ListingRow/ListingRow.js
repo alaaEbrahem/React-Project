@@ -105,7 +105,7 @@ class ListingRow extends React.Component {
                                                     Cancel
                                                 </Button>
                                                 <Button variant="success" onClick={this.edit(value.editBook)}>
-                                                    Edit Name
+                                                    Edit
                                                 </Button>
                                             </Modal.Footer>
                                         </Form>

@@ -33,13 +33,13 @@ class Book extends React.Component {
     const img=this.Image.value.substring(12);
     // console.log(img);
     const newBook={
-      // id:uuidv4(),
+     
       Photo:img,
-      // photo:'',
+     
       Name:this.bookName.value,
       CategoryID:this.catID.value,
       AuthorID:this.authID.value,
-      // deleted:false,
+    
     }
     addBook(newBook);
     this.setState({ show: false });
