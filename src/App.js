@@ -11,6 +11,9 @@ import Login from './components/Login/Login';
 import BookPage from './components/User/BookProfile/ListPage';
 import authorsPage from './components/User/AuthorProfile/ListPage';
 
+import ReactUploadImage from './components/imagetest';
+
+
 import aboutus from './components/User/AboutUs/AboutUs';
 
 
@@ -339,7 +342,9 @@ class App extends Component {
         <Router><>
 
           <Switch>
+          
 
+          <Route exact path="/image" component={ReactUploadImage} />
 
             <Route exact path="/user" component={HomePage} />
 
