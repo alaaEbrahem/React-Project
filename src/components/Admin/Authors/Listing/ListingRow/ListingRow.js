@@ -38,32 +38,27 @@ class ListingRow extends React.Component {
         this.setState({ show: true });
     }
     handleDelete = (value) => (e) => {
-
-        value.deleteAuthor(this.props.R.id);
+        const id = this.props.R._id;
+        value.deleteAuthor(id); 
     }
     handleEdit = (value) => (e) => {
+        // *
         e.preventDefault();
-
-        const editAuthor = {
-
-            image: this.image.value,
+        const id = this.props.R._id;
+      //  const img=this.Image.value.substring(12);
+        
+      const editAuthor = {
             FN: this.state.newFN,
-            LN: this.state.newLN,
+            LN:this.state.newLN,
             DOB: this.DOB.value,
-            deleted: false,
         }
-
-        value.editAuthor(this.props.R.id, editAuthor);
+        value.editAuthor(id, editAuthor);
         this.setState({ show: false });
     }
-
-
     render() {
-
         return (
             <MyContext.Consumer>
                 {
-
                     value => (
                         <tr>
                             <td>{this.props.R.id}</td>

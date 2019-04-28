@@ -13,6 +13,7 @@ import authorsPage from './components/User/AuthorProfile/ListPage';
 
 import aboutus from './components/User/AboutUs/AboutUs';
 
+
 import termsandconditions from './components/User/TermsAndConditions/TermsAndCondition';
 ///////////import admin pages/////////////////////
 import Home from './components/Admin/Home/Home.js';
@@ -44,10 +45,10 @@ import BookProfile from './components/User/BookProfile/BookProfile'
 // import book1 from '../src/assets/images/book1.jpg';
 // import book2 from '../src/assets/images/book2.jpg';
 // import book3 from '../src/assets/images/book3.jpg';
-import author from '../src/assets/images/author.jpg';
-import author2 from '../src/assets/images/author2.jpg';
-import author3 from '../src/assets/images/author3.jpg';
-import author4 from '../src/assets/images/author4.jpg';
+// import author from '../src/assets/images/author.jpg';
+// import author2 from '../src/assets/images/author2.jpg';
+// import author3 from '../src/assets/images/author3.jpg';
+// import author4 from '../src/assets/images/author4.jpg';
 import CategorisList from '../src/components/User/CategoryList/CategoryList';
 // -----------------------Font Awesome Import-------------------------
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -63,9 +64,7 @@ export const MyContext = React.createContext();
 class App extends Component {
   state = {
     users:
-      [{ name: 'alaa', password: '123456', image: "pexels-photo-614810.jpeg", userGroup: 1, deleted: false, id: 1 }
-        , { name: 'aya', password: '123456', userGroup: 1, image: "pexels-photo-736716.jpeg", deleted: false, id: 2 },
-      { name: 'sara', password: '123456', userGroup: 2, image: "pexels-photo-614810.jpeg", deleted: false, id: 3 }],
+      [],
     authors: [],
     categories: [],
     login: false,
@@ -166,6 +165,10 @@ class App extends Component {
         // debugger
       })
   }
+
+
+
+
   deleteCategory = (id) => {
     deleteCategory(id)
       .then(res => {

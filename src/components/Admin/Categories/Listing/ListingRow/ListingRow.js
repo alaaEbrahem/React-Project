@@ -19,6 +19,7 @@ class ListingRow extends React.Component {
     }
     
     handleDelete = (value) => (e) => {
+        //el delete ahe
         const id = this.props.R._id;
         value.deleteCategory(id); 
       }
@@ -36,29 +37,12 @@ class ListingRow extends React.Component {
         this.setState({ newcategory: value, error: '' });
       }
     handleEdit=(value)=>(e)=>{
-        // if (!this.state.newcategory==='') {
-        //     this.setState({ newcategory: this.props.R.Name, show: true
-        //        , error: 'category can not be null' });
-        //        return;
-        //     }
-        
-        //   else if (!isNaN(this.state.newcategory)) {
-        //     this.setState({ newcategory: this.props.R.name, show: true,error: 'category can not be number' })
-        //     return;
-        //   }
-        //   else if (!value.searchCategory(this.state.newcategory)) {
-        //     this.setState({ newcategory: this.props.R.name,error: 'category already exsist', show: true })
-        //     return;
-        //   }
-        //   else{
-        //   value.editCategory(e.target.dataset.id,this.state.newcategory);
-        //   this.setState({ show: false });}
+     // 
 
           e.preventDefault();
           debugger
           const editedCategory = {
-              // photo: `../src/assets/images/${img}`,
-              // photo: '',
+             
               _id: e.target.dataset.id,
               Name: this.state.newcategory,
           }

@@ -25,17 +25,17 @@ class Categories extends React.Component {
     this.setState({ category: value, error: '' });
   }
   handleClose = (value) => (e) => {
-   
-    
-      const category = {
-        
-        Name:this.categoryName.value,
-      };
-     value.addCategory(category);
-      this.setState({ show: false });
-    
+
+    // *
+    const category = {
+
+      Name: this.categoryName.value,
+    };
+    value.addCategory(category);
+    this.setState({ show: false });
+
   }
-  handleHide=()=>{
+  handleHide = () => {
     this.setState({ show: false });
   }
   handleShow() {
@@ -46,7 +46,7 @@ class Categories extends React.Component {
     return (
       <MyContext.Consumer>
         {value => (
-          value.state.login &&value.state.login.userGroup==1 ?
+          value.state.login && value.state.login.userGroup == 1 ?
             <React.Fragment>
               <Navbar />
               <div className="container-fluid no-gutters">

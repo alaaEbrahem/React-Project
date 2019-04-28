@@ -12,6 +12,7 @@ export const getCategories=()=>{
     .then(res=>res.data)
 }
 
+
 export const EditCategory=({_id,Name})=>{
   
     return axios.patch(`${BACKEND_URL}/api/categories/${_id}`,{
