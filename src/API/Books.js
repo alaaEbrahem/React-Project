@@ -3,7 +3,7 @@ import axios from 'axios';
 const BACKEND_URL='http://localhost:3000';
 
 export const getBooks=()=>{
-    debugger
+    // debugger
     return axios.get(`${BACKEND_URL}/api/books/`,{
         // headers:{
         //     authorization:`bearer ${localStorage.getItem('token')}`

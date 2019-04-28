@@ -3,34 +3,34 @@ import book1 from '../../../../assets/images/d.jpg';
 import Item from '../../../shared/item/item';
 import { MyContext } from '../../../../App'
 class list extends Component {
-    state = {
-        data: [
-            {
-                id: 1,
-                itemTitle: "Divergent",
-                itemImg: book1,
-                itemSubTitle: "VERONICA ROTH"
-            },
-            {
-                id: 2,
-                itemImg: book1,
-                itemTitle: "Divergent",
-                itemSubTitle: "VERONICA ROTH"
-            },
-            {
-                id: 3,
-                itemImg: book1,
-                itemTitle: "Divergent",
-                itemSubTitle: "VERONICA ROTH"
-            },
-            {
-                id: 4,
-                itemImg: book1,
-                itemTitle: "Divergent",
-                itemSubTitle: "VERONICA ROTH"
-            },
-        ],
-    }
+    // state = {
+    //     data: [
+    //         {
+    //             id: 1,
+    //             itemTitle: "Divergent",
+    //             itemImg: book1,
+    //             itemSubTitle: "VERONICA ROTH"
+    //         },
+    //         {
+    //             id: 2,
+    //             itemImg: book1,
+    //             itemTitle: "Divergent",
+    //             itemSubTitle: "VERONICA ROTH"
+    //         },
+    //         {
+    //             id: 3,
+    //             itemImg: book1,
+    //             itemTitle: "Divergent",
+    //             itemSubTitle: "VERONICA ROTH"
+    //         },
+    //         {
+    //             id: 4,
+    //             itemImg: book1,
+    //             itemTitle: "Divergent",
+    //             itemSubTitle: "VERONICA ROTH"
+    //         },
+    //     ],
+    // }
     render() {
         return (
             <MyContext.Consumer>

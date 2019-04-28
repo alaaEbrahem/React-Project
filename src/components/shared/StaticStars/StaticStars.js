@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './StaticStars.scss'
 
 class StaticStars extends Component {
-    render() {
+
+    render() {    
         return (
             <span className="sstars" data-sstars={this.props.children}>
                 <svg height="10" width="10" className="sstar" data-rating="1">
