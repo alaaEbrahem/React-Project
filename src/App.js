@@ -236,19 +236,11 @@ class App extends Component {
   }
   addBook = (Bk) => {
     addBook(Bk)
-      .then(res => {
-        // debugger
-        getBooks()
-          .then(data => {
-            debugger
-            const Book = data;
-            this.setState({ Book })
-          }).catch(err => {
-            // debugger
+      .then(res => {getBooks().then(data => {
+          const Book = data;
+          this.setState({ Book })}).catch(err => {
           })
-      })
-      .catch(err => {
-        // debugger
+      }).catch(err => {
       })
   }
 
@@ -312,17 +304,16 @@ class App extends Component {
 
   // }
 
-  addAuthor = (author) => {
-    addAuthor(author)
-      .then(res => {
-        getAuthors()
-          .then(res => {
-            const authors = res;
-            this.setState({ authors })
-          }).catch(err => {
+  addAuthor = (a) => {
+    debugger;
+    addAuthor(a)
+      .then(res => {getAuthors().then(data => {
+        debugger;
+          const authors = data;
+          this.setState({ authors })}).catch(err => {
+            debugger;
           })
-      })
-      .catch(err => {
+      }).catch(err => {
       })
   }
   deleteAuthor = (id) => {
@@ -410,7 +401,7 @@ class App extends Component {
 
 
       addAuthor: this.addAuthor,
-      //deleteAuthor: this.deleteAuthor,
+      deleteAuthor: this.deleteAuthor,
       editAuthor: this.editAuthor,
       logout: this.logout,
       addUser: this.addUser,

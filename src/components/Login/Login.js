@@ -24,19 +24,18 @@ class Login extends React.Component {
     }
 
     handleSubmit = (value)=>(e)=> {
-        const { username, password } = this.state;
-        debugger;
+        const { username, password,userGroup } = this.state;
+      
         addLogin({ username, password })
 
             .then(res => {
-                debugger;
+               
                 value.addLoginContext(res.profile);
                 localStorage.setItem("token", res.token);
+               
                 this.props.history.push(`/admin/home`);
             })
             .catch(err => { 
-                debugger;
-                console.log(err);
                 this.setState({ error: 'invalid username or password !!' });
              });
 

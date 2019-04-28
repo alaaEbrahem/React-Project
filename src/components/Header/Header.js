@@ -2,11 +2,11 @@ import React,{Component} from 'react';
 import './Header.scss';
 import { MyContext } from '../../App'
 import { withRouter } from "react-router";
-
+import { addLogin } from '../../API/user';
 class Header extends Component {
     state = {
         username: '',
-        loginPassword: '',
+        password: '',
         error: ''
     }
 
@@ -16,24 +16,42 @@ class Header extends Component {
     }
     handleChangepassword = (e) => {
         const value = e.target.value;
-        this.setState({ loginPassword: value,error:'' });
+        this.setState({ password: value,error:'' });
     }
 
     handleSubmit = (value) => (e) => {
         e.preventDefault();
-        const user = value.search(this.state.username, this.state.loginPassword);
-        value.addLogin(user);
-        if (user.userGroup === 1) {
-            this.props.history.push(`/admin`);
+        const { username, password } = this.state;
+        debugger;
+        addLogin({ username,password })
 
-        }
-        else if (user.userGroup === 2) {
-            this.props.history.push(`/profile`);
-        }
-        else {
-            this.setState({ loginPassword: '', username: '', error: 'Invalid username or password*' });
-            this.props.history.push(`user`);
-        }
+            .then(res => {
+                debugger
+              console.log(res);
+                value.addLoginContext(res.profile);
+                localStorage.setItem("token", res.token);
+               
+                this.props.history.push(`/profile`);
+            })
+            .catch(err => { 
+                debugger
+                console.log(err);
+                this.setState({ error: 'invalid username or password !!' });
+             });
+        // e.preventDefault();
+        // const user = value.search(this.state.username, this.state.loginPassword);
+        // value.addLogin(user);
+        // if (user.userGroup === 1) {
+        //     this.props.history.push(`/admin`);
+
+        // }
+        // else if (user.userGroup === 2) {
+        //     this.props.history.push(`/profile`);
+        // }
+        // else {
+        //     this.setState({ loginPassword: '', username: '', error: 'Invalid username or password*' });
+        //     this.props.history.push(`user`);
+        // }
     }
     render(){
         return(
@@ -43,10 +61,10 @@ class Header extends Component {
                 <div className="row no-gutters">
                     <nav className="col navbar">
                         <a className="navbar-brand text-center">good<span className="font-weight-bold">reads</span></a>
-                        <form className="form-inline" onSubmit={this.handleSubmit(value)}>
+                        <form className="form-inline" >
                             <input onChange={this.handleChangeuser} value={this.state.username} className="form-control mr-sm-2" type="text" placeholder="Username..."/>
-                            <input onChange={this.handleChangepassword} value={this.state.loginPassword} className="form-control mr-sm-2" type="password" placeholder="Password..."/>
-                            <button className="btn btn-success my-2 my-sm-0" type="submit">LOG IN</button>
+                            <input onChange={this.handleChangepassword} value={this.state.password} className="form-control mr-sm-2" type="password" placeholder="Password..."/>
+                            <button type="button" onClick={this.handleSubmit(value)}  className="btn btn-success my-2 my-sm-0" >LOG IN</button>
                       {this.state.error}
                         </form>
                     </nav>
