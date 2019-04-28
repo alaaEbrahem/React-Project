@@ -52,6 +52,8 @@ import { addLogin } from './API/user';
 
 import { getProfile } from './API/profile';
 import { editProfile } from './API/profile';
+import {addProfile}from './API/profile';
+
 ////////////////////////End Admin pages///////////////////////////
 
 import BookProfile from './components/User/BookProfile/BookProfile'
@@ -183,8 +185,6 @@ class App extends Component {
   }
 
 
-
-
   deleteCategory = (id) => {
     deleteCategory(id)
       .then(res => {
@@ -246,6 +246,25 @@ class App extends Component {
       }).catch(err => {
       })
   }
+
+
+  addProfile = (pro) => {
+    debugger
+    addProfile(pro)
+      .then(res => {
+        debugger
+        getProfile()
+          .then(res => {
+            debugger
+            const profileBooks = res;
+            this.setState({ profileBooks })
+          }).catch(err => {
+            debugger
+          });
+      }).catch(err => {
+      })
+  }
+
 
   deleteBook = (id) => {
     deleteBook(id)
@@ -362,6 +381,7 @@ class App extends Component {
       deleteBook: this.deleteBook,
       editBook: this.editBook,
       editProfile:this.editProfile,
+      addProfile:this.addProfile,
       addCategory: this.addCategory,
       searchCategory: this.searchCategory,
 

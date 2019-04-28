@@ -34,16 +34,16 @@ class list extends Component {
     render() {
         return (
             <MyContext.Consumer>
-            {value => (
-        value.state.Book.map(b => (<Item itemImage={b.photo} itemTitle={b.Name}  key={b.id} id={b.id}book={b}
-            itemSubTitle={
-                value.state.authors.filter(a => (a.id == b.authorId))[0]
-            } key={b.id}></Item>))
+                {value => (
+                    value.state.Book.map(b => (<Item itemImage={b.photo} itemTitle={b.Name} key={b.id} id={b._id} book={b}
+                        itemSubTitle={
+                            value.state.authors.filter(a => (a.id == b.authorId))[0]
+                        } key={b._id}></Item>))
 
-        )}
-        </MyContext.Consumer>
-    );
-}
+                )}
+            </MyContext.Consumer>
+        );
+    }
 
 };
 export default list;
