@@ -97,6 +97,11 @@ class App extends Component {
       this.setState({ categories })
     }).catch(err => {
     })
+    getUsers().then(res => {
+      const users = res;
+      this.setState({ users })
+    }).catch(err => {
+    })
     getAuthors().then(res => {
       const authors = res;
       this.setState({ authors })
@@ -181,15 +186,15 @@ class App extends Component {
       .then(res => {
         getCategories()
           .then(res => {
-            debugger
+      
             const categories = res;
             this.setState({ categories })
           }).catch(err => {
-            debugger
+           
           })
 
       }).catch(err => {
-        debugger
+      
       })
   }
   addBook = (Bk) => {

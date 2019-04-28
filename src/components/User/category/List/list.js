@@ -8,11 +8,12 @@ const list = (props) => (
             {
 
                 value => (
-                    value.state.Book.filter(i => (i.categoryId == props.id)).map(i => (<Item itemImage={i.photo} id={i.id} book={i} itemTitle={i.name}
+                    value.state.Book.filter(i => (i.CategoryID == props.id)).map(i => (<Item itemImage={i.photo} id={i._id} book={i} itemTitle={i.Name}
                       
                         itemSubTitle={
-                            value.state.authors.filter(a => (a.id == i.authorId))[0]
-                        } key={i.id}></Item>))
+                            
+                            value.state.authors.filter(a => (a._id == i.AuthorID))[0]
+                        } key={i._id}></Item>))
                 )
             }
         </MyContext.Consumer>

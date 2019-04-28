@@ -15,7 +15,7 @@ class Autor extends React.Component {
     this.handleCloseADD = this.handleCloseADD.bind(this);
     this.state = {
       show: false,
-      error: ''
+      errors:''
     };
   }
   handleChange = (e) => {
@@ -33,8 +33,16 @@ class Autor extends React.Component {
       LN: this.LN.value,
       DOB: this.DOB.value,
     }
+    if(author.FN==''||!(isNaN)(author.FN)){
+      this.setState({errors:'first name can not be empty or number'})
+    }
+    else if(author.LN==''||!(isNaN)(author.LN)){
+      this.setState({errors:'last name can not be empty or number'})    }
+   else if(author.DOB==''||!(isNaN)(author.DOB)){
+    this.setState({errors:'date can not be empty or number'})    }
+    else{
     addAuthor(author);
-    this.setState({ show: false });
+    this.setState({ show: false });}
   }
 
   handleClose() {
@@ -67,7 +75,11 @@ class Autor extends React.Component {
                       <Modal.Body>
                         <Form>
                           <Form.Group as={Col} controlId="formBasicbook">
-                            <h3>{this.state.error}</h3>
+                          {this.state.errors ? 
+                                        <div class="alert alert-danger mt-3 " role="alert">
+                                          {this.state.errors}
+                                          </div>:""}
+      
                             <Form.Control ref={element => this.FN = element} type="text" placeholder="Enter Author FirstName" />
                           </Form.Group>
                           <Form.Group as={Col} controlId="formBasicbook">

@@ -30,7 +30,6 @@ class Header extends Component {
               console.log(res);
                 value.addLoginContext(res.profile);
                 localStorage.setItem("token", res.token);
-               
                 this.props.history.push(`/profile`);
             })
             .catch(err => { 
@@ -38,20 +37,7 @@ class Header extends Component {
                 console.log(err);
                 this.setState({ error: 'invalid username or password !!' });
              });
-        // e.preventDefault();
-        // const user = value.search(this.state.username, this.state.loginPassword);
-        // value.addLogin(user);
-        // if (user.userGroup === 1) {
-        //     this.props.history.push(`/admin`);
-
-        // }
-        // else if (user.userGroup === 2) {
-        //     this.props.history.push(`/profile`);
-        // }
-        // else {
-        //     this.setState({ loginPassword: '', username: '', error: 'Invalid username or password*' });
-        //     this.props.history.push(`user`);
-        // }
+    
     }
     render(){
         return(

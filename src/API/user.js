@@ -4,7 +4,7 @@ const BACKEND_URL='http://localhost:3000';
 
 export const getUsers=()=>{
   
-    return axios.get(`${BACKEND_URL}/api/users/listing`,{
+    return axios.get(`${BACKEND_URL}/api/users`,{
         headers:{
             authorization:`bearer ${localStorage.getItem('token')}`
         }
@@ -37,7 +37,7 @@ export const deleteUser=(id)=>{
 
 export const addUser=({username,name,password,email})=>{
  
-    return axios.post(`${BACKEND_URL}/api/categories/`,{
+    return axios.post(`${BACKEND_URL}/api/users/`,{
         headers:{
             authorization:`bearer ${localStorage.getItem('token')}`
         },

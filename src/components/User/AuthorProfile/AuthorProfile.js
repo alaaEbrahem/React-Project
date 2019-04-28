@@ -42,7 +42,7 @@ class AuthorProfile extends Component {
                        
                             <legend>{this.state.data[0].name}’S BOOKS:</legend>
                             {
-                                value.state.Book.filter(b=>(b.authorId==this.props.match.params.id)).map(b=>(<AuthorBookList book={b} ></AuthorBookList>))
+                                value.state.Book.filter(b=>(b.AuthorID==this.props.match.params.id)).map(b=>(<AuthorBookList book={b} ></AuthorBookList>))
                             }
                             
                         </fieldset>

@@ -13,7 +13,7 @@ const category = (props) => (
                 value => (
                     <Container >
                         {
-                        value.state.categories.filter(b=>(b.id==props.match.params.id)).map(b=>(<a key={b.id} className="navbar-brand text-center">{b.name}<span className="font-weight-bold"></span></a>))
+                        value.state.categories.filter(b=>(b._id==props.match.params.id)).map(b=>(<a key={b._id} className="navbar-brand text-center">{b.Name}<span className="font-weight-bold"></span></a>))
                         }
                         <Row className="text-center m-auto justify-content-between">
                             <List id={props.match.params.id}></List>

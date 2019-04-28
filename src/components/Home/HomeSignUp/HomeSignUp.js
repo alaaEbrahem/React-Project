@@ -3,11 +3,12 @@ import ImageUpload from '../../ImageUpload/ImageUpload';
 import SimpleSchema from 'simpl-schema';
 import uuidv4 from 'uuid/v4';
 import { MyContext } from '../../../App'
+import { addUser } from '../../../API/user';
 
 class HomeSignUp extends Component{
     state={
-        fname:'',
-        lname:'',
+        username:'',
+        name:'',
         email:'',
         password:'',
         passConfirm:'',
@@ -23,25 +24,25 @@ class HomeSignUp extends Component{
     handleSubmit = (value)=>(e) =>{
         e.preventDefault();
 
-        const {fname, lname, email, password, passConfirm} = this.state
+        const {username, name, email, password, passConfirm} = this.state
 
         const schema = new SimpleSchema({
-            fname: {
+            username: {
               type: String,
               max: 40,
             },
-            lname: {
+            name: {
                 type: String,
                 max: 40,
               },
             email: SimpleSchema.RegEx.Email,
             password: {
               type: String,
-              min: 8,
+              min: 5,
             },
             passConfirm: {
                 type: String,
-                min:8,
+                min:5,
                 // custom:()=> {
                 //     if (this.value !== this.field('password').value) {
                 //         return [{name:'passwordMismatch', type: "passwordMismatch"}];
@@ -49,28 +50,38 @@ class HomeSignUp extends Component{
                 // },
             },
           }).newContext();
-          schema.validate({ fname,lname,email,password, passConfirm});
+          schema.validate({ username,name,email,password, passConfirm});
             if (schema.isValid()) {
-                console.log('form submited');
-                const user = {
-                    name: this.state.fname,image:'', deleted: false,userGroup:2,password :this.state.password,id: uuidv4(),
-                  };
-                  console.log(user);
-                  this.setState({ fname: '',lname:'',email:'',password:'',passConfirm:'',file:'', success:'sign up successfully welcome !' });
+                addUser({username,name,password,email})
+
+                .then(res => {
+             
+              this.setState({ fname: '',lname:'',email:'',password:'',passConfirm:'',file:'', success:'sign up successfully welcome !' });
+                    this.props.history.push(`/profile`);
+                })
+                .catch(err => { 
+                    this.setState({ error: 'can not register try again !!' });
+                 });
+                // console.log('form submited');
+                // const user = {
+                //     name: this.state.fname,image:'', deleted: false,userGroup:2,password :this.state.password,id: uuidv4(),
+                //   };
+                //   console.log(user);
+                //   this.setState({ fname: '',lname:'',email:'',password:'',passConfirm:'',file:'', success:'sign up successfully welcome !' });
                
-                  console.log(this.state);
-                  value.addUser(user);
-                  console.log(this.state);
-                // console.log(schema);
-                // this.props.addPost(this.state);
+                //   console.log(this.state);
+                //   value.addUser(user);
+                //   console.log(this.state);
+                // // console.log(schema);
+                // // this.props.addPost(this.state);
             }
             else{
                 this.setState({success:'sign up falied please try again !'});
             }
             this.setState({ error: schema.validationErrors() });
-            console.log(schema.validationErrors());
+           
 
-        console.log('form submited');
+       
     }
     render(){
         return(
@@ -80,10 +91,10 @@ class HomeSignUp extends Component{
                 <h2>{this.state.success!=''?this.state.success:'New here? Create free account!'}</h2>
                 <h3></h3>
                 <div className="form-group">
-                    <input type="text" value={this.state.fname} className="form-control" name="fname" onChange={this.handleChange} placeholder="Enter your first name"/>
+                    <input type="text" value={this.state.username} className="form-control" name="username" onChange={this.handleChange} placeholder="Enter your username"/>
                 </div>
                 <div className="form-group">
-                    <input type="text"  value={this.state.lname} className="form-control" name="lname" onChange={this.handleChange} placeholder="Enter your last name"/>
+                    <input type="text"  value={this.state.name} className="form-control" name="name" onChange={this.handleChange} placeholder="Enter your name"/>
                 </div>
                 <div className="form-group">
                     <input type="email" value={this.state.email}  className="form-control" name="email" onChange={this.handleChange} id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email"/>
