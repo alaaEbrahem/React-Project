@@ -12,7 +12,7 @@ export const getAuthors = () => {
 }
 
 
-export const EditAuthor = ({ _id, FN, LN, DOB }) => {
+export const editAuthor = ({ _id, FN, LN, DOB }) => {
     return axios.patch(`${BACKEND_URL}/api/authors/${_id}`, {
         headers: {
             authorization: `bearer ${localStorage.getItem('token')}`

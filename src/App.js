@@ -30,7 +30,7 @@ import { addBook } from './API/Books';
 // import { getCategoryID } from './API/Category';
 
 import { getAuthors } from './API/Authors';
-import { EditAuthor } from './API/Authors';
+import { editAuthor } from './API/Authors';
 import { deleteAuthor } from './API/Authors';
 import { addAuthor } from './API/Authors';
 
@@ -282,15 +282,18 @@ class App extends Component {
       })
   }
   editAuthor = (edited) => {
-    EditAuthor(edited)
+    
+    editAuthor(edited)
       .then(res => {
         getAuthors()
           .then(res => {
+            debugger
             const authors = res;
             this.setState({ authors })
           }).catch(err => {
           })
       }).catch(err => {
+        debugger
       })
   }
 
