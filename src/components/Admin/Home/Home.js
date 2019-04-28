@@ -16,7 +16,7 @@ class Home extends React.Component {
     return (
       <MyContext.Consumer>
          {value => ( 
-           value.state.login && value.state.login.userGroup==1?  
+          // value.state.login && value.state.login.userGroup==1?  
       <React.Fragment>
         <Navbar/>
         <div className="container-fluid no-gutters">
@@ -46,7 +46,8 @@ class Home extends React.Component {
           </div>
         </div>
 
-      </React.Fragment>:this.props.history.push(`/`)
+      </React.Fragment>
+  
 
 )}
 </MyContext.Consumer>

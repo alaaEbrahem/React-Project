@@ -25,10 +25,17 @@ import { getBooks } from './API/Books';
 import { deleteBook } from './API/Books';
 import { EditBook } from './API/Books';
 import { addBook } from './API/Books';
+
 import { getCategories } from './API/Categories';
 import { deleteCategory } from './API/Categories';
 import { EditCategory } from './API/Categories';
 import { addCategory } from './API/Categories';
+
+import { getUsers } from './API/user';
+import { EditUser } from './API/user';
+import { deleteUser } from './API/user';
+import { addUser } from './API/user';
+import { addLogin } from './API/user';
 ////////////////////////End Admin pages///////////////////////////
 
 import BookProfile from './components/User/BookProfile/BookProfile'
@@ -53,11 +60,8 @@ library.add(faHome);
 export const MyContext = React.createContext();
 class App extends Component {
   state = {
-    users:
-      [{ name: 'alaa', password: '123456', image: "pexels-photo-614810.jpeg", userGroup: 1, deleted: false, id: 1 }
-        , { name: 'aya', password: '123456', userGroup: 1, image: "pexels-photo-736716.jpeg", deleted: false, id: 2 },
-      { name: 'sara', password: '123456', userGroup: 2, image: "pexels-photo-614810.jpeg", deleted: false, id: 3 }],
-    authors:
+    users: [], 
+      authors:
       [{ FN: 'veronica', LN: 'roth', DOB: '1/1/2010', image: author, deleted: false, id: '1' }
         , { FN: 'Ahmed', LN: 'khairy El-omary', DOB: '2/1/1973', image: author2, deleted: false, id: '2' },
         { FN: 'Ahmed', LN: 'Saad El-Din', DOB: '1/1/1980', image: author3, deleted: false, id: '3' },
@@ -85,6 +89,11 @@ class App extends Component {
         this.setState({ categories })
       }).catch(err => {
       })
+      getUsers().then(res => {
+        const users = res;
+        this.setState({ users })
+      }).catch(err => {
+      })
   }
   search = (name, password) => {
     const { users } = this.state;
@@ -104,9 +113,33 @@ class App extends Component {
   logout = () => {
     this.setState({ login: false });
   }
-  addUser = (user) => {
-    const { users } = this.state;
-    this.setState({ users: users.concat(user) })
+  addUser = (u) => {
+    debugger
+    addUser(u)
+      .then(res => {
+        debugger
+        getUsers()
+          .then(res => {
+            debugger
+            const users = res;
+            this.setState({ users })
+          }).catch(err => {
+            debugger
+          })
+      })
+      .catch(err => {
+        debugger
+      })
+  }
+  Login = (u) => {
+    debugger
+    addLogin(u)
+      .then(res => {
+     
+      })
+      .catch(err => {
+        debugger
+      })
   }
   //category function
   addCategory = (ca) => {
@@ -298,12 +331,12 @@ class App extends Component {
      
 
       addAuthor: this.addAuthor,
-      deleteAuthor: this.deleteAuthor,
+      //deleteAuthor: this.deleteAuthor,
       editAuthor: this.editAuthor,
       logout: this.logout,
       addUser: this.addUser,
-      Search: this.Search
-
+      Search: this.Search,
+      Login: this.Login
 
     }
     return (
