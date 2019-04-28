@@ -34,8 +34,8 @@ class AuthorBookList extends Component {
 
     render() {
         return (
-           <AuthorBook key={this.props.book.id} title={this.props.book.name}
-                id={this.props.book.id} 
+           <AuthorBook key={this.props.book._id} title={this.props.book.Name}
+                id={this.props.book._id} 
                 //ratingdesc={B.ratingdesc}
                 bookImg={this.props.book.photo}
             />

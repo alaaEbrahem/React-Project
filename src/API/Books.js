@@ -39,6 +39,15 @@ export const deleteBook=(id)=>{
     })
     .then(res=>res.data)
 }
+export const getBooksByCatId=(id)=>{
+    
+    return axios.get(`${BACKEND_URL}/api/books/cat/${id}`,{
+        headers:{
+            authorization:`bearer ${localStorage.getItem('token')}`
+        }
+    })
+    .then(res=>res.data)
+}
 
 export const addBook=({Photo,Name,CategoryID,AuthorID})=>{
     debugger

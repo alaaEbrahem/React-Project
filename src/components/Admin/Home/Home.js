@@ -28,7 +28,7 @@ class Home extends React.Component {
               <div className="col-10">
                 <div className="row ml-4">
                   <div className="usesr ml-md-5 ml-sm-2 mt-5 col-lg-4 col-sm-7 col-md-4 no-gutters ">
-                    <Card card="users" value={value.state.users.length} />
+                    <Card card="users" value={value.state.users.filter(u => u.userGroup!==1).length} />
                   </div>
                   <div className="categories ml-md-5 ml-sm-2 mt-5 col-lg-4 col-sm-7 col-md-4 no-gutters ">
                     <Card card="categories" value={value.state.categories.filter(R => !(R.deleted)).length}/>

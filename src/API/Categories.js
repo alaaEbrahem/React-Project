@@ -24,6 +24,7 @@ export const EditCategory=({_id,Name})=>{
       
     })
     .then(res=>res.data)
+    .catch(err=>err);
 }
 
 export const deleteCategory=(id)=>{

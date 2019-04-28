@@ -13,7 +13,6 @@ class Categories extends React.Component {
   constructor(props) {
     super(props);
     this.handleShow = this.handleShow.bind(this);
-    //this.handleClose = this.handleClose.bind(this);
     this.state = {
       show: false,
       category: '',
@@ -33,7 +32,7 @@ class Categories extends React.Component {
         this.setState({error:'name can not be empty or number' });
       }
       else{
-        console.log((isNaN)(this.categoryName.value));
+        
      value.addCategory(category);
       this.setState({ show: false,error:'' });
     }

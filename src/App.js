@@ -11,6 +11,9 @@ import Login from './components/Login/Login';
 import BookPage from './components/User/BookProfile/ListPage';
 import authorsPage from './components/User/AuthorProfile/ListPage';
 
+import ReactUploadImage from './components/imagetest';
+
+
 import aboutus from './components/User/AboutUs/AboutUs';
 
 
@@ -98,6 +101,11 @@ class App extends Component {
     getCategories().then(res => {
       const categories = res;
       this.setState({ categories })
+    }).catch(err => {
+    })
+    getUsers().then(res => {
+      const users = res;
+      this.setState({ users })
     }).catch(err => {
     })
     getAuthors().then(res => {
@@ -199,15 +207,15 @@ class App extends Component {
       .then(res => {
         getCategories()
           .then(res => {
-            debugger
+      
             const categories = res;
             this.setState({ categories })
           }).catch(err => {
-            debugger
+           
           })
 
       }).catch(err => {
-        debugger
+      
       })
   }
   addBook = (Bk) => {
@@ -378,7 +386,9 @@ class App extends Component {
         <Router><>
 
           <Switch>
+          
 
+          <Route exact path="/image" component={ReactUploadImage} />
 
             <Route exact path="/user" component={HomePage} />
 
