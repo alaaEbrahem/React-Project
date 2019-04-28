@@ -25,8 +25,8 @@ import { getBooks } from './API/Books';
 import { deleteBook } from './API/Books';
 import { EditBook } from './API/Books';
 import { addBook } from './API/Books';
-import { getAuthorID } from './API/Author';
-import { getCategoryID } from './API/Category';
+// import { getAuthorID } from './API/Author';
+// import { getCategoryID } from './API/Category';
 
 import { getAuthors } from './API/Authors';
 import { EditAuthor } from './API/Authors';
@@ -70,9 +70,6 @@ class App extends Component {
     categories: [],
     login: false,
     Book: [],
-    // BookCurrstate: [],
-    // CatID:[],
-    // AuthID:[],
     searchValue: ''
   }
 
@@ -87,33 +84,7 @@ class App extends Component {
       }).catch(err => {
         debugger
       });
-      // getAuthorID()
-      // .then(res=>{
-      //   debugger
-      //   const AuthID = res;
-      //   this.setState({ AuthID })
-      // }).catch(err => {
-      //   debugger
-      // });
-      // getCategoryID()
-      // .then(res=>{
-      //   debugger
-      //   const CatID = res;
-      //   this.setState({ CatID })
-      // }).catch(err => {
-      //   debugger
-      // });
 
-
-    // debugger
-    // getBooks().then(res => {
-    //   // debugger
-    //   const Book = res;
-    //   this.setState({ Book })
-    // })
-    //   .catch(err => {
-    //     // debugger
-    //   })
     getCategories().then(res => {
       const categories = res;
       this.setState({ categories })
