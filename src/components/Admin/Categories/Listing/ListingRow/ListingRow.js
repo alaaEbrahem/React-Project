@@ -9,8 +9,11 @@ class ListingRow extends React.Component {
         super(props);
         this.handleShow = this.handleShow.bind(this);
         this.handleClose = this.handleClose.bind(this);
+        this.handleShow2 = this.handleShow2.bind(this);
+        this.handleClose2 = this.handleClose2.bind(this);
         this.state = {
             show: false,
+            show2: false,
             
             newcategory:this.props.R.Name,
             error:''
@@ -31,6 +34,14 @@ class ListingRow extends React.Component {
         this.setState({ show: true });
      
     }
+    handleClose2() {
+        this.setState({ show2: false });
+    }
+    handleShow2=()=>{
+  
+        this.setState({ show2: true });
+     
+    }
     handleChange = (e) => {
    
         const value = e.target.value;
@@ -39,8 +50,9 @@ class ListingRow extends React.Component {
     handleEdit=(value)=>(e)=>{
      // 
 
+   
           e.preventDefault();
-          debugger
+        
           const editedCategory = {
              
               _id: e.target.dataset.id,
@@ -62,7 +74,7 @@ class ListingRow extends React.Component {
                 <td>
                   
              <FontAwesomeIcon icon={faEdit} onClick={this.handleShow}  className="icon mr-3" />
-                   <span onClick={this.handleDelete(value)}> <FontAwesomeIcon icon={faTrash} className="icon"  /></span>
+                   <span onClick={this.handleShow2}> <FontAwesomeIcon icon={faTrash} className="icon"  /></span>
                    
                     <Modal show={this.state.show} onHide={this.handleClose}>
                         <Modal.Header closeButton>
@@ -72,7 +84,7 @@ class ListingRow extends React.Component {
                             <Form>
                                 <Form.Group controlId="formBasicEmail">
                                 <h3>{this.state.error}</h3>
-                               { console.log(this.state.newcategory)}
+                             
                                     <Form.Control  onChange={this.handleChange} value={this.state.newcategory} type="text" placeholder="enter new name"/>
                                    
                                 </Form.Group>
@@ -87,6 +99,24 @@ class ListingRow extends React.Component {
                             </Form>
                         </Modal.Body>
                     </Modal>
+              
+                    <Modal show={this.state.show2} onHide={this.handleClose2}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Delete Category</Modal.Title>
+                        </Modal.Header>
+                    
+                                <Modal.Footer>
+                                    <Button variant="secondary" onClick={this.handleClose2}>
+                                        Cancel
+                              </Button>
+                                    <Button variant="success" data-id={this.props.R._id} onClick={this.handleDelete(value)}>
+                                      Delete
+                              </Button>
+                                </Modal.Footer>
+                         
+                       
+                    </Modal>
+              
                 </td>
                 </tr>
     )}

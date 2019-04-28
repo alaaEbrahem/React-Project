@@ -26,8 +26,9 @@ import { getBooks } from './API/Books';
 import { deleteBook } from './API/Books';
 import { EditBook } from './API/Books';
 import { addBook } from './API/Books';
+
 import { getAuthorID } from './API/Author';
-import { getCategoryID } from './API/Category';
+
 
 import { getAuthors } from './API/Authors';
 import { EditAuthor } from './API/Authors';
@@ -39,6 +40,12 @@ import { getCategories } from './API/Categories';
 import { deleteCategory } from './API/Categories';
 import { EditCategory } from './API/Categories';
 import { addCategory } from './API/Categories';
+
+import { getUsers } from './API/user';
+import { EditUser } from './API/user';
+import { deleteUser } from './API/user';
+import { addUser } from './API/user';
+import { addLogin } from './API/user';
 ////////////////////////End Admin pages///////////////////////////
 
 import BookProfile from './components/User/BookProfile/BookProfile'
@@ -63,10 +70,12 @@ library.add(faHome);
 export const MyContext = React.createContext();
 class App extends Component {
   state = {
-    users:
-      [],
-    authors: [],
+
+    users:[],
+     
+      authors: [],
     categories: [],
+
     login: false,
     Book: [],
     // BookCurrstate: [],
@@ -85,7 +94,19 @@ class App extends Component {
         this.setState({ Book })
       }).catch(err => {
         debugger
-      });
+
+      })
+      getCategories().then(res => {
+        const categories = res;
+        this.setState({ categories })
+      }).catch(err => {
+      })
+      getUsers().then(res => {
+        const users = res;
+        this.setState({ users })
+      }).catch(err => {
+      })
+
       // getAuthorID()
       // .then(res=>{
       //   debugger
@@ -135,34 +156,45 @@ class App extends Component {
     }
 
   }
-  addLogin = (user) => {
+  addLoginContext = (user) => {
     const u = user;
     this.setState({ login: u });
   }
   logout = () => {
     this.setState({ login: false });
   }
-  addUser = (user) => {
-    const { users } = this.state;
-    this.setState({ users: users.concat(user) })
-  }
-  //category function
-  addCategory = (ca) => {
-    // debugger
-    addCategory(ca)
+  addUser = (u) => {
+    debugger
+    addUser(u)
       .then(res => {
-        // debugger
-        getCategories()
+        debugger
+        getUsers()
           .then(res => {
-            // debugger
-            const categories = res;
-            this.setState({ categories })
+            debugger
+            const users = res;
+            this.setState({ users })
           }).catch(err => {
-            // debugger
+            debugger
           })
       })
       .catch(err => {
-        // debugger
+        debugger
+      })
+  }
+  Login = (u) => {addLogin(u).then(res => {})
+      .catch(err => {
+      })
+  }
+  //category function
+  addCategory = (ca) => { addCategory(ca).then(res => { getCategories()
+          .then(res => {
+            const categories = res;
+            this.setState({ categories })
+          }).catch(err => {
+          })
+      })
+      .catch(err => {
+      
       })
   }
 
@@ -238,19 +270,11 @@ class App extends Component {
       })
   }
   editBook = (edited) => {
-    EditBook(edited)
-      .then(res => {
-        getBooks()
-          .then(res => {
-            debugger
+    EditBook(edited).then(res => {getBooks().then(res => {
             const Book = res;
-            this.setState({ Book })
-          }).catch(err => {
-            debugger
-          })
-
-      }).catch(err => {
-        debugger
+            this.setState({ Book }) }).catch(err => {
+          })}).catch(err => {
+      
       })
   }
   searchCategory = (name) => {
@@ -367,6 +391,7 @@ class App extends Component {
       state: this.state,
       search: this.search,
       addLogin: this.addLogin,
+      addLoginContext: this.addLoginContext,
       addBook: this.addBook,
       deleteBook: this.deleteBook,
       editBook: this.editBook,
@@ -385,12 +410,12 @@ class App extends Component {
 
 
       addAuthor: this.addAuthor,
-      deleteAuthor: this.deleteAuthor,
+      //deleteAuthor: this.deleteAuthor,
       editAuthor: this.editAuthor,
       logout: this.logout,
       addUser: this.addUser,
-      Search: this.Search
-
+      Search: this.Search,
+      Login: this.Login
 
     }
     return (
@@ -404,8 +429,8 @@ class App extends Component {
 
             <Route exact path="/profile" component={UserProfile} />
             <Route exact path="/author" component={AuthorProfile} />
-            <Route exact path="/" component={Login} />
-
+            <Route exact path="/admin/home" component={Home} />
+            <Route exact path="/admin" component={Login} />
             {/* //////////////////// user category routes/////////////////////  */}
             <Route exact path="/category/:id" component={category} />
             <Route exact path="/categories" component={CategorisList} />
@@ -417,7 +442,7 @@ class App extends Component {
             <Route exact path="/aboutus" component={aboutus} />
             <Route exact path="/termsandconditions" component={termsandconditions} />
 
-            <Route exact path="/admin" component={Home} />
+          
             {/* <Route exact path="/books" component={Books} /> */}
 
             <Route exact path="/admin/books" component={Book} />

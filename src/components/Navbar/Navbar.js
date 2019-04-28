@@ -26,7 +26,7 @@ class Navbar extends React.Component {
           </label>
           <ul className="menu">
             <li><NavLink exact to={{
-              pathname: `/admin`,
+              pathname: `/admin/home`,
 
             }}>Home</NavLink></li>
             <li ><NavLink to={{
