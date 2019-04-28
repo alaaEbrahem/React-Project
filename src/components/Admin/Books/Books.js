@@ -15,17 +15,19 @@ class Book extends React.Component {
     this.handleCloseADD=this.handleCloseADD.bind(this);
     this.state = {
       show: false,
-      books:[]
+      books:[],
+      errors:''
     };
   }
 
   
 
   handleClose() {
-    this.setState({ show: false });
+    this.setState({ show: false,errors:'' });
   }
   handleShow() {
-    this.setState({ show: true });
+
+    this.setState({ show: true ,errors:''});
   }
   handleCloseADD=(addBook)=>(e)=>{
     e.preventDefault();
@@ -41,8 +43,17 @@ class Book extends React.Component {
       AuthorID:this.authID.value,
     
     }
+   
+    if(newBook.Name==''||!(isNaN)(newBook.Name)){
+      this.setState({errors:'book name can not be empty or number'})
+    }
+    else if(newBook.CategoryID==''||!(isNaN)(newBook.CategoryID)){
+      this.setState({errors:'category can not be empty or number'})    }
+   else if(newBook.AuthorID==''||!(isNaN)(newBook.AuthorID)){
+    this.setState({errors:'author can not be empty or number'})    }
+    else{
     addBook(newBook);
-    this.setState({ show: false });
+    this.setState({ show: false,errors:'' });}
   }
 
   render() {
@@ -64,22 +75,27 @@ class Book extends React.Component {
                     <Modal show={this.state.show} onHide={this.handleClose}>
                       <Modal.Header closeButton>
                         <Modal.Title as={Col}>Add Book</Modal.Title>
+                     
                       </Modal.Header>
                       <Modal.Body>
                         <Form>
+                        {this.state.errors ? 
+                                        <div class="alert alert-danger mt-3 " role="alert">
+                                          {this.state.errors}
+                                          </div>:""}
                           <Form.Group as={Col} controlId="formBasicbook" >
                             <Form.Control type="text" ref={element => this.bookName = element} placeholder="Enter book Name" />
                           </Form.Group>
-
+                        
                           <Form.Group as={Col} controlId="formGridState">
                             <Form.Control as="select" ref={element => this.catID = element}>
-                              <option>Category</option>
+                              <option value=""></option>
                               <Options options={value.state.categories}/>
                             </Form.Control>
                           </Form.Group>
                           <Form.Group as={Col} controlId="formGridState">
                             <Form.Control as="select" ref={element => this.authID = element}>
-                              <option>Author</option>
+                              <option value=""></option>
                               <Options options={value.state.authors}/>
                             </Form.Control>
                           </Form.Group>

@@ -48,18 +48,19 @@ class ListingRow extends React.Component {
         this.setState({ newcategory: value, error: '' });
       }
     handleEdit=(value)=>(e)=>{
-     // 
-
-   
-          e.preventDefault();
-        
-          const editedCategory = {
-             
-              _id: e.target.dataset.id,
-              Name: this.state.newcategory,
+        e.preventDefault();
+        const editedCategory = {
+            _id: e.target.dataset.id,
+            Name: this.state.newcategory,
+        }
+        if(editedCategory.Name==''||!(isNaN)(editedCategory.Name)){
+            
+            this.setState({error:'name can not be empty or number' });
           }
+        else{
+       
           value.editCategory(editedCategory);
-          this.setState({ show: false });
+          this.setState({ show: false });}
           
       }
 
@@ -83,7 +84,10 @@ class ListingRow extends React.Component {
                         <Modal.Body>
                             <Form>
                                 <Form.Group controlId="formBasicEmail">
-                                <h3>{this.state.error}</h3>
+                                {this.state.error ? 
+                                        <div class="alert alert-danger mt-3 " role="alert">
+                                          {this.state.error}
+                                          </div>:""}
                              
                                     <Form.Control  onChange={this.handleChange} value={this.state.newcategory} type="text" placeholder="enter new name"/>
                                    

@@ -36,7 +36,7 @@ class list extends Component {
             <MyContext.Consumer>
             {value => ( 
                
-           value.state.authors.map(a => (<Item itemImage={a.image} itemTitle={a.FN} itemSubTitle={a.LN} key={a.id} id={a.id}></Item>))
+           value.state.authors.map(a => (<Item itemImage={a.image} itemTitle={a.FN} itemSubTitle={a.LN} key={a.id} id={a._id}></Item>))
            
            )}
             </MyContext.Consumer>
