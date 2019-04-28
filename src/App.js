@@ -13,6 +13,7 @@ import authorsPage from './components/User/AuthorProfile/ListPage';
 
 import aboutus from './components/User/AboutUs/AboutUs';
 
+
 import termsandconditions from './components/User/TermsAndConditions/TermsAndCondition';
 ///////////import admin pages/////////////////////
 import Home from './components/Admin/Home/Home.js';
@@ -38,16 +39,22 @@ import { getCategories } from './API/Categories';
 import { deleteCategory } from './API/Categories';
 import { EditCategory } from './API/Categories';
 import { addCategory } from './API/Categories';
+
+import { getUsers } from './API/user';
+import { EditUser } from './API/user';
+import { deleteUser } from './API/user';
+import { addUser } from './API/user';
+import { addLogin } from './API/user';
 ////////////////////////End Admin pages///////////////////////////
 
 import BookProfile from './components/User/BookProfile/BookProfile'
 // import book1 from '../src/assets/images/book1.jpg';
 // import book2 from '../src/assets/images/book2.jpg';
 // import book3 from '../src/assets/images/book3.jpg';
-import author from '../src/assets/images/author.jpg';
-import author2 from '../src/assets/images/author2.jpg';
-import author3 from '../src/assets/images/author3.jpg';
-import author4 from '../src/assets/images/author4.jpg';
+// import author from '../src/assets/images/author.jpg';
+// import author2 from '../src/assets/images/author2.jpg';
+// import author3 from '../src/assets/images/author3.jpg';
+// import author4 from '../src/assets/images/author4.jpg';
 import CategorisList from '../src/components/User/CategoryList/CategoryList';
 // -----------------------Font Awesome Import-------------------------
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -62,12 +69,12 @@ library.add(faHome);
 export const MyContext = React.createContext();
 class App extends Component {
   state = {
-    users:
-      [{ name: 'alaa', password: '123456', image: "pexels-photo-614810.jpeg", userGroup: 1, deleted: false, id: 1 }
-        , { name: 'aya', password: '123456', userGroup: 1, image: "pexels-photo-736716.jpeg", deleted: false, id: 2 },
-      { name: 'sara', password: '123456', userGroup: 2, image: "pexels-photo-614810.jpeg", deleted: false, id: 3 }],
-    authors: [],
+
+    users:[],
+     
+      authors: [],
     categories: [],
+
     login: false,
     Book: [],
     searchValue: ''
@@ -107,36 +114,51 @@ class App extends Component {
     }
 
   }
-  addLogin = (user) => {
+  addLoginContext = (user) => {
     const u = user;
     this.setState({ login: u });
   }
   logout = () => {
     this.setState({ login: false });
   }
-  addUser = (user) => {
-    const { users } = this.state;
-    this.setState({ users: users.concat(user) })
-  }
-  //category function
-  addCategory = (ca) => {
-    // debugger
-    addCategory(ca)
+  addUser = (u) => {
+    debugger
+    addUser(u)
       .then(res => {
-        // debugger
-        getCategories()
+        debugger
+        getUsers()
           .then(res => {
-            // debugger
-            const categories = res;
-            this.setState({ categories })
+            debugger
+            const users = res;
+            this.setState({ users })
           }).catch(err => {
-            // debugger
+            debugger
           })
       })
       .catch(err => {
-        // debugger
+        debugger
       })
   }
+  Login = (u) => {addLogin(u).then(res => {})
+      .catch(err => {
+      })
+  }
+  //category function
+  addCategory = (ca) => { addCategory(ca).then(res => { getCategories()
+          .then(res => {
+            const categories = res;
+            this.setState({ categories })
+          }).catch(err => {
+          })
+      })
+      .catch(err => {
+      
+      })
+  }
+
+
+
+
   deleteCategory = (id) => {
     deleteCategory(id)
       .then(res => {
@@ -206,19 +228,11 @@ class App extends Component {
       })
   }
   editBook = (edited) => {
-    EditBook(edited)
-      .then(res => {
-        getBooks()
-          .then(res => {
-            debugger
+    EditBook(edited).then(res => {getBooks().then(res => {
             const Book = res;
-            this.setState({ Book })
-          }).catch(err => {
-            debugger
-          })
-
-      }).catch(err => {
-        debugger
+            this.setState({ Book }) }).catch(err => {
+          })}).catch(err => {
+      
       })
   }
   searchCategory = (name) => {
@@ -335,6 +349,7 @@ class App extends Component {
       state: this.state,
       search: this.search,
       addLogin: this.addLogin,
+      addLoginContext: this.addLoginContext,
       addBook: this.addBook,
       deleteBook: this.deleteBook,
       editBook: this.editBook,
@@ -353,12 +368,12 @@ class App extends Component {
 
 
       addAuthor: this.addAuthor,
-      deleteAuthor: this.deleteAuthor,
+      //deleteAuthor: this.deleteAuthor,
       editAuthor: this.editAuthor,
       logout: this.logout,
       addUser: this.addUser,
-      Search: this.Search
-
+      Search: this.Search,
+      Login: this.Login
 
     }
     return (
@@ -372,8 +387,8 @@ class App extends Component {
 
             <Route exact path="/profile" component={UserProfile} />
             <Route exact path="/author" component={AuthorProfile} />
-            <Route exact path="/" component={Login} />
-
+            <Route exact path="/admin/home" component={Home} />
+            <Route exact path="/admin" component={Login} />
             {/* //////////////////// user category routes/////////////////////  */}
             <Route exact path="/category/:id" component={category} />
             <Route exact path="/categories" component={CategorisList} />
@@ -385,7 +400,7 @@ class App extends Component {
             <Route exact path="/aboutus" component={aboutus} />
             <Route exact path="/termsandconditions" component={termsandconditions} />
 
-            <Route exact path="/admin" component={Home} />
+          
             {/* <Route exact path="/books" component={Books} /> */}
 
             <Route exact path="/admin/books" component={Book} />

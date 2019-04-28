@@ -114,7 +114,7 @@ class Book extends React.Component {
               </div>
 
 
-            </React.Fragment> : this.props.history.push(`/`)
+            </React.Fragment> : this.props.history.push(`/admin`)
 
 
         )}

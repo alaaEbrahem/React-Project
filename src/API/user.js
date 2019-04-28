@@ -2,9 +2,9 @@ import axios from 'axios';
 
 const BACKEND_URL='http://localhost:3000';
 
-export const getCategories=()=>{
+export const getUsers=()=>{
   
-    return axios.get(`${BACKEND_URL}/api/categories/`,{
+    return axios.get(`${BACKEND_URL}/api/users/listing`,{
         headers:{
             authorization:`bearer ${localStorage.getItem('token')}`
         }
@@ -12,10 +12,9 @@ export const getCategories=()=>{
     .then(res=>res.data)
 }
 
-
-export const EditCategory=({_id,Name})=>{
+export const EditUser=({_id,Name})=>{
   
-    return axios.patch(`${BACKEND_URL}/api/categories/${_id}`,{
+    return axios.patch(`${BACKEND_URL}/api/users/${_id}`,{
         headers:{
             authorization:`bearer ${localStorage.getItem('token')}`
         },
@@ -26,9 +25,9 @@ export const EditCategory=({_id,Name})=>{
     .then(res=>res.data)
 }
 
-export const deleteCategory=(id)=>{
+export const deleteUser=(id)=>{
     debugger
-    return axios.delete(`${BACKEND_URL}/api/categories/${id}`,{
+    return axios.delete(`${BACKEND_URL}/api/users/${id}`,{
         headers:{
             authorization:`bearer ${localStorage.getItem('token')}`
         }
@@ -36,15 +35,24 @@ export const deleteCategory=(id)=>{
     .then(res=>res.data)
 }
 
-export const addCategory=({Name})=>{
+export const addUser=({username,name,password,email})=>{
  
     return axios.post(`${BACKEND_URL}/api/categories/`,{
         headers:{
             authorization:`bearer ${localStorage.getItem('token')}`
         },
-        Name,
+        username,name,password,email
      
 
     })
     .then(res=>res.data)
+}
+export const addLogin=({username,password})=>{
+ 
+    return axios.post(`${BACKEND_URL}/api/users/login`,{
+       
+        username,password
+    })
+    .then(res=>res.data)
+   
 }
