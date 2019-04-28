@@ -26,9 +26,8 @@ import { getBooks } from './API/Books';
 import { deleteBook } from './API/Books';
 import { EditBook } from './API/Books';
 import { addBook } from './API/Books';
-
-import { getAuthorID } from './API/Author';
-
+// import { getAuthorID } from './API/Author';
+// import { getCategoryID } from './API/Category';
 
 import { getAuthors } from './API/Authors';
 import { EditAuthor } from './API/Authors';
@@ -78,9 +77,6 @@ class App extends Component {
 
     login: false,
     Book: [],
-    // BookCurrstate: [],
-    // CatID:[],
-    // AuthID:[],
     searchValue: ''
   }
 
@@ -94,46 +90,8 @@ class App extends Component {
         this.setState({ Book })
       }).catch(err => {
         debugger
+      });
 
-      })
-      getCategories().then(res => {
-        const categories = res;
-        this.setState({ categories })
-      }).catch(err => {
-      })
-      getUsers().then(res => {
-        const users = res;
-        this.setState({ users })
-      }).catch(err => {
-      })
-
-      // getAuthorID()
-      // .then(res=>{
-      //   debugger
-      //   const AuthID = res;
-      //   this.setState({ AuthID })
-      // }).catch(err => {
-      //   debugger
-      // });
-      // getCategoryID()
-      // .then(res=>{
-      //   debugger
-      //   const CatID = res;
-      //   this.setState({ CatID })
-      // }).catch(err => {
-      //   debugger
-      // });
-
-
-    // debugger
-    // getBooks().then(res => {
-    //   // debugger
-    //   const Book = res;
-    //   this.setState({ Book })
-    // })
-    //   .catch(err => {
-    //     // debugger
-    //   })
     getCategories().then(res => {
       const categories = res;
       this.setState({ categories })
@@ -292,18 +250,6 @@ class App extends Component {
   }
   //////////////////////////////////////
 
-
-  //author Functions
-
-
-
-  // addAuthor = (author) => {
-
-  //   const { authors } = this.state;
-  //   this.setState({ authors: authors.concat(author) });
-
-  // }
-
   addAuthor = (a) => {
     debugger;
     addAuthor(a)
@@ -312,7 +258,8 @@ class App extends Component {
           const authors = data;
           this.setState({ authors })}).catch(err => {
             debugger;
-          })
+  
+})
       }).catch(err => {
       })
   }
@@ -341,35 +288,10 @@ class App extends Component {
       }).catch(err => {
       })
   }
-  // deleteAuthor = (id) => {
-  //   this.state.authors.filter(a => (a.id === id)).map(b => { b.deleted = true });
-  //   const { authors } = this.state;
-  //   this.setState({ authors: authors });
-  // }
 
 
 
-  // editAuthor = (id, edited) => {
-  //   this.state.authors.filter(a => (a.id === id)).map(a => {
 
-  //     if (edited.image !== '') {
-  //       a.Image = edited.Image;
-  //     }
-  //     if (edited.FN !== '') {
-  //       a.FN = edited.FN;
-  //     }
-  //     if (edited.LN !== '') {
-  //       a.LN = edited.LN;
-  //     }
-  //     if (edited.DOB !== '') {
-  //       a.DOB = edited.DOB;
-  //     }
-
-  //   });
-  //   const { authors } = this.state;
-
-  //   this.setState({ authors: authors });
-  // }
   Search = (text) => {
     this.state.searchValue = text;
     this.setState({ searchValue: text });

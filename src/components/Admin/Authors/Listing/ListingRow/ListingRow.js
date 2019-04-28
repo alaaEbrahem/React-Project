@@ -41,6 +41,7 @@ class ListingRow extends React.Component {
         const id = this.props.R._id;
         value.deleteAuthor(id); 
     }
+
     handleEdit = (value) => (e) => {
         // *
         e.preventDefault();
