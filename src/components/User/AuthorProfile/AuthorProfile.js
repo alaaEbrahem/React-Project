@@ -19,6 +19,7 @@ class AuthorProfile extends Component {
                 website: 'http://veronicarothbooks.com',
                 genre: 'Young Adult, Science Fiction',
             }],
+            auName:''
     }
     render() {
         return (
@@ -30,19 +31,22 @@ class AuthorProfile extends Component {
                 <Container>
                    
                     {value.state.authors.filter(a=>a.id===this.props.match.params.id+'').map(b=>(
-                    <AuthorInfo authorImg={b.image}
+                        <AuthorInfo authorImg={b.image}
                         name={b.FN+" "+b.LN}
                         born={this.state.data[0].born}
                         website={this.state.data[0].website}
                         genre={this.state.data[0].genre}
-                    >
-                    </AuthorInfo>))}
+                        >
+                    </AuthorInfo>)
+                // this.setState({auName:b.FN}) 
+                    )
+                }
                     <Col md="11" className="m-auto">
                         <fieldset>
                        
                             <legend>{this.state.data[0].name}’S BOOKS:</legend>
                             {
-                                value.state.Book.filter(b=>(b.AuthorID==this.props.match.params.id)).map(b=>(<AuthorBookList book={b} ></AuthorBookList>))
+                                value.state.Book.filter(b=>(b.AuthorID==this.props.match.params.id)).map(b=>(<AuthorBookList name={''} book={b} ></AuthorBookList>))
                             }
                             
                         </fieldset>
