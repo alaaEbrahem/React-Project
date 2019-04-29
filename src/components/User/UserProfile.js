@@ -48,6 +48,7 @@ class BooksData extends Component {
                                                     <td><img src={book.cover} height="100" alt="cover" /></td>
                                                     <td><NavLink exact to={{ pathname: `/book/1`, }}>{book.Name}</NavLink></td>
                                                     <td><NavLink exact to={{ pathname: `/author/1`, }}>{book.Author}</NavLink></td>
+                                                   
                                                     <td><StaticStars star={book.AvgRating}/></td>
                                                     <td><StaticStars star={book.Rating}/></td>
                                                     <td><DropdownComponent id={book._id}>{book.Shelve}</DropdownComponent></td>
@@ -63,7 +64,9 @@ class BooksData extends Component {
                                                     <td><img src={book.cover} height="100" alt="cover" /></td>
                                                     <td><NavLink exact to={{ pathname: `/book/1`, }}>{book.Name}</NavLink></td>
                                                     <td><NavLink exact to={{ pathname: `/author/1`, }}>{book.Author}</NavLink></td>
-                                                    <td><StaticStars star={book.AvgRating}/></td>
+                                                    <td>
+                                                    <StaticStars>{book.AvgRating}</StaticStars>
+                                                    </td>
                                                     <td><StaticStars star={book.Rating}/></td>
                                                     <td><DropdownComponent id={book._id}>{book.Shelve}</DropdownComponent></td>
                                                 </tr>
@@ -96,7 +99,7 @@ class BooksData extends Component {
                                                     <td><img src={book.cover} height="100" alt="cover" /></td>
                                                     <td><NavLink exact to={{ pathname: `/book/1`, }}>{book.Name}</NavLink></td>
                                                     <td><NavLink exact to={{ pathname: `/author/1`, }}>{book.Author}</NavLink></td>
-                                                    <td><StaticStars star={book.AvgRating}>{book.AvgRating}</StaticStars></td>
+                                                    <td><StaticStars>{book.AvgRating}</StaticStars></td>
                                                     <td><StaticStars star={book.Rating}>{book.Rating}</StaticStars></td>
                                                     <td><DropdownComponent id={book._id}>{book.Shelve}</DropdownComponent></td>
                                                 </tr>
