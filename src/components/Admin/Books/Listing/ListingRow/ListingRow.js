@@ -86,7 +86,7 @@ class ListingRow extends React.Component {
                     value => (
                         value.state.Book.map(R => (<tr>
                             <td>{R._id}</td>
-                            {/* //<td><img src={require(`../../../../../assets/images/${R.Photo}`)} alt="bookimg" /></td> */}
+                            {/* <td><img src={require(`../../../../../assets/images/${R.Photo}`)} alt="bookimg" /></td> */}
                             {/* <td><img src={edit} alt="bookimg" /></td> */}
                             <td>{R.Name}</td>
                             <td>{R.CategoryID}</td>

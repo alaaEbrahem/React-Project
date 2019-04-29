@@ -19,3 +19,14 @@ export const editProfile=({_id,Shelve})=>{
     })
     .then(res=>res.data)
 }
+
+export const addProfile=({Name,Author,AvgRating,Rating,Shelve})=>{
+    debugger
+    return axios.post(`${BACKEND_URL}/api/profile`,{
+        headers:{
+            authorization:`bearer ${localStorage.getItem('token')}`
+        },
+        Name,Author,AvgRating,Rating,Shelve
+    })
+    .then(res=>res.data)
+}
