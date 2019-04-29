@@ -102,9 +102,9 @@ class HomeSignUp extends Component{
                 <div className="form-group">
                     <input type="password" value={this.state.password} className="form-control" name="password" onChange={this.handleChange} id="exampleInputPassword1" placeholder="Enter your Password"/>
                 </div>
-                {/* <div className="form-group">
+                <div className="form-group">
                     <input type="password" value={this.state.passConfirm}  className="form-control" name="passConfirm" onChange={this.handleChange} id="exampleInputPassword" placeholder="Retype your Password"/>
-                </div> */}
+                </div>
                 {/* <div className="form-group">
                     <ImageUpload />
                 </div>
