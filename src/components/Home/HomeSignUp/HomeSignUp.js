@@ -105,9 +105,10 @@ class HomeSignUp extends Component{
                 <div className="form-group">
                     <input type="password" value={this.state.passConfirm}  className="form-control" name="passConfirm" onChange={this.handleChange} id="exampleInputPassword" placeholder="Retype your Password"/>
                 </div>
-                <div className="form-group">
+                {/* <div className="form-group">
                     <ImageUpload />
                 </div>
+                */}
                 <button type="submit" className="btn btn-success">Submit</button>
                 <small className="form-text text-muted">By clicking “Sign up” I agree to the Terms of Service and confirm that I am at least 13 years old.</small>
             
